@@ -19,7 +19,7 @@ function Navbar() {
         duration: 1,
         ease: "power4.out",
         delay: 0.2,
-        clearProps: "all" // Clears GSAP styles after animation
+        clearProps: "all",
       }
     );
 
@@ -33,8 +33,8 @@ function Navbar() {
         duration: 1,
         ease: "power4.out",
         stagger: 0.2, // Stagger each link for sequential effect
-        delay: 0.5,
-        clearProps: "all"
+        delay: 0.4,
+        clearProps: "all",
       }
     );
 
@@ -47,8 +47,8 @@ function Navbar() {
         opacity: 1,
         duration: 1,
         ease: "power4.out",
-        delay: 1,
-        clearProps: "all"
+        delay: 1, // Delay to start after links finish
+        clearProps: "all",
       }
     );
   }, []);
@@ -82,14 +82,13 @@ function Navbar() {
           </span>
         </Link>
       </div>
-      <div ref={buttonRef} className="connect-btn p-4 bg-white rounded-full text-black transition-all duration-300 hover:bg-black group">
-        <Link to="/apply" className="flex items-center space-x-2 font-bold overflow-hidden">
-          <span className="group-hover:text-white transition-all duration-300 inline-block">
-            Connect with Us
-          </span>
-          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white inline-block">
-            ➔
-          </span>
+      <div
+        ref={buttonRef}
+        className="connect-btn p-4 bg-white rounded-full text-black transition-all duration-100 hover:bg-black group overflow-hidden hover:border-white border-2"
+      >
+        <Link to="/apply" className="flex items-center space-x-2 font-bold">
+          <span className="group-hover:text-white transition-all duration-300 inline-block">Connect with Us</span>
+          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white inline-block">➔</span>
         </Link>
       </div>
     </nav>
