@@ -95,8 +95,8 @@ const HeroSection = () => {
             <source src={bgVid} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="relative z-20 text-left  w-3/5 px-4 md:px-8 lg:px-16">
-            <h1 ref={el => (heroTextRefs.current[0] = el)} className="text-6xl md:text-[80px] font-bold leading-[1] mb-6">
+          <div className="relative z-20 text-left w-full px-4 md:px-8 lg:px-16">
+            <h1 ref={el => (heroTextRefs.current[0] = el)} className="text-6xl md:text-8xl font-bold leading-[1] mb-6">
               Experience Motor Surveying Like Never Before.
             </h1>
             <p ref={el => (subHeadingRefs.current[0] = el)} className="text-lg md:text-xl mt-4 max-w-2xl font-normal">
@@ -105,7 +105,7 @@ const HeroSection = () => {
             </p>
           </div>
           <div className="relative z-20 absolute bottom-10 right-10 w-1/3 max-w-md">
-            <img src={moval} alt="Moval" layout="responsive" />
+            {/* <img src={moval} alt="Moval" layout="responsive" /> */}
           </div>
         </div>
 
@@ -115,8 +115,8 @@ const HeroSection = () => {
             <source src={bgVid} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="relative z-20 text-left w-3/5 px-4 md:px-8 lg:px-16">
-            <h2 ref={el => (heroTextRefs.current[1] = el)} className="text-6xl md:text-[80px] font-bold leading-[1] mb-6">
+          <div className="relative z-20 text-left w-[200%] px-4 md:px-8 lg:px-16">
+            <h2 ref={el => (heroTextRefs.current[1] = el)} className="text-6xl md:text-8xl font-bold leading-[1] mb-6">
               Revolutionizing Motor Claims Processing
             </h2>
             <p ref={el => (subHeadingRefs.current[1] = el)} className="text-lg md:text-xl mt-4 max-w-2xl">
@@ -124,7 +124,7 @@ const HeroSection = () => {
             </p>
           </div>
           <div className="relative z-20 absolute bottom-10 left-10 w-1/3 max-w-md">
-            <img src={CARS} width={400} height={300} alt="AI Technology" layout="responsive" />
+            {/* <img src={CARS} width={400} height={300} alt="AI Technology" layout="responsive" /> */}
           </div>
         </section>
       </div>
