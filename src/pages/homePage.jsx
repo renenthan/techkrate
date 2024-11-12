@@ -1,17 +1,17 @@
 // src/pages/HomePage.jsx
 import React from 'react';
 import HeroSection from '../components/HeroSection';
-import ThirdSection from '../components/ThirdSection';
 import Navbar from '../components/Navbar';
-
-function HomePage() {
+import ThirdSection from '../components/ThirdSection';
+const homePage = () => {
   return (
     <div>
-        <Navbar />
-      <HeroSection />
-      <ThirdSection />
-    </div>
-  );
+    <Navbar />
+  <HeroSection />
+  <ThirdSection />
+</div>
+  )
 }
 
-export default HomePage;
+
+export default homePage;

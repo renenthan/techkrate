@@ -3,22 +3,6 @@ import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 
 function ThirdSection() {
-  useEffect(() => {
-    gsap.fromTo(
-      '.third-section',
-      { y: 100, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.5,
-        scrollTrigger: {
-          trigger: '.third-section',
-          start: 'top center',
-          scrub: true,
-        },
-      }
-    );
-  }, []);
 
   return (
     <section className="third-section h-screen flex items-center justify-center bg-black text-white">

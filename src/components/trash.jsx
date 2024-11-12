@@ -1,37 +1,62 @@
-// src/components/Navbar.jsx
-import React from "react";
-import { Link } from "react-router-dom";
+// // // src/components/HeroSection.jsx
+// import React, { useEffect, useRef } from "react";
+// import { gsap } from "gsap";
+// import moval from "../assets/image/moval.png"
+// import bgVid from "/bgVid.mp4"
 
-function Navbar() {
-  return (
-    <nav className="fixed top-3 left-0 w-full bg-transparent text-white p-4 flex justify-between items-center z-50">
-      <div className="text-2xl font-bold">techkrate</div>
-      <div className="space-x-8 text-center">
-        <Link to="/" className="hover:text-gray-300">
-          HOME
-        </Link>
-        <Link to="/about" className="hover:text-gray-300">
-          ABOUT US
-        </Link>
-        <Link to="/services" className="hover:text-gray-300">
-          SERVICES
-        </Link>
-        <Link to="/products" className="hover:text-gray-300">
-          PRODUCTS
-        </Link>
-      </div>
-      <div className="connect-btn p-4 bg-white rounded-full text-black transition-all duration-300 hover:bg-black group">
-        <Link to="/apply" className="flex items-center space-x-2 font-bold">
-          <span className="group-hover:text-white transition-all duration-300">
-            Connect with Us
-          </span>
-          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white">
-            ➔
-          </span>
-        </Link>
-      </div>
-    </nav>
-  );
-}
+// function HeroSection() {
+//   const heroTextRef = useRef(null);
+//   const subHeadingRef = useRef(null);
 
-export default Navbar;
+//   useEffect(() => {
+//     // Manually split text into words, wrap each word in a span with overflow-hidden wrapper
+//     const words = heroTextRef.current.innerText.split(" ");
+//     heroTextRef.current.innerHTML = words
+//       .map(
+//         (word) => `<span class=" inline-block"><span class="inline-block">${word}</span></span>`
+//       )
+//       .join(" ");
+
+//     // Select the inner spans containing each word for animation
+//     const splitWords = heroTextRef.current.querySelectorAll("span > span");
+
+//     // GSAP animation for each word to fade up individually
+//     gsap.from(splitWords, {
+//       duration: 1.5,
+//       opacity: 0,
+//       y: 50, // Start from below
+//       ease: "power4.out",
+//       stagger: 0.1, // Delay between each word animation
+//     });
+
+//     // Subheading fade-in animation
+//     gsap.fromTo(
+//       subHeadingRef.current,
+//       { opacity: 0, y: 50 },
+//       { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }
+//     );
+//   }, []);
+
+//   return (
+//     <div className="relative h-screen flex justify-between items-center bg-black text-white overflow-hidden px-20">
+//       {/* Background video */}
+//       <video className="absolute top-0 right-0 w-2/3 h-full object-cover transform scale-x-[-1] z-0" src={bgVid} autoPlay loop muted />
+
+//       {/* Text content on the left side */}
+//       <div className="relative z-20 text-left w-3/5 ">
+//         <h1 ref={heroTextRef} className="text-6xl md:text-[80px] font-bold">
+//           Experience Motor Surveying Like Never Before.
+//         </h1>
+//         <p ref={subHeadingRef} className="text-lg md:text-md ">
+//           Introducing Moval– an advanced platform designed to optimize motor claims processing for insurance companies and empower motor surveyors
+//           with customizable, AI-driven features such as Damage Detection & Real-Time Reporting.
+//         </p>
+//       </div>
+//       <div className="relative z-20">
+//         <img src={moval} alt="Moval" className="max-w-full h-auto" />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default HeroSection;
