@@ -7,7 +7,7 @@ export default function Footer() {
       {/* Top separator with gradient */}
       <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30" />
 
-      <div className="max-w-7xl mx-auto px-8 py-12">
+      <div className="max-w-7xl mx-auto px-8 pt-12 pb-2">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-16">
           {/* Column 1: Logo and Description */}
           <div className="xl:col-span-1">
@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-gray-800 mt-8 pt-4 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
           <p>© 2024 Moval, All rights reserved</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <a href="#" className="hover:text-blue-500 transition-colors">
