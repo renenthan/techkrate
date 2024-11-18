@@ -6,7 +6,7 @@ import ThirdSection from '../components/ThirdSection';
 import ServiceSection from '../components/ServiceSection'
 import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer'
-const homePage = () => {
+const HomePage = () => {
   return (
     <div>
     <Navbar />
@@ -20,4 +20,4 @@ const homePage = () => {
 }
 
 
-export default homePage;
+export default HomePage;

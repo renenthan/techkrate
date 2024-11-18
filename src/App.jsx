@@ -5,14 +5,12 @@ import Services from "./pages/Services";
 import Products from "./pages/Products";
 import Apply from "./pages/Apply";
 import HomePage from "./pages/HomePage";
-
 function App() {
   return (
     <Router>
-      
       <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/about" element={<About/>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/products" element={<Products />} />
         <Route path="/apply" element={<Apply />} />
