@@ -7,7 +7,7 @@ export default function Footer() {
       {/* Top separator with gradient */}
       <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30" />
 
-      <div className="max-w-7xl mx-auto px-8 pt-12 pb-2">
+      <div className="max-w-7xl mx-auto px-8 pt-12 pb-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-16">
           {/* Column 1: Logo and Description */}
           <div className="xl:col-span-1">
