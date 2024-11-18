@@ -1,98 +1,132 @@
-import user3 from '../assets/image/user3.avif'
-const Testimonials = () => {
+import React, { useEffect, useState, useRef } from 'react'
+import PropTypes from 'prop-types'
+
+const testimonials = [
+  {
+    quote: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendus ipsum dignissimos? Officiis ipsam dolorum magnam assumenda.",
+    author: "Johnathan Rodriguez",
+    role: "UX Research, Atlassian"
+  },
+  {
+    quote: "Expedita sequi cupiditate harum repellendus ipsum dignissimos. Officiis ipsam dolorum magnam assumenda, consectetur adipisicing elit.",
+    author: "Sarah Chen",
+    role: "Product Designer, Figma"
+  },
+  {
+    quote: "Consectetur adipisicing elit, expedita sequi cupiditate harum repellendus ipsum dignissimos. Officiis ipsam dolorum magnam assumenda.",
+    author: "Michael Park",
+    role: "Engineering Lead, Vercel"
+  },
+  {
+    quote: "Innovative solutions that truly revolutionized our workflow. The impact on our productivity has been immeasurable.",
+    author: "Emily Watson",
+    role: "CTO, TechNova"
+  },
+  {
+    quote: "Exceptional customer service coupled with cutting-edge technology. It's rare to find a company that excels in both.",
+    author: "David Lee",
+    role: "Operations Manager, GlobalCorp"
+  },
+  {
+    quote: "The intuitive interface made adoption across our team seamless. It's been a game-changer for our project management.",
+    author: "Sophia Rodriguez",
+    role: "Team Lead, InnovateTech"
+  }
+]
+
+export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const progressRefs = useRef([])
+
+  useEffect(() => {
+    const animateProgress = (index) => {
+      const progressBar = progressRefs.current[index]
+      if (progressBar) {
+        progressBar.style.transition = 'width 5s linear'
+        progressBar.style.width = '100%'
+      }
+    }
+
+    const resetProgress = () => {
+      progressRefs.current.forEach((bar) => {
+        if (bar) {
+          bar.style.transition = 'none'
+          bar.style.width = '0%'
+        }
+      })
+    }
+
+    const timer = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setCurrentIndex((current) => (current + 1) % testimonials.length)
+        setIsAnimating(false)
+        resetProgress()
+        animateProgress((currentIndex + 1) % testimonials.length)
+      }, 500)
+    }, 5000)
+
+    resetProgress()
+    animateProgress(currentIndex)
+
+    return () => clearInterval(timer)
+  }, [currentIndex])
+
   return (
-    <div
-      className="relative p-4 flex flex-col items-center space-y-16 bg-black"
-      id="Testimonials"
-    >
-      <h2 className="text-center text-white text-5xl exo-2-headings uppercase font-extrabold">
-        This Is What Our Customers Say!
-      </h2>
-
-      <div className="flex flex-col md:flex-row md:space-x-6 md:space-y-0 space-y-6 w-full max-w-6xl">
-        {/* Testimonial 1 */}
-        <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-4 flex flex-col items-center hover:shadow-xl">
-          <div className="w-24 h-24 bg-zinc-300 rounded-full overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src={user3}
-              alt="Customer 1"
-            />
-          </div>
-          <div className="text-center ">
-            <p className="text-[#134E4A] text-sm font-normal mt-2">
-              “Just what I was looking for. Thank you for making it painless,
-              pleasant and most of all hassle free! All products are great.”
-            </p>
-            <p className="text-[#134E4A] text-xl mt-2 font-semibold">
-              UI Designer
-            </p>
-            <p className="text-[#134E4A] text-xl font-normal font-['Volkhov']">
-              Megen W.
-            </p>
-            <div className="w-16 h-1 bg-[#134E4A] mx-auto my-2" />
+    <div className="w-full max-w-7xl mx-auto px-4 py-20">
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            What our customers think
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus commodi sint, similique cupiditate possimus suscipit delectus illum eos iure magnam!
+          </p>
+          <div className="flex gap-2">
+            {testimonials.map((_, index) => (
+              <div key={index} className="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  ref={(el) => (progressRefs.current[index] = el)}
+                  className="h-full bg-black rounded-full"
+                  style={{ width: index === currentIndex ? '0%' : '0%' }}
+                />
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* Testimonial 2 */}
-        <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-4 flex flex-col items-center hover:shadow-xl">
-          <div className="w-24 h-24 bg-zinc-300 rounded-full overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src={user3}
-              alt="Customer 2"
-            />
+        <div className="relative h-[300px] bg-black text-white overflow-hidden">
+          <div
+            className={`absolute inset-0 p-8 transition-transform duration-500 ease-out ${
+              isAnimating ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'
+            }`}
+          >
+            <div className="h-full flex flex-col justify-between">
+              <p className="text-xl italic leading-relaxed">
+                "{testimonials[currentIndex].quote}"
+              </p>
+              <div>
+                <p className="font-semibold text-lg">
+                  {testimonials[currentIndex].author}
+                </p>
+                <p className="text-gray-400">
+                  {testimonials[currentIndex].role}
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="text-center ">
-            <p className="text-[#134E4A] text-sm font-normal mt-2">
-              “Items That I ordered were the best investment I ever made. I
-              can&apos;t say enough about your quality service.”
-            </p>
-            <p className="text-[#134E4A] text-xl mt-2 font-semibold ">
-              UI Designer
-            </p>
-            <p className="text-[#134E4A] text-xl font-normal font-['Volkhov']">
-              Suzan B.
-            </p>
-            <div className="w-16 h-1 bg-[#134E4A] mx-auto my-2" />
-          </div>
-        </div>
-
-        {/* Testimonial 3 */}
-        <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-4 flex flex-col items-center hover:shadow-xl">
-          <div className="w-24 h-24 bg-zinc-300 rounded-full overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src={user3}
-              alt="Customer 3"
-            />
-          </div>
-          <div className="text-center ">
-            <p className="text-[#134E4A] text-sm font-normal mt-2">
-              &quot;You won&apos;t regret it. I would like to personally thank you for
-              your outstanding product. Absolutely wonderful!&quot;
-            </p>
-            <p className="text-[#134E4A] text-xl mt-2 font-semibold">
-              Traveler
-            </p>
-            <p className="text-[#134E4A] text-xl font-normal font-['Volkhov']">
-              James K.
-            </p>
-            <div className="w-16 h-1 bg-[#134E4A] mx-auto my-2" />
-          </div>
-        </div>
-      </div>
-
-      <div className="flex space-x-4">
-        <div className="w-10 h-10 bg-[#134E4A] rounded-full flex items-center justify-center">
-          <div className="w-6 h-6 bg-white rounded-full transform rotate-180" />
-        </div>
-        <div className="w-10 h-10 bg-[#134E4A] rounded-full flex items-center justify-center">
-          <div className="w-6 h-6 bg-white rounded-full" />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Testimonials;
+Testimonials.propTypes = {
+  testimonials: PropTypes.arrayOf(
+    PropTypes.shape({
+      quote: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      role: PropTypes.string.isRequired,
+    })
+  )
+}

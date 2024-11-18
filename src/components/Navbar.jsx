@@ -39,24 +39,45 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-3 left-0 w-full bg-transparent text-white p-4 flex justify-between items-center z-50">
+    <nav className="fixed top-5 w-full bg-transparent text-white px-20 py-4 flex justify-between items-center z-50">
       <div className="text-2xl font-bold">
         <span ref={logoRef} className="overflow-hidden inline-block">
-          Techkrate
+          {" "}Techkrate
         </span>
       </div>
-      <div className="space-x-8 text-center flex">
-        {["HOME", "ABOUT US", "SERVICES", "PRODUCTS"].map((item, index) => (
-          <Link
-            key={item}
-            to={`/${item.toLowerCase().replace(" ", "-")}`}
-            ref={(el) => (linksRef.current[index] = el)}
-            className="relative group text-white hover:text-gray-300 overflow-hidden"
-          >
-            <span>{item}</span>
-            <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
-          </Link>
-        ))}
+      <div className="space-x-16 text-center flex">
+        <Link
+          to="/home"
+          ref={(el) => (linksRef.current[0] = el)}
+          className="relative group text-white hover:text-gray-300 overflow-hidden"
+        >
+          <span>HOME</span>
+          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+        </Link>
+        <Link
+          to="/about-us"
+          ref={(el) => (linksRef.current[1] = el)}
+          className="relative group text-white hover:text-gray-300 overflow-hidden"
+        >
+          <span>ABOUT US</span>
+          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+        </Link>
+        <Link
+          to="/services"
+          ref={(el) => (linksRef.current[2] = el)}
+          className="relative group text-white hover:text-gray-300 overflow-hidden"
+        >
+          <span>SERVICES</span>
+          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+        </Link>
+        <Link
+          to="/products"
+          ref={(el) => (linksRef.current[3] = el)}
+          className="relative group text-white hover:text-gray-300 overflow-hidden"
+        >
+          <span>PRODUCTS</span>
+          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+        </Link>
       </div>
       <div
         ref={buttonRef}
@@ -71,6 +92,7 @@ function Navbar() {
           </span>
         </Link>
       </div>
+      
     </nav>
   );
 }
