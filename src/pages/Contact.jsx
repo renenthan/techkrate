@@ -13,7 +13,7 @@ function Contact() {
       <Navbar />
       <div className="min-h-screen bg-black text-white flex flex-col">
         {/* Main Content */}
-        <div className="flex-grow flex flex-col md:flex-row justify-center items-center px-8 md:px-32 py-16">
+        <div className="flex-grow flex flex-col md:flex-row justify-center items-center  px-8 md:px-32 py-16">
           {/* Left Section */}
           <div className="bg-gradient-to-b from-blue-500 to-blue-700 text-white px-10 py-20  rounded-lg w-full  md:w-1/2 max-w-md md:max-w-lg">
             <h2 className="text-4xl font-bold mb-6">Get in touch</h2>
