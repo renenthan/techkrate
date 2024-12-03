@@ -10,12 +10,12 @@ import Navbar from "../components/Navbar";
 function Contact() {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="min-h-screen bg-black text-white flex flex-col">
         {/* Main Content */}
         <div className="flex-grow flex flex-col md:flex-row justify-center items-center px-8 md:px-32 py-16">
           {/* Left Section */}
-          <div className="bg-gradient-to-b from-blue-500 to-blue-700 text-white p-10 rounded-lg w-full md:w-1/2">
+          <div className="bg-gradient-to-b from-blue-500 to-blue-700 text-white px-10 py-20  rounded-lg w-full  md:w-1/2 max-w-md md:max-w-lg">
             <h2 className="text-4xl font-bold mb-6">Get in touch</h2>
             <p className="mb-4">
               <strong>Visit us</strong>
@@ -40,22 +40,22 @@ function Contact() {
             </p>
             <div className="flex space-x-4 mt-4">
               <a href="#" className="hover:opacity-75">
-                <FontAwesomeIcon icon={faFacebookF}  />
+                <FontAwesomeIcon icon={faFacebookF} />
               </a>
               <a href="#" className="hover:opacity-75">
-                <FontAwesomeIcon icon={faLinkedinIn}  />
+                <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
               <a href="#" className="hover:opacity-75">
-                <FontAwesomeIcon icon={faInstagram}  />
+                <FontAwesomeIcon icon={faInstagram} />
               </a>
               <a href="#" className="hover:opacity-75">
-                <FontAwesomeIcon icon={faTwitter}  />
+                <FontAwesomeIcon icon={faTwitter} />
               </a>
             </div>
           </div>
 
           {/* Right Section */}
-          <div className="bg-black text-gray-300 p-10 rounded-lg w-full md:w-1/2 mt-10 md:mt-0">
+          <div className="bg-black text-gray-300 p-10 rounded-lg w-full md:w-1/2 max-w-md md:max-w-lg mt-10 md:mt-0">
             <form>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
