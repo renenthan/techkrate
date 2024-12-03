@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 
@@ -47,7 +47,7 @@ function Navbar() {
       </div>
       <div className="space-x-16 text-center flex">
         <Link
-          to="/home"
+          to="/"
           ref={(el) => (linksRef.current[0] = el)}
           className="relative group text-white hover:text-gray-300 overflow-hidden"
         >
@@ -55,7 +55,7 @@ function Navbar() {
           <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
         </Link>
         <Link
-          to="/about-us"
+          to="/about"
           ref={(el) => (linksRef.current[1] = el)}
           className="relative group text-white hover:text-gray-300 overflow-hidden"
         >
@@ -83,7 +83,7 @@ function Navbar() {
         ref={buttonRef}
         className="connect-btn p-4 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white border-2"
       >
-        <Link to="/apply" className="flex items-center space-x-2 font-bold">
+        <Link to="/contact" className="flex items-center space-x-2 font-bold">
           <span className="group-hover:text-white transition-all duration-300 inline-block">
             Connect with Us
           </span>

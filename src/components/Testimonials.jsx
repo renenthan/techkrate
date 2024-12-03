@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 const testimonials = [
@@ -74,7 +74,7 @@ export default function Testimonials() {
   }, [currentIndex])
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-20">
+    <div className="w-full max-w-7xl mx-auto px-4 py-32">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -103,7 +103,7 @@ export default function Testimonials() {
           >
             <div className="h-full flex flex-col justify-between">
               <p className="text-xl italic leading-relaxed">
-                "{testimonials[currentIndex].quote}"
+                &quot;{testimonials[currentIndex].quote}&quot;
               </p>
               <div>
                 <p className="font-semibold text-lg">
