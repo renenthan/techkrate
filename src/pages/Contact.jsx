@@ -1,134 +1,145 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faLinkedinIn,
-  faInstagram,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import Navbar from "../components/Navbar";
+"use client"
 
-function Contact() {
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import bgVid from '/bgVid.mp4'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const HeroSection = () => {
+  const containerRef = useRef(null)
+  const textContainersRef = useRef([])
+  const heroTextRefs = useRef([])
+  const subHeadingRefs = useRef([])
+
+  useEffect(() => {
+    const textContainers = textContainersRef.current
+    const totalSections = textContainers.length
+
+    // Set up horizontal scroll for the text containers
+    gsap.to(textContainers, {
+      xPercent: -100 * (totalSections - 1),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: containerRef.current,
+        pin: true,
+        scrub: 1,
+        snap: 1 / (totalSections - 1),
+        end: () => '+=' + window.innerHeight * (totalSections - 1),
+        anticipatePin: 1,
+      },
+    })
+
+    // Animate text for all sections
+    heroTextRefs.current.forEach((heroTextRef, index) => {
+      const words = heroTextRef.innerText.split(" ")
+      heroTextRef.innerHTML = words
+        .map(
+          (word) => `<span class="inline-block"><span class="inline-block">${word}</span></span>`
+        )
+        .join(" ")
+
+      const splitWords = heroTextRef.querySelectorAll("span > span")
+
+      gsap.from(splitWords, {
+        duration: 1.5,
+        opacity: 0,
+        y: 50,
+        ease: "power4.out",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: textContainersRef.current[index],
+          start: "top center",
+          end: "bottom center",
+          toggleActions: "play none none reverse"
+        }
+      })
+
+      // Subheading fade-in animation
+      gsap.fromTo(
+        subHeadingRefs.current[index],
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1.5, 
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: textContainersRef.current[index],
+            start: "top center",
+            end: "bottom center",
+            toggleActions: "play none none reverse"
+          }
+        }
+      )
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
+
   return (
-    <>
-      <Navbar/>
-      <div className="min-h-screen bg-black text-white flex flex-col">
-        {/* Main Content */}
-        <div className="flex-grow flex flex-col md:flex-row justify-center items-center px-8 md:px-32 py-16">
-          {/* Left Section */}
-          <div className="bg-gradient-to-b from-blue-500 to-blue-700 text-white p-10 rounded-lg w-full md:w-1/2">
-            <h2 className="text-4xl font-bold mb-6">Get in touch</h2>
-            <p className="mb-4">
-              <strong>Visit us</strong>
-              <br />
-              Come say hello at our office HQ.
-              <br />
-              67 Wisteria Way Croydon South VIC 3136 AU
+    <div ref={containerRef} className="overflow-hidden h-screen relative">
+      <video className="absolute top-0 right-0 w-full h-full object-cover z-0" autoPlay loop muted playsInline>
+        <source src={bgVid} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+      <div className="relative z-20 h-full flex">
+        {/* First Section with Hero content */}
+        <div ref={el => (textContainersRef.current[0] = el)} className="min-w-full h-full flex items-center">
+          <div className="text-left w-full px-4 md:px-8 lg:px-16">
+            <h1 ref={el => (heroTextRefs.current[0] = el)} className="text-6xl md:text-8xl font-bold leading-[1] mb-6 text-white">
+              Experience Motor Surveying Like Never Before.
+            </h1>
+            <p ref={el => (subHeadingRefs.current[0] = el)} className="text-lg md:text-xl mt-4 max-w-2xl font-normal text-white">
+              Introducing Moval– an advanced platform designed to optimize motor claims processing for insurance companies and empower motor surveyors
+              with customizable, AI-driven features such as Damage Detection & Real-Time Reporting.
             </p>
-            <p className="mb-4">
-              <strong>Chat to us</strong>
-              <br />
-              Our friendly team is here to help.
-              <br />
-              hello@paysphere.com
-            </p>
-            <p className="mb-4">
-              <strong>Call us</strong>
-              <br />
-              Mon-Fri from 8am to 5pm
-              <br />
-              (+995) 555-55-55-55
-            </p>
-            <div className="flex space-x-4 mt-4">
-              <a href="#" className="hover:opacity-75">
-                <FontAwesomeIcon icon={faFacebookF}  />
-              </a>
-              <a href="#" className="hover:opacity-75">
-                <FontAwesomeIcon icon={faLinkedinIn}  />
-              </a>
-              <a href="#" className="hover:opacity-75">
-                <FontAwesomeIcon icon={faInstagram}  />
-              </a>
-              <a href="#" className="hover:opacity-75">
-                <FontAwesomeIcon icon={faTwitter}  />
-              </a>
-            </div>
           </div>
+        </div>
 
-          {/* Right Section */}
-          <div className="bg-black text-gray-300 p-10 rounded-lg w-full md:w-1/2 mt-10 md:mt-0">
-            <form>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-2">First Name</label>
-                  <input
-                    type="text"
-                    className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                    placeholder="Randomfirst"
-                  />
-                </div>
-                <div>
-                  <label className="block mb-2">Last Name</label>
-                  <input
-                    type="text"
-                    className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                    placeholder="Randomlast"
-                  />
-                </div>
-              </div>
-              <div className="mt-4">
-                <label className="block mb-2">Company Name</label>
-                <input
-                  type="text"
-                  className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                  placeholder="RandomCompany"
-                />
-              </div>
-              <div className="mt-4">
-                <label className="block mb-2">Email</label>
-                <input
-                  type="email"
-                  className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                  placeholder="Random@gmail.com"
-                />
-              </div>
-              <div className="mt-4">
-                <label className="block mb-2">Phone Number</label>
-                <input
-                  type="text"
-                  className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                  placeholder="(+995) 555-55-55-55"
-                />
-              </div>
-              <div className="mt-4">
-                <label className="block mb-2">Message</label>
-                <textarea
-                  className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                  rows="4"
-                  placeholder="Tell us what we can help you with"
-                ></textarea>
-              </div>
-              <div className="flex items-start mt-4">
-                <input type="checkbox" className="mr-2" />
-                <label>
-                  I’d like to receive more information about the company. I
-                  understand and agree to the{" "}
-                  <a href="#" className="text-blue-400 underline">
-                    Privacy Policy
-                  </a>
-                </label>
-              </div>
-              <button
-                type="submit"
-                className="bg-blue-600 w-full text-white p-3 mt-6 rounded-md"
-              >
-                Send Message
-              </button>
-            </form>
+        {/* Second Section */}
+        <div ref={el => (textContainersRef.current[1] = el)} className="min-w-full h-full flex items-center">
+          <div className="text-left w-full px-4 md:px-8 lg:px-16">
+            <h2 ref={el => (heroTextRefs.current[1] = el)} className="text-6xl md:text-8xl font-bold leading-[1] mb-6 text-white">
+              Revolutionizing Motor Claims Processing
+            </h2>
+            <p ref={el => (subHeadingRefs.current[1] = el)} className="text-lg md:text-xl mt-4 max-w-2xl text-white">
+              Our cutting-edge AI technology streamlines the entire claims process, reducing turnaround times and improving accuracy. Experience the future of motor surveying with Moval.
+            </p>
+          </div>
+        </div>
+
+        {/* Third Section */}
+        <div ref={el => (textContainersRef.current[2] = el)} className="min-w-full h-full flex items-center">
+          <div className="text-left w-full px-4 md:px-8 lg:px-16">
+            <h2 ref={el => (heroTextRefs.current[2] = el)} className="text-6xl md:text-8xl font-bold leading-[1] mb-6 text-white">
+              Lorem Ipsum Dolor Sit Amet
+            </h2>
+            <p ref={el => (subHeadingRefs.current[2] = el)} className="text-lg md:text-xl mt-4 max-w-2xl text-white">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+            </p>
+          </div>
+        </div>
+
+        {/* Fourth Section */}
+        <div ref={el => (textContainersRef.current[3] = el)} className="min-w-full h-full flex items-center">
+          <div className="text-left w-full px-4 md:px-8 lg:px-16">
+            <h2 ref={el => (heroTextRefs.current[3] = el)} className="text-6xl md:text-8xl font-bold leading-[1] mb-6 text-white">
+              Consectetur Adipiscing Elit
+            </h2>
+            <p ref={el => (subHeadingRefs.current[3] = el)} className="text-lg md:text-xl mt-4 max-w-2xl text-white">
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
           </div>
         </div>
       </div>
-    </>
-  );
+    </div>
+  )
 }
 
-export default Contact;
+export default HeroSection
+

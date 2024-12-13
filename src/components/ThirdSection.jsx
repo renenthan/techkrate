@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import React, { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ChevronRight } from 'lucide-react'
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronRight } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ThirdSection() {
-  const sectionRef = useRef(null)
-  const headingRef = useRef(null)
-  const paragraphRef = useRef(null)
-  const buttonRef = useRef(null)
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
-    const section = sectionRef.current
-    const heading = headingRef.current
-    const paragraph = paragraphRef.current
-    const button = buttonRef.current
+    const section = sectionRef.current;
+    const heading = headingRef.current;
+    const paragraph = paragraphRef.current;
+    const button = buttonRef.current;
 
     gsap.fromTo(
       heading,
@@ -28,12 +28,12 @@ export default function ThirdSection() {
         duration: 1,
         scrollTrigger: {
           trigger: section,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
         },
       }
-    )
+    );
 
     gsap.fromTo(
       paragraph,
@@ -45,12 +45,12 @@ export default function ThirdSection() {
         delay: 0.3,
         scrollTrigger: {
           trigger: section,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
         },
       }
-    )
+    );
 
     gsap.fromTo(
       button,
@@ -62,13 +62,13 @@ export default function ThirdSection() {
         delay: 0.6,
         scrollTrigger: {
           trigger: section,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
         },
       }
-    )
-  }, [])
+    );
+  }, []);
 
   return (
     <section
@@ -86,7 +86,7 @@ export default function ThirdSection() {
           Techkrate: Redefining Motor Claims
         </h2>
         <p ref={paragraphRef} className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-300">
-        Turning complexity into clarity by designing solutions that anticipate needs, inspire change & elevate your experience.
+          Turning complexity into clarity by designing solutions that anticipate needs, inspire change & elevate your experience.
         </p>
         <button
           ref={buttonRef}
@@ -97,5 +97,5 @@ export default function ThirdSection() {
         </button>
       </div>
     </section>
-  )
+  );
 }

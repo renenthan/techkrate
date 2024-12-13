@@ -78,6 +78,14 @@ function Navbar() {
           <span>PRODUCTS</span>
           <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
         </Link>
+        <Link
+          to="/blogs"
+          ref={(el) => (linksRef.current[4] = el)}
+          className="relative group text-white hover:text-gray-300 overflow-hidden"
+        >
+          <span>BLOGS</span>
+          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+        </Link>
       </div>
       <div
         ref={buttonRef}
