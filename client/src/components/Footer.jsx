@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 import { Youtube, Linkedin, Instagram, ChevronUp } from 'lucide-react'
-
 export default function Footer() {
+  const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false)
 
   useEffect(() => {
@@ -64,6 +65,7 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              <li onClick={() => navigate("/addBlog")} className="text-gray-400 hover:cursor-pointer">Add Blog</li>
             </ul>
           </div>
 
