@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.post("/addBlog", async (req, res) => {
   try {
+    console.log("Request Body:", req.body);
     const { title, secondTitle, date, content } = req.body;
     const newBlog = new Blog({ title, secondTitle, date, content });
     await newBlog.save();

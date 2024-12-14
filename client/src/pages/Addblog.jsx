@@ -12,7 +12,7 @@ const AddBlog = () => {
     const newBlog = { title, secondTitle, date, content };
 
     try {
-      const response = await axios.post("http://localhost:3000/addBlog", newBlog);
+      const response = await axios.post("https://techkrate.onrender.com/addBlog", newBlog);
       if (response.status === 201) {
         alert("Blog added successfully!");
         setTitle("");
