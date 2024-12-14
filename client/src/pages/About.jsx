@@ -41,7 +41,7 @@ const AboutUs = () => {
           <h3 className="text-3xl font-semibold mb-6 text-white">Our Story</h3>
           <p className="text-lg text-gray-400 leading-relaxed">
             In 2006, our founders set out to create a company that transformed
-            how businesses engage with their customers. Since then, we've
+            how businesses engage with their customers. Since then, we&apos;ve
             grown to serve millions of businesses worldwide by simplifying
             marketing, sales, and customer engagement.
           </p>
