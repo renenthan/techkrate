@@ -1,18 +1,32 @@
-import  { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // don't allow users to see this page if they are authenticated
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    if (isAuthenticated) {
+      navigate("/addblog");
+    }
+  });
 
-    // Simple validation (replace with actual authentication logic)
-    if (email === "support@techkrate.com" && password === "techkrate123") {
-      setIsAuthenticated(true);
+  //send request to the backend instead with the email and possword for verification
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await axios.post("https://techkrate.onrender.com/login", {
+      email,
+      password,
+    });
+
+    if (res.status === 200) {
+      // Set isAuthenticated to true in localStorage for a longer authentication session
+      localStorage.setItem("isAuthenticated", true);
       navigate("/addblog"); // Redirect to AddBlog page
     } else {
       alert("Invalid credentials");
@@ -25,7 +39,10 @@ const Login = ({ setIsAuthenticated }) => {
         <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               Email Address
             </label>
             <input
@@ -39,7 +56,10 @@ const Login = ({ setIsAuthenticated }) => {
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Password
             </label>
             <input

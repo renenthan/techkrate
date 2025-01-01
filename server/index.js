@@ -26,9 +26,23 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
+// check the password and email credemtials
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    // console.log(email, password);
+    if (email === "support@techkrate.com" && password === "techkrate123") {
+      res.status(200).send("Login successful");
+    }
+    res.status(401).send("Invalid credentials");
+  } catch {
+    res.status(500).send("Login failed");
+  }
+});
+
 app.post("/addBlog", async (req, res) => {
   try {
-    console.log("Request Body:", req.body);
+    // console.log("Request Body:", req.body);
     const { title, secondTitle, date, content } = req.body;
     const newBlog = new Blog({ title, secondTitle, date, content });
     await newBlog.save();
@@ -51,4 +65,4 @@ app.get("/blogs", async (req, res) => {
 });
 
 app.listen(port);
-console.log(`App listening at http://localhost:${port}`);
+console.log(`App listening`);
