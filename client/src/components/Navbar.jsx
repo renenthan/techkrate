@@ -1,15 +1,17 @@
 // src/components/Navbar.jsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 
-function Navbar() {
+const Navbar = ({ thirdSectionOffset }) => {
+  const navbarRef = useRef(null);
   const logoRef = useRef(null);
   const linksRef = useRef([]);
   const buttonRef = useRef(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  // Animation logic for initial load
   useEffect(() => {
-    // Animate each link with fade-in from above on load
     gsap.fromTo(
       [logoRef.current, ...linksRef.current, buttonRef.current],
       { y: -20, opacity: 0 },
@@ -38,11 +40,41 @@ function Navbar() {
     });
   }, []);
 
+  // Scroll behavior for changing navbar background
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition >= thirdSectionOffset && !isScrolled) {
+        setIsScrolled(true);
+        gsap.to(navbarRef.current, {
+          backgroundColor: "rgba(0, 0, 0, 1)",
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      } else if (scrollPosition < thirdSectionOffset && isScrolled) {
+        setIsScrolled(false);
+        gsap.to(navbarRef.current, {
+          backgroundColor: "transparent",
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isScrolled, thirdSectionOffset]);
+
   return (
-    <nav className="fixed top-5 w-full bg-transparent text-white px-20 py-4 flex justify-between items-center z-50">
+    <nav
+      ref={navbarRef}
+      className="fixed top-0 w-full bg-transparent text-white px-20 pb-4 pt-6 flex justify-between items-center z-50"
+    >
       <div className="text-2xl font-bold">
         <span ref={logoRef} className="overflow-hidden inline-block">
-          {" "}Techkrate
+          Techkrate
         </span>
       </div>
       <div className="space-x-16 text-center flex">
@@ -52,7 +84,7 @@ function Navbar() {
           className="relative group text-white hover:text-gray-300 overflow-hidden"
         >
           <span>HOME</span>
-          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+          <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
         <Link
           to="/about"
@@ -60,31 +92,23 @@ function Navbar() {
           className="relative group text-white hover:text-gray-300 overflow-hidden"
         >
           <span>ABOUT US</span>
-          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
-        </Link>
-        <Link
-          to="/services"
-          ref={(el) => (linksRef.current[2] = el)}
-          className="relative group text-white hover:text-gray-300 overflow-hidden"
-        >
-          <span>SERVICES</span>
-          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+          <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
         <Link
           to="/products"
-          ref={(el) => (linksRef.current[3] = el)}
+          ref={(el) => (linksRef.current[2] = el)}
           className="relative group text-white hover:text-gray-300 overflow-hidden"
         >
           <span>PRODUCTS</span>
-          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+          <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
         <Link
           to="/blogs"
-          ref={(el) => (linksRef.current[4] = el)}
+          ref={(el) => (linksRef.current[3] = el)}
           className="relative group text-white hover:text-gray-300 overflow-hidden"
         >
           <span>BLOGS</span>
-          <span className="underline absolute left-0 -bottom-1 w-full h-[2px] bg-current"></span>
+          <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
       </div>
       <div
@@ -100,9 +124,8 @@ function Navbar() {
           </span>
         </Link>
       </div>
-      
     </nav>
   );
-}
+};
 
 export default Navbar;

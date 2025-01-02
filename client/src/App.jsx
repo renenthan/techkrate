@@ -1,11 +1,4 @@
-// src/App.jsx
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
-import Services from "./pages/Services";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
@@ -21,7 +14,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
         <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
