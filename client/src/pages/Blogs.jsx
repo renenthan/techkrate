@@ -20,7 +20,7 @@ const Blogs = () => {
 
   useEffect(() => {
     fetchBlogPosts();
-  }, []);
+  }, [fetchBlogPosts]);
   const BlogList = () => (
     <div className="relative w-full min-h-screen py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-300/20 to-amber-200/20 backdrop-blur-xl"></div>
