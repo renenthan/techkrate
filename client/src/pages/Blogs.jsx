@@ -6,18 +6,28 @@ import axios from "axios";
 const Blogs = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   // Fetch blogs on component mount
   useEffect(() => {
     axios
-      .get("http://localhost:3000/blogs")
+      .get("https://techkrate-backend.onrender.com/blogs")
       .then((res) => {
         setBlogPosts(res.data);
+        setLoading(false); // Set loading to false after data is fetched
       })
       .catch((error) => {
         console.error("Error fetching blogs:", error);
+        setLoading(false); // Ensure loading stops even if there is an error
       });
   }, []);
+
+  // Component to display the loader
+  const Loader = () => (
+    <div className="flex items-center justify-center min-h-screen bg-gray-900">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
+    </div>
+  );
 
   // Component to display the list of blogs
   const BlogList = () => (
@@ -46,7 +56,6 @@ const Blogs = () => {
   );
 
   // Component to display a single blog post
-  // eslint-disable-next-line react/prop-types
   const BlogPost = ({ post }) => (
     <div className="relative w-full py-24 min-h-screen overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-300/20 to-amber-200/20 backdrop-blur-xl"></div>
@@ -60,7 +69,7 @@ const Blogs = () => {
           <h1 className="text-3xl font-bold mb-4 text-white">{post.title}</h1>
           <h2 className="text-xl font-semibold text-gray-300 mb-6">{post.secondTitle}</h2>
           <p className="text-sm text-gray-400 mb-4">
-            author: {post.author || "Unknown Author"} | Published: {new Date(post.date).toLocaleDateString()}
+            Author: {post.author || "Unknown Author"} | Published: {new Date(post.date).toLocaleDateString()}
           </p>
 
           <div className="prose prose-invert">
@@ -89,7 +98,7 @@ const Blogs = () => {
         <Navbar />
       </div>
       <div className="bg-gray-900">
-        {selectedPost ? <BlogPost post={selectedPost} /> : <BlogList />}
+        {loading ? <Loader /> : selectedPost ? <BlogPost post={selectedPost} /> : <BlogList />}
       </div>
     </>
   );
