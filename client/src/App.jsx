@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import Products from "./pages/Products";
+import Products from "./components/Products";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
@@ -9,6 +9,8 @@ import AddBlog from "./pages/Addblog";
 import { useState } from "react";
 import BlogDetail from "./pages/BlogDetail";
 import Navbar from "./components/Navbar";
+import Product1 from "./pages/Product1";
+import Product2 from "./pages/Product2";
 
 
 function App() {
@@ -22,7 +24,10 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/product1" element={<Product1/>} />
+        <Route path="/product2" element={<Product2/>} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
+
         <Route
           path="/login"
           element={<Login setIsAuthenticated={setIsAuthenticated} />}
