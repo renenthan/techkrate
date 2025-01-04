@@ -6,6 +6,7 @@ import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer'
 import React from 'react';
 import ThirdSection from '../components/ThirdSection';
+import Products from './Products';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
   <HeroSection />
   <ThirdSection />
   <ServiceSection/>
+  <Products/>
   <Testimonials/>
   <Footer/>
 </div>
