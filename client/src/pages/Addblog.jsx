@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import Quill CSS
-import { db, collection, addDoc, Timestamp } from "../../firebase"; // Import necessary Firestore functions
+import { db, collection, addDoc } from "../../firebase"; // Import necessary Firestore functions
 
 const AddBlog = () => {
   const navigate = useNavigate();
@@ -17,13 +17,10 @@ const AddBlog = () => {
   const handleAddBlog = async (e) => {
     e.preventDefault();
 
-    // Convert date to a Firestore Timestamp object
-    const timestamp = Timestamp.fromDate(new Date(date));
-
     const newBlog = {
       title,
       secondTitle,
-      date: timestamp, // Now using Firestore Timestamp
+      date,
       author,
       imageUrl, // Added imageUrl field
       content,
