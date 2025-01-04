@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import  { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from '../components/Navbar';
 import Footer from "../components/Footer";
 import Bgimage from '../assets/image/bgimage.jpg';
+import Download1 from '../assets/image/download1.jpg'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +12,6 @@ const ProductsPage = () => {
   const [showAllPartners, setShowAllPartners] = useState(false);
   
   const heroRef = useRef(null);
-  const productsRef = useRef(null);
   const successStoriesRef = useRef(null);
   const partnersRef = useRef(null);
 
@@ -27,19 +27,7 @@ const ProductsPage = () => {
     );
 
     // Products section animation
-    gsap.fromTo(productsRef.current.querySelectorAll('.product-card'),
-      { opacity: 0, y: 50 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.8, 
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: productsRef.current,
-          start: "top 80%"
-        }
-      }
-    );
+    
 
     // Success Stories section animation
     gsap.fromTo(successStoriesRef.current.querySelectorAll('.success-story'),
@@ -73,14 +61,14 @@ const ProductsPage = () => {
   }, []);
 
   return (
-    <div className="font-sans bg-black text-white overflow-x-hidden">
+    <div className="font-sans bg-gray-900 text-white  overflow-x-hidden">
       <Navbar />
 
       {/* Hero Section */}
       <div ref={heroRef} className="relative h-screen flex items-center justify-center bg-black text-white">
         <div className="text-center z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Our AI-powered products, for today's real-world problems
+            Our AI-powered products, for today&apos;s real-world problems
           </h1>
           <button className="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">
             Request Demo
@@ -95,67 +83,89 @@ const ProductsPage = () => {
         </div>
       </div>
 
-      {/* Products Section */}
-      <div ref={productsRef} className="bg-gray-50 text-gray-800 py-24">
-        <h2 className="text-center text-4xl font-bold mb-16 text-gray-900">
-          Solutions to help people repair, assess, and protect what matters most
-        </h2>
-        <div className="container mx-auto px-4 md:px-8 space-y-12">
-          {[
-            {
-              title: "Tractable Auto Estimator",
-              description: "Fast visual assessments to quickly understand damage and accelerate claims",
-              image: "https://via.placeholder.com/800x400",
-              tags: ["Discover more", "Auto claims"],
-            },
-            {
-              title: "Tractable Auto Reviewer",
-              description: "Processes claims in minutes, flagging any inconsistencies",
-              image: "https://via.placeholder.com/800x400",
-              tags: ["Discover more", "Auto claims"],
-            },
-            {
-              title: "Tractable Property Estimator",
-              description: "Accurately assess property damage in minutes",
-              image: "https://via.placeholder.com/800x400",
-              tags: ["Discover more", "Property claims"],
-            },
-            {
-              title: "Tractable Auto Inspector",
-              description: "Draw on millions of data points to accurately assess a car's condition throughout its life cycle",
-              image: "https://via.placeholder.com/800x400",
-              tags: ["Discover more", "Property claims"],
-            },
-          ].map((product, index) => (
-            <div
-              key={index}
-              className="product-card bg-white p-6 shadow-md rounded-lg flex flex-col md:flex-row items-center transition-all duration-300 hover:shadow-xl hover:scale-101"
-            >
-              <img
-                src={product.image}
-                alt={product.title}
-                className="w-full md:w-2/5 h-56 md:h-64 object-cover rounded-lg mb-6 md:mb-0 md:mr-8"
-              />
-              <div className="md:w-3/5">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                  {product.title}
-                </h3>
-                <p className="text-gray-600 mb-5 text-base leading-relaxed">{product.description}</p>
-                <div className="flex space-x-4">
-                  {product.tags.map((tag, i) => (
-                    <button
-                      key={i}
-                      className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition duration-300"
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* Products Section ------------------------------------------------------- */}
+      
+      <div className="text-slate-400  container mx-auto px-4 py-16 max-w-7xl">
+      <div className="flex flex-col md:flex-row items-center gap-12">
+        {/* Text Content */}
+        <div className="flex-1 space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-700">
+            How do you assess a car when it&apos;s on the road or one town over?
+          </h2>
+          
+          <p className=" text-lg">
+            For used car dealers who buy cars sight unseen, and for fleet managers assessing
+            cars in use, it&apos;s a common dilemma.
+          </p>
+          
+          <p className=" text-lg">
+            Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re
+            miles away. Dealers can use AI vision to assess a car&apos;s condition and be confident in
+            making the right purchase price. Fleet managers can access AI-powered video
+            capture and journey tracking to make sure their fleet is traveling safely.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus, explicabo omnis! Iusto aliquam velit cum, ad dolore praesentium a sint! Nostrum minima, qui repudiandae vero nisi, reiciendis iusto nihil possimus, atque accusamus eveniet architecto dolor fuga dicta facere aliquam eligendi iste laborum voluptatum velit! Et placeat deleniti libero laboriosam, enim adipisci aspernatur pariatur fugiat consequatur saepe voluptatem ipsa? Iusto omnis temporibus sequi! Aliquid asperiores laborum sint reiciendis dolore voluptates labore, consectetur hic dolor odit, cum nemo enim ab adipisci, quidem quam. Non quas ab praesentium at sed tempora, ducimus nesciunt.
+          </p>
+        </div>
+        
+        {/* Image Section */}
+        <div className="flex-1 relative ">
+          <div className="aspect-square rounded-full border-2 border-purple-500 overflow-hidden">
+            <img
+              src={Download1}
+              alt="Aerial view of car lot"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* Purple circle decoration */}
+          <div className="absolute inset-0 rounded-full border-2 border-purple-500 -rotate-6"></div>
         </div>
       </div>
+    </div>
+
+    <div className=" border-b  w-full">
+    </div>
+
+    {/* Product2------------------------------------------------- */}
+
+    <div className="text-slate-400 container mx-auto px-4 py-16 max-w-7xl">
+      <div className="flex flex-col md:flex-row items-center gap-12">
+        {/* Text Content */}
+        
+        
+        {/* Image Section */}
+        <div className="flex-1 relative">
+          <div className="aspect-square rounded-full border-2 border-purple-500 overflow-hidden">
+            <img
+              src="/api/placeholder/600/600"
+              alt="Aerial view of car lot"
+              className="w-full h-full object-cover "
+            />
+          </div>
+          {/* Purple circle decoration */}
+          <div className="absolute inset-0 rounded-full border-2 border-purple-500 -rotate-6"></div>
+        </div>
+        <div className="flex-1 space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-700">
+            How do you assess a car when it&apos;s on the road or one town over?
+          </h2>
+          
+          <p className="text-lg">
+            For used car dealers who buy cars sight unseen, and for fleet managers assessing
+            cars in use, it&apos;s a common dilemma.
+          </p>
+          
+          <p className="text-lg">
+            Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re
+            miles away. Dealers can use AI vision to assess a car&apos;s condition and be confident in
+            making the right purchase price. Fleet managers can access AI-powered video
+            capture and journey tracking to make sure their fleet is traveling safely.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus, explicabo omnis! Iusto aliquam velit cum, ad dolore praesentium a sint! Nostrum minima, qui repudiandae vero nisi, reiciendis iusto nihil possimus, atque accusamus eveniet architecto dolor fuga dicta facere aliquam eligendi iste laborum voluptatum velit! Et placeat deleniti libero laboriosam, enim adipisci aspernatur pariatur fugiat consequatur saepe voluptatem ipsa? Iusto omnis temporibus sequi! Aliquid asperiores laborum sint reiciendis dolore voluptates labore, consectetur hic dolor odit, cum nemo enim ab adipisci, quidem quam. Non quas ab praesentium at sed tempora, ducimus nesciunt.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
 
       {/* Customer Success Stories Section */}
       <div ref={successStoriesRef} className="bg-gray-900 text-white py-16">
@@ -180,7 +190,7 @@ const ProductsPage = () => {
             ].map((story, index) => (
               <div key={index} className="success-story bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
                 <img src={story.image} alt={story.name} className="w-24 h-24 rounded-full mb-4" />
-                <blockquote className="text-lg italic mb-4">"{story.quote}"</blockquote>
+                <blockquote className="text-lg italic mb-4">&quot;{story.quote}&quot;</blockquote>
                 <p className="font-semibold">{story.name}</p>
                 <p className="text-gray-400">{story.company}</p>
               </div>
