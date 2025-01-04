@@ -1,9 +1,8 @@
-// AddBlog.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import Quill CSS
-import { db, collection, addDoc } from "../../firebase"; // Import necessary Firestore functions
+import { db, collection, addDoc, Timestamp } from "../../firebase"; // Import necessary Firestore functions
 
 const AddBlog = () => {
   const navigate = useNavigate();
@@ -11,19 +10,22 @@ const AddBlog = () => {
   const [title, setTitle] = useState("");
   const [secondTitle, setSecondTitle] = useState("");
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]); // Default to today
-  const [readTime, setReadTime] = useState("");
   const [author, setAuthor] = useState("");
+  const [imageUrl, setImageUrl] = useState(""); // Changed readTime to imageUrl
   const [content, setContent] = useState("");
 
   const handleAddBlog = async (e) => {
     e.preventDefault();
 
+    // Convert date to a Firestore Timestamp object
+    const timestamp = Timestamp.fromDate(new Date(date));
+
     const newBlog = {
       title,
       secondTitle,
-      date,
-      readTime,
+      date: timestamp, // Now using Firestore Timestamp
       author,
+      imageUrl, // Added imageUrl field
       content,
     };
 
@@ -31,14 +33,14 @@ const AddBlog = () => {
       // Add new blog to Firestore collection
       const blogCollectionRef = collection(db, "blogs"); // Reference to 'blogs' collection
       const docRef = await addDoc(blogCollectionRef, newBlog); // Add document to Firestore
-      
+
       if (docRef.id) {
         alert("Blog added successfully!");
         setTitle("");
         setSecondTitle("");
         setDate(new Date().toISOString().split("T")[0]); // Reset to today
-        setReadTime("");
         setAuthor("");
+        setImageUrl(""); // Reset image URL
         setContent("");
         navigate("/"); // Navigate to home after success
       }
@@ -94,20 +96,6 @@ const AddBlog = () => {
             />
           </div>
           <div>
-            <label htmlFor="readTime" className="block text-lg font-medium text-gray-300">
-              Read Time
-            </label>
-            <input
-              type="text"
-              id="readTime"
-              placeholder="E.g., 5 min"
-              value={readTime}
-              onChange={(e) => setReadTime(e.target.value)}
-              className="w-full px-4 py-2 mt-1 border border-gray-700 rounded-lg bg-gray-800 text-gray-300 focus:ring-blue-500 focus:border-blue-500"
-              required
-            />
-          </div>
-          <div>
             <label htmlFor="author" className="block text-lg font-medium text-gray-300">
               Author
             </label>
@@ -117,6 +105,20 @@ const AddBlog = () => {
               placeholder="Enter author name"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
+              className="w-full px-4 py-2 mt-1 border border-gray-700 rounded-lg bg-gray-800 text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="imageUrl" className="block text-lg font-medium text-gray-300">
+              Image URL
+            </label>
+            <input
+              type="text"
+              id="imageUrl"
+              placeholder="Enter image URL"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
               className="w-full px-4 py-2 mt-1 border border-gray-700 rounded-lg bg-gray-800 text-gray-300 focus:ring-blue-500 focus:border-blue-500"
               required
             />
