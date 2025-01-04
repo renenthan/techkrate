@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
@@ -77,7 +76,7 @@ const Navbar = ({ thirdSectionOffset }) => {
           Techkrate
         </span>
       </div>
-      <div className="space-x-16 text-center flex">
+      <div className="space-x-16 text-center flex relative">
         <Link
           to="/"
           ref={(el) => (linksRef.current[0] = el)}
@@ -94,14 +93,21 @@ const Navbar = ({ thirdSectionOffset }) => {
           <span>ABOUT US</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
-        <Link
-          to="/products"
+        {/* Dropdown for Products */}
+        <div
+          className="relative group text-white hover:text-gray-300 cursor-pointer"
           ref={(el) => (linksRef.current[2] = el)}
-          className="relative group text-white hover:text-gray-300 overflow-hidden"
         >
           <span>PRODUCTS</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
-        </Link>
+
+          {/* Dropdown Menu */}
+          <div className="absolute left-0 mt-4 bg-black text-white p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <Link to="/product1" className="block py-2 px-4 hover:bg-gray-700">Product1</Link>
+            <Link to="/product2" className="block py-2 px-4 hover:bg-gray-700">Product2</Link>
+          </div>
+        </div>
+
         <Link
           to="/blogs"
           ref={(el) => (linksRef.current[3] = el)}
