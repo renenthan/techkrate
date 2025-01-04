@@ -1,20 +1,19 @@
-// Import the functions you need from the SDKs you need
+// firebase.js
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, collection, addDoc } from "firebase/firestore"; // Import addDoc and other Firestore functions
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD08kvmXN8dPPNvOTDLakxAIIffpVUB7YU",
-  authDomain: "techkrate-6a1de.firebaseapp.com",
-  projectId: "techkrate-6a1de",
-  storageBucket: "techkrate-6a1de.firebasestorage.app",
-  messagingSenderId: "300052298338",
-  appId: "1:300052298338:web:687946db6cb18e6dbaef3b",
+  apiKey: "AIzaSyCx4i3qNgH4Gc8OIg37qAJeob9bZg2FFMY",
+  authDomain: "techkrate-f7efc.firebaseapp.com",
+  projectId: "techkrate-f7efc",
+  storageBucket: "techkrate-f7efc.firebasestorage.app",
+  messagingSenderId: "560803017951",
+  appId: "1:560803017951:web:4e57daf6dc4779ea10a56a"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-export { db };
+
+// Export Firestore functions and db instance
+export { db, collection, addDoc };

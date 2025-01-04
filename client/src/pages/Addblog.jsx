@@ -1,8 +1,9 @@
+// AddBlog.jsx
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import Quill CSS
+import { db, collection, addDoc } from "../../firebase"; // Import necessary Firestore functions
 
 const AddBlog = () => {
   const navigate = useNavigate();
@@ -27,8 +28,11 @@ const AddBlog = () => {
     };
 
     try {
-      const response = await axios.post("https://techkrate.onrender.com/addBlog", newBlog);
-      if (response.status === 201) {
+      // Add new blog to Firestore collection
+      const blogCollectionRef = collection(db, "blogs"); // Reference to 'blogs' collection
+      const docRef = await addDoc(blogCollectionRef, newBlog); // Add document to Firestore
+      
+      if (docRef.id) {
         alert("Blog added successfully!");
         setTitle("");
         setSecondTitle("");
@@ -36,7 +40,7 @@ const AddBlog = () => {
         setReadTime("");
         setAuthor("");
         setContent("");
-        navigate("/");
+        navigate("/"); // Navigate to home after success
       }
     } catch (error) {
       console.error("Error adding blog:", error);
@@ -45,7 +49,7 @@ const AddBlog = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
+    <div className="flex items-center justify-center min-h-screen bg-black pt-28">
       <div className="w-full max-w-4xl p-8 space-y-6 bg-gray-900 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold text-center text-white">Add a New Blog</h2>
         <form onSubmit={handleAddBlog} className="space-y-6">
@@ -117,7 +121,7 @@ const AddBlog = () => {
               required
             />
           </div>
-          <div >
+          <div>
             <label htmlFor="content" className="block text-lg font-medium text-gray-300">
               Blog Content
             </label>
