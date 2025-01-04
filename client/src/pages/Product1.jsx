@@ -1,4 +1,5 @@
 import  { useState, useEffect } from 'react';
+import Footer from '../components/Footer';
 
 const Product1 = () => {
   const [isVisible, setIsVisible] = useState({
@@ -8,6 +9,7 @@ const Product1 = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setIsVisible({ 
       title: true, 
       content: true,
@@ -16,6 +18,7 @@ const Product1 = () => {
   }, []);
 
   return (
+    <>
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="px-6 py-12 md:py-24">
@@ -116,6 +119,8 @@ const Product1 = () => {
         </div>
       </section>
     </div>
+    <Footer/>
+    </>
   );
 };
 
