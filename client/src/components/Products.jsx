@@ -72,7 +72,9 @@ const Products = () => {
   };
 
   return (
+    
     <div className="font-sans bg-black text-white overflow-x-hidden ">
+      
       {/* Products Section */}
       {[...Array(2)].map((_, index) => (
         <div
@@ -82,7 +84,8 @@ const Products = () => {
           onMouseMove={(e) => handleMouseMove(index, e)} // Track mouse movement for dynamic effect
           onMouseLeave={() => handleMouseLeave(index)} // Reset the rotation on mouse leave
         >
-          <div className="flex flex-col md:flex-row items-center gap-12 perspective-1500"> {/* Add perspective for 3D effect */}
+          <div className="flex flex-col md:flex-row items-center gap-12 perspective-1500">
+             {/* Add perspective for 3D effect */}
             {/* Text Content */}
             {index % 2 === 0 && (
               <div className="flex-1 space-y-6">
@@ -143,6 +146,7 @@ const Products = () => {
         </div>
       ))}
     </div>
+    
   );
 };
 
