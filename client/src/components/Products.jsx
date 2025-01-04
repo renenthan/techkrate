@@ -1,8 +1,10 @@
 import {  useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 import Download1 from "../assets/image/download1.jpg";
+import { Navigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,7 +72,7 @@ const Products = () => {
   };
 
   return (
-    <div className="font-sans bg-black text-white overflow-x-hidden">
+    <div className="font-sans bg-black text-white overflow-x-hidden ">
       {/* Products Section */}
       {[...Array(2)].map((_, index) => (
         <div
@@ -84,23 +86,22 @@ const Products = () => {
             {/* Text Content */}
             {index % 2 === 0 && (
               <div className="flex-1 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-blue-700">How do you assess a car when it&apos;s on the road or one town over?</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-white">How do you assess a car when it&apos;s on the road or one town over?</h2>
                 <p className="text-lg">
                   For used car dealers who buy cars sight unseen, and for fleet managers assessing cars in use, it&apos;s a common dilemma.
                 </p>
                 <p className="text-lg">
                   Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re miles away. Dealers can use AI vision to
-                  assess a car&apos;s condition and be confident in making the right purchase price. Fleet managers can access AI-powered video capture
-                  and journey tracking to make sure their fleet is traveling safely.
+                  assess a car&apos;s condition
                 </p>
 
                 {/* Buttons */}
                 <div className="flex justify-center gap-6 mt-6">
-                  <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg">
-                    Discover More
+                  <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg" onClick={Navigate("/product1")}>
+                  <Link to="/product1">Discover More</Link>
                   </button>
                   <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg">
-                    Contact
+                    <Link to="/contact">Contact</Link>
                   </button>
                 </div>
               </div>
@@ -115,24 +116,25 @@ const Products = () => {
 
             {/* Text Content */}
             {index % 2 !== 0 && (
-              <div className="flex-1 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-blue-700">How do you assess a car when it&apos;s on the road or one town over?</h2>
+              <div className="flex-1 space-y-6 mt-20">
+                <h2 className="text-3xl md:text-4xl font-bold text-white">How do you assess a car when it&apos;s on the road or one town over?</h2>
                 <p className="text-lg">
                   For used car dealers who buy cars sight unseen, and for fleet managers assessing cars in use, it&apos;s a common dilemma.
                 </p>
                 <p className="text-lg">
                   Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re miles away. Dealers can use AI vision to
-                  assess a car&apos;s condition and be confident in making the right purchase price. Fleet managers can access AI-powered video capture
-                  and journey tracking to make sure their fleet is traveling safely.
+                  assess a car&apos;s .
                 </p>
 
                 {/* Buttons */}
                 <div className="flex justify-center gap-6 mt-6">
-                  <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg">
-                    Discover More
+                  <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg" onClick={() =>{
+                    Navigate("/product2")
+                  }}>
+                     <Link to="/product2">Discover More</Link>
                   </button>
                   <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg">
-                    Contact
+                    <Link to="/contact">Contact</Link>
                   </button>
                 </div>
               </div>
