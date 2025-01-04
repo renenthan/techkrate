@@ -29,8 +29,8 @@ app.get("/", (req, res) => {
 app.post("/addBlog", async (req, res) => {
   try {
     console.log("Request Body:", req.body);
-    const { title, secondTitle, date, content } = req.body;
-    const newBlog = new Blog({ title, secondTitle, date, content });
+    const { title, secondTitle, date, content, author , readTime} = req.body;
+    const newBlog = new Blog({ title, secondTitle, date, content, readTime, author });
     await newBlog.save();
     res.status(201).send("Blog added successfully");
   } catch (error) {
