@@ -12,53 +12,33 @@ const ProductsPage = () => {
   const [showAllPartners, setShowAllPartners] = useState(false);
 
   const heroRef = useRef(null);
-  const productSectionsRef = useRef([]);
   const successStoriesRef = useRef(null);
   const partnersRef = useRef(null);
+  const productRefs = useRef([]);
 
   useEffect(() => {
     // Hero section animation
-    gsap.fromTo(
-      heroRef.current.querySelector("h1"),
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, delay: 0.5 }
-    );
-    gsap.fromTo(
-      heroRef.current.querySelector("button"),
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, delay: 1 }
-    );
+    gsap.fromTo(heroRef.current.querySelector("h1"), { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, delay: 0.5 });
+    gsap.fromTo(heroRef.current.querySelector("button"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, delay: 1 });
 
-    // Product sections animation
-    productSectionsRef.current.forEach((section, index) => {
-      gsap.fromTo(
-        section.querySelectorAll(".text-content"),
-        { opacity: 0, x: -50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        section.querySelectorAll(".image-content"),
-        { opacity: 0, scale: 0.8 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-          },
-        }
-      );
+    // Products section animation
+    productRefs.current.forEach((product, index) => {
+      if (product) {
+        gsap.fromTo(
+          product.querySelectorAll(".flex-1"),
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+              trigger: product,
+              start: "top 80%",
+            },
+          }
+        );
+      }
     });
 
     // Success Stories section animation
@@ -109,35 +89,51 @@ const ProductsPage = () => {
         </div>
       </div>
 
-      {/* Products Sections */}
-      {[1, 2].map((_, index) => (
+      {/* Products Section */}
+      {[...Array(4)].map((_, index) => (
         <div
           key={index}
-          ref={(el) => (productSectionsRef.current[index] = el)}
+          ref={(el) => (productRefs.current[index] = el)}
           className="text-slate-400 container mx-auto px-4 py-16 max-w-7xl"
         >
           <div className="flex flex-col md:flex-row items-center gap-12">
             {/* Text Content */}
-            <div className="text-content flex-1 space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-blue-700">How do you assess a car when it&apos;s on the road or one town over?</h2>
-              <p className="text-lg">
-                For used car dealers who buy cars sight unseen, and for fleet managers assessing cars in use, it&apos;s a common dilemma.
-              </p>
-              <p className="text-lg">
-                Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re miles away. Dealers can use AI vision to
-                assess a car&apos;s condition and be confident in making the right purchase price. Fleet managers can access AI-powered video capture
-                and journey tracking to make sure their fleet is traveling safely.
-              </p>
-            </div>
+            {index % 2 === 0 && (
+              <div className="flex-1 space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-blue-700">How do you assess a car when it&apos;s on the road or one town over?</h2>
+                <p className="text-lg">
+                  For used car dealers who buy cars sight unseen, and for fleet managers assessing cars in use, it&apos;s a common dilemma.
+                </p>
+                <p className="text-lg">
+                  Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re miles away. Dealers can use AI vision to
+                  assess a car&apos;s condition and be confident in making the right purchase price. Fleet managers can access AI-powered video capture
+                  and journey tracking to make sure their fleet is traveling safely.
+                </p>
+              </div>
+            )}
 
             {/* Image Section */}
-            <div className="image-content flex-1 relative">
+            <div className="flex-1 relative">
               <div className="aspect-square rounded-full border-2 border-purple-500 overflow-hidden">
-                <img src={index === 0 ? Download1 : "/api/placeholder/600/600"} alt="Product" className="w-full h-full object-cover" />
+                <img src={index % 2 === 0 ? Download1 : "/api/placeholder/600/600"} alt="Aerial view of car lot" className="w-full h-full object-cover" />
               </div>
-              {/* Purple circle decoration */}
               <div className="absolute inset-0 rounded-full border-2 border-purple-500 -rotate-6"></div>
             </div>
+
+            {/* Text Content */}
+            {index % 2 !== 0 && (
+              <div className="flex-1 space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-blue-700">How do you assess a car when it&apos;s on the road or one town over?</h2>
+                <p className="text-lg">
+                  For used car dealers who buy cars sight unseen, and for fleet managers assessing cars in use, it&apos;s a common dilemma.
+                </p>
+                <p className="text-lg">
+                  Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re miles away. Dealers can use AI vision to
+                  assess a car&apos;s condition and be confident in making the right purchase price. Fleet managers can access AI-powered video capture
+                  and journey tracking to make sure their fleet is traveling safely.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       ))}
