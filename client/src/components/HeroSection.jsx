@@ -101,8 +101,6 @@ const HeroSection = () => {
   }
 
   return (
-    <>
-      <Navbar thirdSectionOffset={thirdSectionOffset} />
       <div ref={containerRef} className="overflow-hidden h-screen relative">
         <video className="absolute top-0 right-0 w-full h-full object-cover z-0" autoPlay loop muted playsInline>
           <source src={bgVid} type="video/mp4" />
@@ -171,11 +169,6 @@ const HeroSection = () => {
           </div>
         </button>
       </div>
-
-      <div ref={thirdSectionRef}>
-        <ThirdSection />
-      </div>
-    </>
   )
 }
 
