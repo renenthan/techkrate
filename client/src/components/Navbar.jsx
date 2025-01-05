@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
+import logo from "../assets/image/logo.svg";
 
 const Navbar = ({ thirdSectionOffset }) => {
   const navbarRef = useRef(null);
@@ -67,52 +68,39 @@ const Navbar = ({ thirdSectionOffset }) => {
   }, [isScrolled, thirdSectionOffset]);
 
   return (
-    <nav
-      ref={navbarRef}
-      className="fixed top-0 w-full bg-transparent text-white px-20 pb-4 pt-6 flex justify-between items-center z-50"
-    >
-      <div className="text-2xl font-bold">
+    <nav ref={navbarRef} className="fixed top-0 w-full bg-transparent text-white px-14 pb-4 pt-6 flex justify-between items-center z-50 font-Helix">
+      <div className="text-2xl font-bold flex items-center">
+        <img src={logo} alt="Logo" className="w-28 h-auto" />
         <span ref={logoRef} className="overflow-hidden inline-block">
           Techkrate
         </span>
       </div>
       <div className="space-x-16 text-center flex relative">
-        <Link
-          to="/"
-          ref={(el) => (linksRef.current[0] = el)}
-          className="relative group text-white hover:text-gray-300 overflow-hidden"
-        >
+        <Link to="/" ref={(el) => (linksRef.current[0] = el)} className="relative group text-white hover:text-gray-300 overflow-hidden">
           <span>HOME</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
-        <Link
-          to="/about"
-          ref={(el) => (linksRef.current[1] = el)}
-          className="relative group text-white hover:text-gray-300 overflow-hidden"
-        >
+        <Link to="/about" ref={(el) => (linksRef.current[1] = el)} className="relative group text-white hover:text-gray-300 overflow-hidden">
           <span>ABOUT US</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
         {/* Dropdown for Products */}
-        <div
-          className="relative group text-white hover:text-gray-300 cursor-pointer"
-          ref={(el) => (linksRef.current[2] = el)}
-        >
+        <div className="relative group text-white hover:text-gray-300 cursor-pointer" ref={(el) => (linksRef.current[2] = el)}>
           <span>PRODUCTS</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
 
           {/* Dropdown Menu */}
           <div className="absolute left-0 mt-4 bg-black text-white p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Link to="/product1" className="block py-2 px-4 hover:bg-gray-700">Product1</Link>
-            <Link to="/product2" className="block py-2 px-4 hover:bg-gray-700">Product2</Link>
+            <Link to="/product1" className="block py-2 px-4 hover:bg-gray-700">
+              Product1
+            </Link>
+            <Link to="/product2" className="block py-2 px-4 hover:bg-gray-700">
+              Product2
+            </Link>
           </div>
         </div>
 
-        <Link
-          to="/blogs"
-          ref={(el) => (linksRef.current[3] = el)}
-          className="relative group text-white hover:text-gray-300 overflow-hidden"
-        >
+        <Link to="/blogs" ref={(el) => (linksRef.current[3] = el)} className="relative group text-white hover:text-gray-300 overflow-hidden">
           <span>BLOGS</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
@@ -122,12 +110,8 @@ const Navbar = ({ thirdSectionOffset }) => {
         className="connect-btn p-4 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white border-2"
       >
         <Link to="/contact" className="flex items-center space-x-2 font-bold">
-          <span className="group-hover:text-white transition-all duration-300 inline-block">
-            Connect with Us
-          </span>
-          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white inline-block">
-            ➔
-          </span>
+          <span className="group-hover:text-white transition-all duration-300 inline-block">Connect with Us</span>
+          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white inline-block">➔</span>
         </Link>
       </div>
     </nav>
