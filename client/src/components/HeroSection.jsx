@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import  { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import bgVid from "/bgVid.mp4";
 import ThirdSection from "./ThirdSection";
+import { ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -17,6 +19,8 @@ const HeroSection = () => {
   const nextSectionRef = useRef(null);
   const [nextSectionOffset, setNextSectionOffset] = useState(0);
   const buttonRef = useRef(null);
+
+  
 
   const handleClick = () => {
     gsap.to(buttonRef.current, {
@@ -59,7 +63,7 @@ const HeroSection = () => {
       const splitWords = heroTextRef.querySelectorAll("span > span");
 
       gsap.from(splitWords, {
-        duration: 1.5,
+        duration: 1,
         opacity: 0,
         y: 50,
         ease: "power4.out",
@@ -115,23 +119,23 @@ const HeroSection = () => {
 
   return (
     <>
-      <div ref={containerRef} className="overflow-hidden h-screen relative">
+      <div ref={containerRef} className="overflow-hidden h-screen relative font-Helix">
         <video className="absolute top-0 right-0 w-full h-full object-cover z-0" autoPlay loop muted playsInline>
           <source src={bgVid} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-50 z-10 "></div>
         <div className="relative z-20 h-full flex font-Helix">
           {[0, 1, 2, 3].map((index) => (
             <div key={index} ref={(el) => (textContainersRef.current[index] = el)} className="min-w-full h-full flex flex-col justify-center">
               <div className="text-left w-full px-4 md:px-8 lg:px-16 pt-20 md:pt-28"> {/* Adjusted padding */}
                 <h2 ref={(el) => (heroTextRefs.current[index] = el)} className="text-7xl md:text-9xl font-bold leading-tight mb-6 text-white">
-                  {index === 0 && "Experience Motor Surveying."}
+                  {index === 0 && "Experience Motor Surveying."}    
                   {index === 1 && "Revolutionizing Motor Claims Processing"}
                   {index === 2 && "Transforming Surveying"}
                   {index === 3 && "Join the Revolution"}
                 </h2>
-                <p ref={(el) => (subHeadingRefs.current[index] = el)} className="text-xl md:text-2xl mt-4 max-w-2xl font-normal text-white">
+                <p ref={(el) => (subHeadingRefs.current[index] = el)} className=" pt-6 text-lg  text-[#9C9C9C] mt-4 max-w-3xl  ">
                   {index === 0 &&
                     "Introducing Moval– an advanced platform designed to optimize motor claims processing for insurance companies and empower motor surveyors with customizable, AI-driven features such as Damage Detection & Real-Time Reporting."}
                   {index === 1 &&
@@ -141,16 +145,15 @@ const HeroSection = () => {
                   {index === 3 && "Be a part of the movement to bring innovation and speed to motor claims processing with Moval."}
                 </p>
                 {(index === 0 || index === 3) && ( /* Button for both first and fourth sections */
-                  <div className="mt-8">
-                    <button
-                      ref={buttonRef}
-                      onClick={handleClick}
-                      className="px-8 py-4 text-lg font-bold bg-white text-black rounded-full overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-300 relative"
-                    >
-                      <span className="relative z-10">Discover More</span>
-                      <span className="absolute bottom-0 left-0 h-0 w-full bg-gray-200 transition-all duration-300 group-hover:h-full"></span>
-                    </button>
-                  </div>
+                  <div
+                  ref={buttonRef}
+                  className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-40 mt-5"
+                >
+                  <Link to="/contact" className="flex items-center space-x-1.5 font-semibold text-sm">
+                    <span className="group-hover:text-white transition-all duration-300 inline-block">Discover More</span>
+                    <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out " aria-hidden="true" />
+                  </Link>
+                </div>
                 )}
               </div>
             </div>
