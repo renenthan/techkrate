@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import logo from "../assets/image/logo.svg";
+import { ArrowRight } from "lucide-react";
+
 
 const Navbar = () => {
   const navbarRef = useRef(null);
@@ -73,15 +75,15 @@ const Navbar = () => {
       className="fixed top-0 w-full bg-transparent text-white px-14 pb-4 pt-6 flex justify-between items-center z-50 font-Helix transition-colors duration-500"
     >
       <div ref={logoRef} className="text-2xl font-bold flex items-center">
+        <Link to="/" className="flex items-center">
         <img src={logo} alt="Logo" className="w-20 h-auto" />
         <span className="overflow-hidden inline-block">Techkrate</span>
+        </Link>
+        
       </div>
-      <div className="space-x-16 text-center flex relative text-[12px]">
-        <Link
-          to="/"
-          ref={(el) => (linksRef.current[0] = el)}
-          className="relative group text-white hover:text-gray-300 overflow-hidden"
-        >
+      <div className="space-x-16 text-center text-[15px] flex relative ">
+        <Link to="/" ref={(el) => (linksRef.current[0] = el)} className="relative group text-white hover:text-gray-300 overflow-hidden">
+
           <span>HOME</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
@@ -122,15 +124,12 @@ const Navbar = () => {
       </div>
       <div
         ref={buttonRef}
-        className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-300 hover:bg-black group overflow-hidden hover:border-white border-2"
+        className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white border-2 hover:text-white"
       >
         <Link to="/contact" className="flex items-center space-x-1.5 font-semibold text-sm">
-          <span className="group-hover:text-white transition-all duration-300 inline-block">
-            Connect with Us
-          </span>
-          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white inline-block">
-            ➔
-          </span>
+          <span className="group-hover:text-white transition-all duration-300 inline-block">Connect with Us</span>
+          <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out" aria-hidden="true" />
+
         </Link>
       </div>
     </nav>
