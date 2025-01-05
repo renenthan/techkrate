@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -147,6 +146,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
   );
 };
