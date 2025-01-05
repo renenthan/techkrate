@@ -49,7 +49,7 @@ const HomePage = () => {
             </h1>
             <div className="space-y-4 text-zinc-400">
               <p>Over 12 months, you will work with us to uncover high-impact opportunities and shape the most promising idea into a new venture.</p>
-              <p>Receive funding, mentorship, hands-on support, access to an unparalleled pool of experts, potential co-founders and advisors.</p>
+              <p>Receive funding, mentorship, hands-on support, access to an unfparalleled pool of experts, potential co-founders and advisors.</p>
               <p>If you succeed, we become your first investor and help you raise a seed round.</p>
             </div>
             <Button className="w-fit">
@@ -66,7 +66,7 @@ const HomePage = () => {
               <div className="w-2 h-2 bg-purple-500 rounded-full" />
             </div>
             <h2 className="text-6xl font-bold leading-tight">
-              Product 2<br />Welcome
+              Moval
             </h2>
             <div className="space-y-4 text-zinc-400">
               <p>Do you believe climate is the only problem worth working on?</p>
@@ -76,7 +76,7 @@ const HomePage = () => {
               <p>No prior idea required. (but if you have one and people tell you it's crazy, we'd love to hear it!)</p>
             </div>
             <Button className="w-fit">
-            <Link to="/product1">Discover More</Link> 
+              <Link to="/product1">Discover More</Link> 
             </Button>
           </div>
           <div className="relative">
