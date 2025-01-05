@@ -4,12 +4,11 @@ import getDataFromFirestore from "../Getdatafromfirestrore";
 
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const fetchBlogs = async () => {
     try {
-      setLoading(true);
       const blogs = await getDataFromFirestore("blogs");
       setBlogPosts(blogs);
       console.log(blogs);

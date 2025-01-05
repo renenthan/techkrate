@@ -1,153 +1,91 @@
-import {  useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight } from 'lucide-react';
+import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import Download1 from "../assets/image/download1.jpg";
-import { Navigate } from "react-router-dom";
 
-gsap.registerPlugin(ScrollTrigger);
+const WireSphere = ({ className }) => (
+  <svg viewBox="0 0 400 400" className={className}>
+    <circle cx="200" cy="200" r="180" 
+      className="stroke-purple-500 fill-none opacity-20" />
+    <ellipse cx="200" cy="200" rx="180" ry="60" 
+      className="stroke-purple-500 fill-none" />
+    <ellipse cx="200" cy="200" rx="180" ry="120" 
+      transform="rotate(60 200 200)"
+      className="stroke-purple-500 fill-none" />
+    <ellipse cx="200" cy="200" rx="180" ry="120" 
+      transform="rotate(-60 200 200)"
+      className="stroke-purple-500 fill-none" />
+  </svg>
+);
 
-const Products = () => {
-  const productRefs = useRef([]);
+const Button = ({ children, className }) => (
+  <button className={`
+    flex items-center gap-2 px-6 py-3 
+    bg-zinc-800 hover:bg-zinc-700 
+    text-white rounded-full transition-colors
+    ${className}
+  `}>
+    {children}
+    <ArrowRight size={16} />
+  </button>
+);
 
-  useEffect(() => {
-    // Products section animation
-    productRefs.current.forEach((product, index) => {
-      if (product) {
-        gsap.fromTo(
-          product.querySelectorAll(".flex-1"),
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            scrollTrigger: {
-              trigger: product,
-              start: "top 80%",
-            },
-          }
-        );
-      }
-    });
-  }, []);
-
-  // Mouse move handler for dynamic 3D effect
-  const handleMouseMove = (index, e) => {
-    const product = productRefs.current[index];
-    const bounds = product.getBoundingClientRect();
-    const centerX = bounds.left + bounds.width / 2;
-    const centerY = bounds.top + bounds.height / 2;
-
-    const offsetX = e.clientX - centerX;
-    const offsetY = e.clientY - centerY;
-
-    // Increased tilt values for more pronounced effect
-    const rotationX = (offsetY / bounds.height) * 40; // Max tilt in Y-axis (up/down)
-    const rotationY = -(offsetX / bounds.width) * 40; // Max tilt in X-axis (left/right)
-
-    // Apply rotation based on mouse position
-    gsap.to(product, {
-      rotationX: rotationX,
-      rotationY: rotationY,
-      scale: 1.001, // Increased scale for more depth
-      boxShadow: "0px 50px 100px rgba(0, 0, 0, 0.4)", // Stronger shadow for more depth
-      transformOrigin: "center center",
-      ease: "power3.out", // Smooth transition
-      duration: 0.3,
-    });
-  };
-
-  // Reset animation on mouse leave
-  const handleMouseLeave = (index) => {
-    gsap.to(productRefs.current[index], {
-      rotationX: 0,
-      rotationY: 0,
-      scale: 1, // Reset scale
-      boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.2)", // Softer shadow on leave
-      duration: 0.3,
-      ease: "power3.in",
-    });
-  };
-
+const HomePage = () => {
   return (
-    
-    <div className="font-sans bg-black text-white overflow-x-hidden ">
-      
-      {/* Products Section */}
-      {[...Array(2)].map((_, index) => (
-        <div
-          key={index}
-          ref={(el) => (productRefs.current[index] = el)}
-          className="text-slate-200 container mx-auto px-4 py-16 max-w-7xl group hover:bg-[#0D0D0D] "  // Removed hover effect from here
-          onMouseMove={(e) => handleMouseMove(index, e)} // Track mouse movement for dynamic effect
-          onMouseLeave={() => handleMouseLeave(index)} // Reset the rotation on mouse leave
-        >
-          <div className="flex flex-col md:flex-row items-center gap-12 perspective-1500">
-             {/* Add perspective for 3D effect */}
-            {/* Text Content */}
-            {index % 2 === 0 && (
-              <div className="flex-1 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-white">How do you assess a car when it&apos;s on the road or one town over?</h2>
-                <p className="text-lg">
-                  For used car dealers who buy cars sight unseen, and for fleet managers assessing cars in use, it&apos;s a common dilemma.
-                </p>
-                <p className="text-lg">
-                  Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re miles away. Dealers can use AI vision to
-                  assess a car&apos;s condition
-                </p>
-
-                {/* Buttons */}
-                <div className="flex justify-center gap-6 mt-6">
-                  <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg" onClick={Navigate("/product1")}>
-                  <Link to="/product1">Discover More</Link>
-                  </button>
-                  <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg">
-                    <Link to="/contact">Contact</Link>
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* Image Section */}
-            <div className="flex-1 relative">
-              <div className="aspect-square w-80 h-80 mx-auto rounded-full border-4 border-purple-500 overflow-hidden">
-                <img src={Download1} alt="Aerial view of car lot" className="w-full h-full object-cover" />
-              </div>
+    <div className="min-h-screen bg-black text-white">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Hero Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-24">
+          <div className="relative">
+            <WireSphere className="w-full h-auto animate-[spin_20s_linear_infinite]" />
+          </div>
+          <div className="flex flex-col justify-center gap-6">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />
             </div>
-
-            {/* Text Content */}
-            {index % 2 !== 0 && (
-              <div className="flex-1 space-y-6 mt-20">
-                <h2 className="text-3xl md:text-4xl font-bold text-white">How do you assess a car when it&apos;s on the road or one town over?</h2>
-                <p className="text-lg">
-                  For used car dealers who buy cars sight unseen, and for fleet managers assessing cars in use, it&apos;s a common dilemma.
-                </p>
-                <p className="text-lg">
-                  Tractable&apos;s Applied AI helps you value, inspect and appraise cars even when they&apos;re miles away. Dealers can use AI vision to
-                  assess a car&apos;s .
-                </p>
-
-                {/* Buttons */}
-                <div className="flex justify-center gap-6 mt-6">
-                  <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg" onClick={() =>{
-                    Navigate("/product2")
-                  }}>
-                     <Link to="/product2">Discover More</Link>
-                  </button>
-                  <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-all text-lg">
-                    <Link to="/contact">Contact</Link>
-                  </button>
-                </div>
-              </div>
-            )}
+            <h1 className="text-6xl font-bold leading-tight">
+              CARS
+            </h1>
+            <div className="space-y-4 text-zinc-400">
+              <p>Over 12 months, you will work with us to uncover high-impact opportunities and shape the most promising idea into a new venture.</p>
+              <p>Receive funding, mentorship, hands-on support, access to an unparalleled pool of experts, potential co-founders and advisors.</p>
+              <p>If you succeed, we become your first investor and help you raise a seed round.</p>
+            </div>
+            <Button className="w-fit">
+              <Link to="/product1">Discover More</Link>    
+            </Button>
           </div>
         </div>
-      ))}
+
+        {/* Radicals Welcome Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-24">
+          <div className="flex flex-col justify-center gap-6">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />
+            </div>
+            <h2 className="text-6xl font-bold leading-tight">
+              Product 2<br />Welcome
+            </h2>
+            <div className="space-y-4 text-zinc-400">
+              <p>Do you believe climate is the only problem worth working on?</p>
+              <p>Do you want to start building instead of just publishing?</p>
+              <p>Do you dream of founding your own company?</p>
+              <p>Find out more about the hard climate problems we want to solve and what we look for in applicants.</p>
+              <p>No prior idea required. (but if you have one and people tell you it's crazy, we'd love to hear it!)</p>
+            </div>
+            <Button className="w-fit">
+            <Link to="/product1">Discover More</Link> 
+            </Button>
+          </div>
+          <div className="relative">
+            <WireSphere className="w-full h-auto animate-[spin_20s_linear_infinite]" />
+          </div>
+        </div>
+      </div>
     </div>
-    
   );
 };
 
-export default Products;
+export default HomePage;
