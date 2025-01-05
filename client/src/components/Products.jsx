@@ -1,71 +1,91 @@
-import React from "react";
+import { ArrowRight } from 'lucide-react';
+import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Download1 from "../assets/image/download1.jpg";
 
-const Products = () => {
-  const products = [
-    {
-      title: "AI-Powered Car Assessment",
-      description: "Revolutionize how you assess cars remotely with our cutting-edge AI technology.",
-      details: "For used car dealers who buy cars sight unseen, and for fleet managers assessing cars in use, it's a common dilemma. Tractable's Applied AI helps you value, inspect and appraise cars even when they're miles away.",
-      link: "/product1"
-    },
-    {
-      title: "Smart Fleet Management",
-      description: "Optimize your fleet operations with real-time AI insights and predictive maintenance.",
-      details: "Our advanced AI system helps you manage your fleet more efficiently, reducing downtime and maximizing profitability. Dealers can use AI vision to assess a car's condition accurately and quickly.",
-      link: "/product2"
-    }
-  ];
 
+const WireSphere = ({ className }) => (
+  <svg viewBox="0 0 400 400" className={className}>
+    <circle cx="200" cy="200" r="180" 
+      className="stroke-purple-500 fill-none opacity-20" />
+    <ellipse cx="200" cy="200" rx="180" ry="60" 
+      className="stroke-purple-500 fill-none" />
+    <ellipse cx="200" cy="200" rx="180" ry="120" 
+      transform="rotate(60 200 200)"
+      className="stroke-purple-500 fill-none" />
+    <ellipse cx="200" cy="200" rx="180" ry="120" 
+      transform="rotate(-60 200 200)"
+      className="stroke-purple-500 fill-none" />
+  </svg>
+);
+
+const Button = ({ children, className }) => (
+  <button className={`
+    flex items-center gap-2 px-6 py-3 
+    bg-zinc-800 hover:bg-zinc-700 
+    text-white rounded-full transition-colors
+    ${className}
+  `}>
+    {children}
+    <ArrowRight size={16} />
+  </button>
+);
+
+const HomePage = () => {
   return (
-    <div className="font-sans bg-black text-white overflow-x-hidden min-h-screen">
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-center text-4xl sm:text-5xl md:text-6xl font-bold mb-16 leading-tight">
-          Revolutionizing Motor Solutions<br />
-          with Advanced AI Technology
-        </h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-xl overflow-hidden shadow-2xl transition-all duration-300 hover:shadow-white/20 hover:shadow-2xl border border-gray-700"
-            >
-              <div className="aspect-w-16 aspect-h-9 relative">
-                <img 
-                  src={Download1} 
-                  alt={product.title} 
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
-              </div>
-              <div className="p-8">
-                <h2 className="text-2xl font-bold mb-4">{product.title}</h2>
-                <p className="text-gray-300 mb-4">{product.description}</p>
-                <p className="text-sm text-gray-400 mb-6">{product.details}</p>
-                <div className="flex justify-between items-center">
-                  <Link 
-                    to={product.link}
-                    className="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors duration-300"
-                  >
-                    Discover More
-                  </Link>
-                  <Link 
-                    to="/contact"
-                    className="px-6 py-3 border border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition-colors duration-300"
-                  >
-                    Contact Us
-                  </Link>
-                </div>
-              </div>
+    <div className="min-h-screen bg-black text-white">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Hero Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-24">
+          <div className="relative">
+            <WireSphere className="w-full h-auto animate-[spin_20s_linear_infinite]" />
+          </div>
+          <div className="flex flex-col justify-center gap-6">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />
             </div>
-          ))}
+            <h1 className="text-6xl font-bold leading-tight">
+              CARS
+            </h1>
+            <div className="space-y-4 text-zinc-400">
+              <p>Over 12 months, you will work with us to uncover high-impact opportunities and shape the most promising idea into a new venture.</p>
+              <p>Receive funding, mentorship, hands-on support, access to an unparalleled pool of experts, potential co-founders and advisors.</p>
+              <p>If you succeed, we become your first investor and help you raise a seed round.</p>
+            </div>
+            <Button className="w-fit">
+              <Link to="/product1">Discover More</Link>    
+            </Button>
+          </div>
+        </div>
+
+        {/* Radicals Welcome Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-24">
+          <div className="flex flex-col justify-center gap-6">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />
+            </div>
+            <h2 className="text-6xl font-bold leading-tight">
+              Product 2<br />Welcome
+            </h2>
+            <div className="space-y-4 text-zinc-400">
+              <p>Do you believe climate is the only problem worth working on?</p>
+              <p>Do you want to start building instead of just publishing?</p>
+              <p>Do you dream of founding your own company?</p>
+              <p>Find out more about the hard climate problems we want to solve and what we look for in applicants.</p>
+              <p>No prior idea required. (but if you have one and people tell you it's crazy, we'd love to hear it!)</p>
+            </div>
+            <Button className="w-fit">
+            <Link to="/product1">Discover More</Link> 
+            </Button>
+          </div>
+          <div className="relative">
+            <WireSphere className="w-full h-auto animate-[spin_20s_linear_infinite]" />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Products;
-
+export default HomePage;
