@@ -60,7 +60,7 @@ export default function ThirdSection() {
         <h2 className="text-6xl sm:text-7xl md:text-8xl font-bold mb-4 leading-none tracking-tight">
           Techkrate
         </h2>
-        <p className="text-3xl sm:text-4xl md:text-5xl font-light mb-8 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+        <p className="text-3xl sm:text-4xl md:text-5xl font-light mb-8 bg-gradient-to-r from-white to-gray-500 bg-clip-text">
           Redefining Motor Claims
         </p>
         <p className="text-lg sm:text-xl md:text-2xl mb-12 text-gray-400 max-w-3xl mx-auto leading-relaxed">
