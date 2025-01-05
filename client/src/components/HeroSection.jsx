@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "react-router-dom";
-import  { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -19,8 +19,6 @@ const HeroSection = () => {
   const nextSectionRef = useRef(null);
   const [nextSectionOffset, setNextSectionOffset] = useState(0);
   const buttonRef = useRef(null);
-
-  
 
   const handleClick = () => {
     gsap.to(buttonRef.current, {
@@ -124,13 +122,15 @@ const HeroSection = () => {
           <source src={bgVid} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black bg-opacity-50 z-10 "></div>
+        <div className="absolute inset-0 bg-black bg-opacity-0 z-10 "></div>
         <div className="relative z-20 h-full flex font-Helix">
           {[0, 1, 2, 3].map((index) => (
             <div key={index} ref={(el) => (textContainersRef.current[index] = el)} className="min-w-full h-full flex flex-col justify-center">
-              <div className="text-left w-full px-4 md:px-8 lg:px-16 pt-20 md:pt-28"> {/* Adjusted padding */}
+              <div className="text-left w-full px-4 md:px-8 lg:px-16 pt-20 md:pt-28">
+                {" "}
+                {/* Adjusted padding */}
                 <h2 ref={(el) => (heroTextRefs.current[index] = el)} className="text-7xl md:text-9xl font-bold leading-tight mb-6 text-white">
-                  {index === 0 && "Experience Motor Surveying."}    
+                  {index === 0 && "Experience Motor Surveying."}
                   {index === 1 && "Revolutionizing Motor Claims Processing"}
                   {index === 2 && "Transforming Surveying"}
                   {index === 3 && "Join the Revolution"}
@@ -144,16 +144,19 @@ const HeroSection = () => {
                     "Use advanced analytics to redefine how motor claims are handled, minimizing errors and improving satisfaction rates."}
                   {index === 3 && "Be a part of the movement to bring innovation and speed to motor claims processing with Moval."}
                 </p>
-                {(index === 0 || index === 3) && ( /* Button for both first and fourth sections */
+                {(index === 0 || index === 3) /* Button for both first and fourth sections */ && (
                   <div
-                  ref={buttonRef}
-                  className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-40 mt-5"
-                >
-                  <Link to="/contact" className="flex items-center space-x-1.5 font-semibold text-sm">
-                    <span className="group-hover:text-white transition-all duration-300 inline-block">Discover More</span>
-                    <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out " aria-hidden="true" />
-                  </Link>
-                </div>
+                    ref={buttonRef}
+                    className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-[150px] mt-5 place-items-center"
+                  >
+                    <Link to="/contact" className="flex items-center space-x-1.5 font-semibold text-sm">
+                      <span className="group-hover:text-white transition-all duration-300 inline-block">Discover More</span>
+                      <ArrowRight
+                        className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out "
+                        aria-hidden="true"
+                      />
+                    </Link>
+                  </div>
                 )}
               </div>
             </div>
@@ -162,16 +165,11 @@ const HeroSection = () => {
 
         <button
           onClick={scrollToNextSection}
-          className="group fixed bottom-8 right-8 w-16 h-16 bg-black rounded-full overflow-hidden transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 z-30"
+          className="group fixed bottom-8 right-8 w-10 h-10 bg-white rounded-full overflow-hidden transition-all duration-300 focus:outline-none outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 z-30 hover:bg-[#262626]"
           aria-label="Scroll to next section"
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-6 h-6 border-r-2 border-b-2 border-white transform rotate-45 transition-colors duration-300">
-              <div
-                className="absolute w-3 h-3 border-r border-b border-white transform rotate-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-all duration-300 group-hover:opacity-100"
-                aria-hidden="true"
-              ></div>
-            </div>
+            <div className="w-2 h-2 border-r-2 border-b-2 border-black transform rotate-45 transition-colors duration-300 group-hover:border-white"></div>
           </div>
         </button>
       </div>

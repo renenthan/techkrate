@@ -20,10 +20,9 @@ const Navbar = () => {
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        ease: "power2.out",
-        stagger: 0.1,
-        clearProps: "all",
+        duration: 0.3,
+        ease: "none",
+        stagger: 0.15,
       }
     );
 

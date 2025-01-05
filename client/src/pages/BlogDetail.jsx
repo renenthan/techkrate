@@ -48,9 +48,9 @@ const BlogDetail = () => {
   return (
     <div className="min-h-screen bg-black text-white py-8 flex items-center justify-center">
       {/* Fixed panel */}
-      <div className="fixed inset-0 max-w-4xl mx-auto h-[80vh] mt-32 w-[90%] lg:w-[60%] bg-gradient-to-br from-white/20 via-white/10 to-white/5 rounded-lg overflow-hidden shadow-2xl border border-white/30 ">
+      <div className=" inset-0 max-w-4xl mx-auto mt-32 lg:w-[60%] bg-gradient-to-br from-white/20 via-white/10 to-white/5 rounded-lg shadow-2xl border border-white/30 ">
         {/* Scrollable content */}
-        <div className="h-full overflow-y-auto overflow-auto scrollbar-hide">
+        <div className="h-full overflow-y-auto">
           <div className="relative w-full h-72 md:h-96 mb-4">
             <img src={blogPost.imageUrl} alt={blogPost.Title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
