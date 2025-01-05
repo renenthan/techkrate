@@ -69,13 +69,11 @@ const Navbar = ({ thirdSectionOffset }) => {
 
   return (
     <nav ref={navbarRef} className="fixed top-0 w-full bg-transparent text-white px-14 pb-4 pt-6 flex justify-between items-center z-50 font-Helix">
-      <div className="text-2xl font-bold flex items-center">
-        <img src={logo} alt="Logo" className="w-28 h-auto" />
-        <span ref={logoRef} className="overflow-hidden inline-block">
-          Techkrate
-        </span>
+      <div ref={logoRef} className="text-2xl font-bold flex items-center">
+        <img src={logo} alt="Logo" className="w-20 h-auto" />
+        <span className="overflow-hidden inline-block">Techkrate</span>
       </div>
-      <div className="space-x-16 text-center flex relative">
+      <div className="space-x-16 text-center flex relative text-[12px]">
         <Link to="/" ref={(el) => (linksRef.current[0] = el)} className="relative group text-white hover:text-gray-300 overflow-hidden">
           <span>HOME</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
@@ -90,7 +88,7 @@ const Navbar = ({ thirdSectionOffset }) => {
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
 
           {/* Dropdown Menu */}
-          <div className="absolute left-0 mt-4 bg-black text-white p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-black text-white p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <Link to="/product1" className="block py-2 px-4 hover:bg-gray-700">
               Product1
             </Link>
@@ -107,9 +105,9 @@ const Navbar = ({ thirdSectionOffset }) => {
       </div>
       <div
         ref={buttonRef}
-        className="connect-btn p-4 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white border-2"
+        className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white border-2"
       >
-        <Link to="/contact" className="flex items-center space-x-2 font-bold">
+        <Link to="/contact" className="flex items-center space-x-1.5 font-semibold text-sm">
           <span className="group-hover:text-white transition-all duration-300 inline-block">Connect with Us</span>
           <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white inline-block">➔</span>
         </Link>

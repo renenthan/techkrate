@@ -74,8 +74,6 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <>
-      <Navbar />
       <div className="bg-black text-white px-6 md:px-16 py-20 space-y-20">
         {/* Header Section */}
         <div ref={headerRef} className="text-center">
@@ -150,8 +148,6 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
   );
 };
 
