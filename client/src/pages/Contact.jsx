@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 import { gsap } from "gsap";
 
 function Contact() {
-  const socialIconsRef = useRef(null);
   const formRef = useRef(null);
   const titleRef = useRef(null);
 
@@ -21,40 +20,15 @@ function Contact() {
       { opacity: 0, y: 50 },
       { opacity: 1, y: 0, duration: 1, delay: 0.6 }
     );
-    gsap.fromTo(
-      socialIconsRef.current,
-      { opacity: 0, x: -50 },
-      { opacity: 1, x: 0, duration: 1, delay: 1 }
-    );
   }, []);
-
-  // GSAP Hover Animation for Social Icons
-  const handleIconHover = (e) => {
-    gsap.to(e.target, {
-      scale: 1.2,
-      rotation: 15,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-  };
-
-  const handleIconLeave = (e) => {
-    gsap.to(e.target, {
-      scale: 1,
-      rotation: 0,
-      duration: 0.3,
-      ease: "power3.in",
-    });
-  };
 
   return (
     <>
-      <Navbar />
-      <div className="min-h-screen bg-black text-white flex flex-col">
+      <div className="min-h-screen bg-black text-white flex flex-col pt-12">
         {/* Main Content */}
         <div className="flex-grow flex flex-col md:flex-row justify-center items-center px-8 md:px-32 py-16">
           {/* Left Section */}
-          <div className="bg-gradient-to-b from-blue-500 to-blue-700 text-white px-10 py-20 rounded-lg w-full md:w-1/2 max-w-md md:max-w-lg">
+          <div className="bg-gradient-to-b from-blue-600 to-blue-1000 text-white px-10 py-20 rounded-lg w-full md:w-1/2 max-w-md md:max-w-lg">
             <h2 ref={titleRef} className="text-4xl font-bold mb-6">
               Get in touch
             </h2>
@@ -79,39 +53,28 @@ function Contact() {
               <br />
               (+995) 555-55-55-55
             </p>
-            <div
-              ref={socialIconsRef}
-              className="flex space-x-4 mt-4"
-            >
+            <div className="flex space-x-4 mt-4">
               <a
                 href="#"
-                onMouseEnter={handleIconHover}
-                onMouseLeave={handleIconLeave}
-                className="hover:opacity-75"
+                className="hover:opacity-75 text-lg"
               >
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>
               <a
                 href="#"
-                onMouseEnter={handleIconHover}
-                onMouseLeave={handleIconLeave}
-                className="hover:opacity-75"
+                className="hover:opacity-75 text-lg"
               >
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
               <a
                 href="#"
-                onMouseEnter={handleIconHover}
-                onMouseLeave={handleIconLeave}
-                className="hover:opacity-75"
+                className="hover:opacity-75 text-lg"
               >
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
               <a
                 href="#"
-                onMouseEnter={handleIconHover}
-                onMouseLeave={handleIconLeave}
-                className="hover:opacity-75"
+                className="hover:opacity-75 text-lg"
               >
                 <FontAwesomeIcon icon={faTwitter} />
               </a>
@@ -129,16 +92,16 @@ function Contact() {
                   <label className="block mb-2">First Name</label>
                   <input
                     type="text"
-                    className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                    placeholder="Randomfirst"
+                    className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                    placeholder="First Name"
                   />
                 </div>
                 <div>
                   <label className="block mb-2">Last Name</label>
                   <input
                     type="text"
-                    className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                    placeholder="Randomlast"
+                    className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                    placeholder="Last Name"
                   />
                 </div>
               </div>
@@ -146,30 +109,30 @@ function Contact() {
                 <label className="block mb-2">Company Name</label>
                 <input
                   type="text"
-                  className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                  placeholder="RandomCompany"
+                  className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                  placeholder="Company Name"
                 />
               </div>
               <div className="mt-4">
                 <label className="block mb-2">Email</label>
                 <input
                   type="email"
-                  className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
-                  placeholder="Random@gmail.com"
+                  className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                  placeholder="Email@gmail.com"
                 />
               </div>
               <div className="mt-4">
                 <label className="block mb-2">Phone Number</label>
                 <input
                   type="text"
-                  className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
+                  className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
                   placeholder="(+995) 555-55-55-55"
                 />
               </div>
               <div className="mt-4">
                 <label className="block mb-2">Message</label>
                 <textarea
-                  className="w-full p-3 border border-gray-700 rounded-md bg-black text-white"
+                  className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
                   rows="4"
                   placeholder="Tell us what we can help you with"
                 ></textarea>
@@ -185,7 +148,7 @@ function Contact() {
               </div>
               <button
                 type="submit"
-                className="bg-blue-600 w-full text-white p-3 mt-6 rounded-md hover:scale-105 transition-all duration-300"
+                className="bg-blue-900 w-full text-white p-3 mt-6 rounded-md hover:bg-blue-600 transition-all duration-300"
               >
                 Send Message
               </button>

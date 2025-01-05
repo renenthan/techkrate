@@ -70,8 +70,11 @@ const Navbar = ({ thirdSectionOffset }) => {
   return (
     <nav ref={navbarRef} className="fixed top-0 w-full bg-transparent text-white px-14 pb-4 pt-6 flex justify-between items-center z-50 font-Helix">
       <div ref={logoRef} className="text-2xl font-bold flex items-center">
+        <Link to="/" className="flex items-center">
         <img src={logo} alt="Logo" className="w-20 h-auto" />
         <span className="overflow-hidden inline-block">Techkrate</span>
+        </Link>
+        
       </div>
       <div className="space-x-16 text-center flex relative text-[12px]">
         <Link to="/" ref={(el) => (linksRef.current[0] = el)} className="relative group text-white hover:text-gray-300 overflow-hidden">
