@@ -74,7 +74,7 @@ export default function Testimonials() {
   }, [currentIndex])
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-32">
+    <div className="w-full px-44 py-32 bg-white">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">

@@ -4,7 +4,6 @@ import { gsap } from "gsap";
 import logo from "../assets/image/logo.svg";
 import { ArrowRight } from "lucide-react";
 
-
 const Navbar = () => {
   const navbarRef = useRef(null);
   const logoRef = useRef(null);
@@ -14,16 +13,12 @@ const Navbar = () => {
 
   // Animation logic for initial load
   useEffect(() => {
-    gsap.fromTo(
+    const tl = gsap.timeline({defaults: {duration: 0.3, ease: "power2.out"}});
+
+    tl.fromTo(
       [logoRef.current, ...linksRef.current, buttonRef.current],
       { y: -20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.3,
-        ease: "none",
-        stagger: 0.15,
-      }
+      { y: 0, opacity: 1, stagger: 0.1 }
     );
 
     // Underline animation on hover for each link
@@ -41,7 +36,7 @@ const Navbar = () => {
     });
   }, []);
 
-  // Scroll behavior for changing navbar background
+  // Optimized scroll behavior for changing navbar background
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -49,20 +44,21 @@ const Navbar = () => {
         setIsScrolled(true);
         gsap.to(navbarRef.current, {
           backgroundColor: "rgba(0, 0, 0, 0.8)",
-          duration: 0.1,
+          duration: 0.3,
           ease: "power2.out",
         });
       } else if (scrollPosition <= 50 && isScrolled) {
         setIsScrolled(false);
         gsap.to(navbarRef.current, {
           backgroundColor: "rgba(0, 0, 0, 0)",
-          duration: 0.1,
+          duration: 0.3,
           ease: "power2.out",
         });
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -71,18 +67,16 @@ const Navbar = () => {
   return (
     <nav
       ref={navbarRef}
-      className="fixed top-0 w-full bg-transparent text-white px-14 pb-4 pt-6 flex justify-between items-center z-50 font-Helix transition-colors duration-500"
+      className="fixed top-0 w-full bg-transparent text-white px-14 pb-4 pt-6 flex justify-between items-center z-50 font-Helix transition-colors duration-300"
     >
       <div ref={logoRef} className="text-2xl font-bold flex items-center">
         <Link to="/" className="flex items-center">
-        <img src={logo} alt="Logo" className="w-20 h-auto" />
-        <span className="overflow-hidden inline-block">Techkrate</span>
+          <img src={logo} alt="Logo" className="w-20 h-auto" />
+          <span className="overflow-hidden inline-block">Techkrate</span>
         </Link>
-        
       </div>
-      <div className="space-x-16 text-center text-[15px] flex relative ">
+      <div className="space-x-16 text-center text-[15px] flex relative">
         <Link to="/" ref={(el) => (linksRef.current[0] = el)} className="relative group text-white hover:text-gray-300 overflow-hidden">
-
           <span>HOME</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
@@ -95,10 +89,7 @@ const Navbar = () => {
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
         {/* Dropdown for Products */}
-        <div
-          className="relative group text-white hover:text-gray-300 cursor-pointer"
-          ref={(el) => (linksRef.current[2] = el)}
-        >
+        <div className="relative group text-white hover:text-gray-300 cursor-pointer" ref={(el) => (linksRef.current[2] = el)}>
           <span>PRODUCTS</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
 
@@ -128,7 +119,6 @@ const Navbar = () => {
         <Link to="/contact" className="flex items-center space-x-1.5 font-semibold text-sm">
           <span className="group-hover:text-white transition-all duration-300 inline-block">Connect with Us</span>
           <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out" aria-hidden="true" />
-
         </Link>
       </div>
     </nav>
@@ -136,4 +126,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

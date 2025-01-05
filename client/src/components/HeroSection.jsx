@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import bgVid from "/bgVid.mp4";
 import ThirdSection from "./ThirdSection";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -62,10 +62,9 @@ const HeroSection = () => {
 
       gsap.from(splitWords, {
         duration: 1,
-        opacity: 0,
-        y: 50,
+        y: "100%",
         ease: "power4.out",
-        stagger: 0.1,
+        stagger: 0.05,
         scrollTrigger: {
           trigger: textContainersRef.current[index],
           start: "top center",
@@ -126,14 +125,22 @@ const HeroSection = () => {
         <div className="relative z-20 h-full flex font-Helix">
           {[0, 1, 2, 3].map((index) => (
             <div key={index} ref={(el) => (textContainersRef.current[index] = el)} className="min-w-full h-full flex flex-col justify-center">
-              <div className="text-left w-full px-4 md:px-8 lg:px-16 pt-12"> {/* Adjusted padding */}
-                <h2 ref={(el) => (heroTextRefs.current[index] = el)} className="text-7xl md:text-9xl font-bold leading-tight mb-6 text-white">
-                  {index === 0 && "Experience Motor Surveying Like Never Before."}    
-                  {index === 1 && "Revolutionizing Motor Claims Processing"}
-                  {index === 2 && "Transforming Surveying"}
-                  {index === 3 && "Join the Revolution"}
-                </h2>
-                <p ref={(el) => (subHeadingRefs.current[index] = el)} className=" pt-1 text-lg  text-[#9C9C9C]  max-w-3xl  ">
+              <div className="text-left w-full px-4 md:px-8 lg:px-16 pt-12">
+                <div className="overflow-hidden">
+                  <h2
+                    ref={(el) => (heroTextRefs.current[index] = el)}
+                    className="text-7xl md:text-9xl font-bold leading-tight mb-6 text-white"
+                  >
+                    {index === 0 && "Experience Motor Surveying Like Never Before."}    
+                    {index === 1 && "Revolutionizing Motor Claims Processing"}
+                    {index === 2 && "Transforming Surveying"}
+                    {index === 3 && "Join the Revolution"}
+                  </h2>
+                </div>
+                <p
+                  ref={(el) => (subHeadingRefs.current[index] = el)}
+                  className="pt-1 text-lg text-[#9C9C9C] max-w-3xl"
+                >
                   {index === 0 &&
                     "Introducing Moval– an advanced platform designed to optimize motor claims processing for insurance companies and empower motor surveyors with customizable, AI-driven features such as Damage Detection & Real-Time Reporting."}
                   {index === 1 &&
@@ -142,7 +149,7 @@ const HeroSection = () => {
                     "Use advanced analytics to redefine how motor claims are handled, minimizing errors and improving satisfaction rates."}
                   {index === 3 && "Be a part of the movement to bring innovation and speed to motor claims processing with Moval."}
                 </p>
-                {(index === 0 || index === 3) /* Button for both first and fourth sections */ && (
+                {(index === 0 || index === 3) && (
                   <div
                     ref={buttonRef}
                     className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-[150px] mt-5 place-items-center"
