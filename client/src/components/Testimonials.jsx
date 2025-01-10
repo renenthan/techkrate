@@ -74,28 +74,28 @@ export default function Testimonials() {
   }, [currentIndex])
 
   return (
-    <div className="w-full px-44 py-32 bg-white">
+    <div className="w-full px-44 py-32 bg-black">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             What our customers think
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-lg text-muted-foreground mb-8 text-white">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus commodi sint, similique cupiditate possimus suscipit delectus illum eos iure magnam!
           </p>
           <div className="flex gap-2">
             {testimonials.map((_, index) => (
-              <div key={index} className="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
+              <div key={index} className="h-1 w-full bg-gray-700 rounded-full overflow-hidden">
                 <div
                   ref={(el) => (progressRefs.current[index] = el)}
-                  className="h-full bg-black rounded-full"
+                  className="h-full bg-white rounded-full"
                   style={{ width: index === currentIndex ? '0%' : '0%' }}
                 />
               </div>
             ))}
           </div>
         </div>
-        <div className="relative h-[300px] bg-black text-white overflow-hidden">
+        <div className="relative h-[300px] bg-white text-black overflow-hidden">
           <div
             className={`absolute inset-0 p-8 transition-transform duration-500 ease-out ${
               isAnimating ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'
@@ -109,7 +109,7 @@ export default function Testimonials() {
                 <p className="font-semibold text-lg">
                   {testimonials[currentIndex].author}
                 </p>
-                <p className="text-gray-400">
+                <p className="text-gray-900">
                   {testimonials[currentIndex].role}
                 </p>
               </div>

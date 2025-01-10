@@ -1,91 +1,122 @@
-import { ArrowRight } from 'lucide-react';
-import { Navigate } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+import MovalLogo from "../assets/image/MovalLogo.png";
+import CARSLogo from "../assets/image/CARSLogo.jpg";
+import MovalBG from "../assets/image/MovalBG.webp";
+import CarsBG from "../assets/image/CarsBG.webp";
 
+const ProductCard = ({ name, logo, description, background, to }) => {
+  const cardRef = useRef(null);
 
-const WireSphere = ({ className }) => (
-  <svg viewBox="0 0 400 400" className={className}>
-    <circle cx="200" cy="200" r="180" 
-      className="stroke-purple-500 fill-none opacity-20" />
-    <ellipse cx="200" cy="200" rx="180" ry="60" 
-      className="stroke-purple-500 fill-none" />
-    <ellipse cx="200" cy="200" rx="180" ry="120" 
-      transform="rotate(60 200 200)"
-      className="stroke-purple-500 fill-none" />
-    <ellipse cx="200" cy="200" rx="180" ry="120" 
-      transform="rotate(-60 200 200)"
-      className="stroke-purple-500 fill-none" />
-  </svg>
-);
+  useEffect(() => {
+    const card = cardRef.current;
 
-const Button = ({ children, className }) => (
-  <button className={`
-    flex items-center gap-2 px-6 py-3 
-    bg-zinc-800 hover:bg-zinc-700 
-    text-white rounded-full transition-colors
-    ${className}
-  `}>
-    {children}
-    <ArrowRight size={16} />
-  </button>
-);
+    const enterAnimation = gsap.to(card, {
+      scale: 1.02,
+      duration: 0.3,
+      ease: "power2.out",
+      paused: true
+    });
 
-const HomePage = () => {
+    card.addEventListener("mouseenter", () => enterAnimation.play());
+    card.addEventListener("mouseleave", () => enterAnimation.reverse());
+
+    return () => {
+      card.removeEventListener("mouseenter", () => enterAnimation.play());
+      card.removeEventListener("mouseleave", () => enterAnimation.reverse());
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Hero Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-24">
-          <div className="relative">
-            <WireSphere className="w-full h-auto animate-[spin_20s_linear_infinite]" />
-          </div>
-          <div className="flex flex-col justify-center gap-6">
-            <div className="flex gap-1">
-              <div className="w-2 h-2 bg-purple-500 rounded-full" />
-              <div className="w-2 h-2 bg-purple-500 rounded-full" />
-            </div>
-            <h1 className="text-6xl font-bold leading-tight">
-              CARS
-            </h1>
-            <div className="space-y-4 text-zinc-400">
-              <p>Over 12 months, you will work with us to uncover high-impact opportunities and shape the most promising idea into a new venture.</p>
-              <p>Receive funding, mentorship, hands-on support, access to an unfparalleled pool of experts, potential co-founders and advisors.</p>
-              <p>If you succeed, we become your first investor and help you raise a seed round.</p>
-            </div>
-            <Button className="w-fit">
-              <Link to="/product1">Discover More</Link>    
-            </Button>
-          </div>
+    <Link 
+      to={to}
+      ref={cardRef}
+      className="relative group overflow-hidden rounded-2xl aspect-[4/5] transition-all duration-300"
+    >
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+        style={{ 
+          backgroundImage: `url(${background})`,
+        }}
+      />
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
+
+      {/* Content */}
+      <div className="relative h-full flex flex-col items-center justify-between p-8 text-white">
+        {/* Top Section */}
+        <h3 className="text-2xl md:text-5xl font-bold tracking-tight font-Helix">
+          {name}
+        </h3>
+
+        {/* Center Logo */}
+        <div className="w-full h-full rounded-2xl p-4 flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
+          <img 
+            src={logo} 
+            alt={`${name} logo`} 
+            className="w-3/4 h-full object-contain"
+          />
         </div>
 
-        {/* Radicals Welcome Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-24">
-          <div className="flex flex-col justify-center gap-6">
-            <div className="flex gap-1">
-              <div className="w-2 h-2 bg-purple-500 rounded-full" />
-              <div className="w-2 h-2 bg-purple-500 rounded-full" />
-            </div>
-            <h2 className="text-6xl font-bold leading-tight">
-              Moval
-            </h2>
-            <div className="space-y-4 text-zinc-400">
-              <p>Do you believe climate is the only problem worth working on?</p>
-              <p>Do you want to start building instead of just publishing?</p>
-              <p>Do you dream of founding your own company?</p>
-              <p>Find out more about the hard climate problems we want to solve and what we look for in applicants.</p>
-              <p>No prior idea required. (but if you have one and people tell you it's crazy, we'd love to hear it!)</p>
-            </div>
-            <Button className="w-fit">
-              <Link to="/product1">Discover More</Link> 
-            </Button>
-          </div>
-          <div className="relative">
-            <WireSphere className="w-full h-auto animate-[spin_20s_linear_infinite]" />
-          </div>
-        </div>
+        {/* Bottom Description */}
+        <p className="text-sm md:text-xl text-center max-w-xs font-medium font-Helix">
+          {description}
+        </p>
+      </div>
+    </Link>
+  );
+};
+
+const Products = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      containerRef.current.children,
+      { 
+        y: 100,
+        opacity: 0 
+      },
+      { 
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out"
+      }
+    );
+  }, []);
+
+  return (
+    <div className="min-h-screen w-full bg-black flex flex-col items-center py-16 px-4">
+      <h1 className="text-5xl md:text-7xl text-white font-Helix text-center mb-16">
+        Products
+      </h1>
+      <div 
+        ref={containerRef}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl"
+      >
+        <ProductCard 
+          name="Cars" 
+          logo={CARSLogo}
+          background={CarsBG}
+          to="/products/cars"
+          description="An advanced motor claims processing system designed to streamline and optimize the insurance claim workflow."
+        />
+        <ProductCard 
+          name="Moval" 
+          logo={MovalLogo}
+          background={MovalBG}
+          to="/products/moval"
+          description="An innovative platform for motor surveyors, offering cutting-edge tools for efficient and accurate vehicle assessments."
+        />
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default Products;
+
