@@ -1,67 +1,91 @@
 import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faLinkedinIn, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+
+import { faLinkedinIn, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
 
 function Contact() {
   const formRef = useRef(null);
   const titleRef = useRef(null);
+  const inputRefs = useRef([]);
 
   useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 50 },
+    gsap.fromTo(titleRef.current, 
+      { opacity: 0, y: 50 }, 
       { opacity: 1, y: 0, duration: 1, delay: 0.3 }
     );
-    gsap.fromTo(
-      formRef.current,
-      { opacity: 0, y: 50 },
+    gsap.fromTo(formRef.current, 
+      { opacity: 0, y: 50 }, 
       { opacity: 1, y: 0, duration: 1, delay: 0.6 }
     );
+    inputRefs.current.forEach((input, index) => {
+      gsap.fromTo(input, 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, duration: 0.5, delay: 0.8 + index * 0.1 }
+      );
+    });
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col">
       {/* Main Content */}
-      <div className="flex-grow flex flex-col md:flex-row justify-center items-start px-8 md:px-32 py-16 space-y-10 md:space-y-0">
+      <div className="flex-grow flex flex-col lg:flex-row justify-center items-center px-4 md:px-8 lg:px-16 py-16 space-y-10 lg:space-y-0 lg:space-x-12">
         {/* Left Section */}
-        <div className="bg-gradient-to-b from-blue-600 to-blue-1000 text-white px-10 py-20 rounded-lg w-full md:w-1/2 max-w-md md:max-w-lg md:relative mt-20 ">
-          <h2 ref={titleRef} className="text-4xl font-Neue mb-6">
+        <div className="bg-gradient-to-br from-blue-900 to-blue-700 text-white px-8 py-12 rounded-2xl w-full lg:w-1/2 max-w-md lg:max-w-lg shadow-2xl">
+          <h2 ref={titleRef} className="text-4xl font-bold mb-8 text-blue-100">
             Get in touch
           </h2>
-          <p className="mb-4">
-            <strong>Visit us</strong>
-            <br />
-            Come say hello at our office HQ.
-            <br />
-            67 Wisteria Way Croydon South VIC 3136 AU
-          </p>
-          <p className="mb-4">
-            <strong>Chat to us</strong>
-            <br />
-            Our friendly team is here to help.
-            <br />
-            hello@paysphere.com
-          </p>
-          <p className="mb-4">
-            <strong>Call us</strong>
-            <br />
-            Mon-Fri from 8am to 5pm
-            <br />
-            (+995) 555-55-55-55
-          </p>
-          <div className="flex space-x-4 mt-4">
-            <a href="#" className="hover:opacity-75 text-lg">
-              <FontAwesomeIcon icon={faFacebookF} />
-            </a>
-            <a href="#" className="hover:opacity-75 text-lg">
+          <div className="space-y-6">
+            <p className="flex items-start space-x-4">
+              <FontAwesomeIcon icon={faLocationDot} className="text-xl mt-1 text-blue-300" />
+              <span>
+                416, Sector 1, Vasundhara, Ghaziabad
+                <br />
+                Delhi NCR (201012)
+              </span>
+            </p>
+            <p className="flex items-center space-x-4">
+              <FontAwesomeIcon icon={faEnvelope} className="text-xl text-blue-300" />
+              <a
+                href="mailto:support@techkrate.com"
+                className="hover:underline transition-all duration-300"
+                title="Send an email to support@techkrate.com"
+              >
+                support@techkrate.com
+              </a>
+            </p>
+            <p className="flex items-center space-x-4">
+              <FontAwesomeIcon icon={faPhone} className="text-xl text-blue-300" />
+              <a
+                href="https://wa.me/919990547098"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline transition-all duration-300"
+                title="Chat on WhatsApp"
+              >
+                +91-9990547098
+              </a>
+            </p>
+          </div>
+          <div className="flex space-x-6 mt-8">
+            <a
+              href="https://www.linkedin.com/company/techkrate"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-300 transition-all duration-300 text-2xl"
+              title="Visit Techkrate on LinkedIn"
+            >
               <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
-            <a href="#" className="hover:opacity-75 text-lg">
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a href="#" className="hover:opacity-75 text-lg">
-              <FontAwesomeIcon icon={faTwitter} />
+            <a
+              href="https://www.youtube.com/@techkrate4281"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-300 transition-all duration-300 text-2xl"
+              title="Visit Techkrate on YouTube"
+            >
+              <FontAwesomeIcon icon={faYoutube} />
             </a>
           </div>
         </div>
@@ -69,71 +93,77 @@ function Contact() {
         {/* Right Section */}
         <div
           ref={formRef}
-          className="bg-black text-gray-300 p-10 rounded-lg w-full md:w-1/2 max-w-md md:max-w-lg md:relative md:top-10"
+          className="bg-gray-900 text-gray-100 p-6 rounded-lg w-full lg:w-2/5 max-w-md shadow-xl border border-gray-800"
         >
-          <form>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block mb-1">First Name</label>
+                <label className="block mb-1 text-xs font-medium text-gray-400">First Name</label>
                 <input
                   type="text"
-                  className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                  ref={(el) => (inputRefs.current[0] = el)}
+                  className="w-full p-2 bg-gray-800 rounded-md border border-gray-700 text-white text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-300"
                   placeholder="First Name"
                 />
               </div>
               <div>
-                <label className="block mb-1">Last Name</label>
+                <label className="block mb-1 text-xs font-medium text-gray-400">Last Name</label>
                 <input
                   type="text"
-                  className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                  ref={(el) => (inputRefs.current[1] = el)}
+                  className="w-full p-2 bg-gray-800 rounded-md border border-gray-700 text-white text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-300"
                   placeholder="Last Name"
                 />
               </div>
             </div>
-            <div className="mt-4">
-              <label className="block mb-1">Company Name</label>
+            <div>
+              <label className="block mb-1 text-xs font-medium text-gray-400">Company Name</label>
               <input
                 type="text"
-                className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                ref={(el) => (inputRefs.current[2] = el)}
+                className="w-full p-2 bg-gray-800 rounded-md border border-gray-700 text-white text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-300"
                 placeholder="Company Name"
               />
             </div>
-            <div className="mt-4">
-              <label className="block mb-1">Email</label>
+            <div>
+              <label className="block mb-1 text-xs font-medium text-gray-400">Email</label>
               <input
                 type="email"
-                className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                ref={(el) => (inputRefs.current[3] = el)}
+                className="w-full p-2 bg-gray-800 rounded-md border border-gray-700 text-white text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-300"
                 placeholder="Email@gmail.com"
               />
             </div>
-            <div className="mt-4">
-              <label className="block mb-1">Phone Number</label>
+            <div>
+              <label className="block mb-1 text-xs font-medium text-gray-400">Phone Number</label>
               <input
                 type="text"
-                className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
+                ref={(el) => (inputRefs.current[4] = el)}
+                className="w-full p-2 bg-gray-800 rounded-md border border-gray-700 text-white text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-300"
                 placeholder="(+995) 555-55-55-55"
               />
             </div>
-            <div className="mt-4">
-              <label className="block mb-1">Message</label>
+            <div>
+              <label className="block mb-1 text-xs font-medium text-gray-400">Message</label>
               <textarea
-                className="w-full p-3 border-b border-gray-700 bg-black text-white focus:border-blue-400 outline-none"
-                rows="2"
+                ref={(el) => (inputRefs.current[5] = el)}
+                className="w-full p-2 bg-gray-800 rounded-md border border-gray-700 text-white text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all duration-300"
+                rows="3"
                 placeholder="Tell us what we can help you with"
               ></textarea>
             </div>
-            <div className="flex items-start mt-4">
-              <input type="checkbox" className="mr-2" />
-              <label>
-                I’d like to receive more information about the company. I understand and agree to the{" "}
-                <a href="#" className="text-blue-400 underline">
+            <div className="flex items-start">
+              <input type="checkbox" className="mr-2 mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+              <label className="text-xs text-gray-400">
+                I'd like to receive more information about the company. I understand and agree to the{" "}
+                <a href="#" className="text-blue-400 hover:underline transition-all duration-300">
                   Privacy Policy
                 </a>
               </label>
             </div>
             <button
               type="submit"
-              className="bg-blue-900 w-full text-white p-3 mt-6 rounded-md hover:bg-blue-600 transition-all duration-300"
+              className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm font-medium"
             >
               Send Message
             </button>
@@ -145,3 +175,4 @@ function Contact() {
 }
 
 export default Contact;
+

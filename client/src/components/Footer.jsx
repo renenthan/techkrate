@@ -1,29 +1,29 @@
-import  { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Youtube, Linkedin, Instagram, ChevronUp } from 'lucide-react'
+import { Youtube, Linkedin, Instagram, ChevronUp } from "lucide-react";
 export default function Footer() {
   const navigate = useNavigate();
-  const [showScrollTop, setShowScrollTop] = useState(false)
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const footerElement = document.getElementById('footer')
+      const footerElement = document.getElementById("footer");
       if (footerElement) {
-        const footerTop = footerElement.getBoundingClientRect().top
-        const windowHeight = window.innerHeight
-        setShowScrollTop(footerTop < windowHeight)
+        const footerTop = footerElement.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        setShowScrollTop(footerTop < windowHeight);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Check initial state
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state
 
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer id="footer" className="bg-black text-white relative">
@@ -31,20 +31,17 @@ export default function Footer() {
       <div className="h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-30" />
 
       <div className="max-w-7xl mx-auto px-8 pt-12 pb-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10">
           {/* Column 1: Logo and Description */}
-          <div className="xl:col-span-1">
-            <h2 className="text-2xl font-bold text-white">Moval</h2>
-            <p className="mt-2 text-gray-400 pr-4">
-              Advanced motor claims processing platform. Optimize your insurance operations with AI-driven solutions.
-            </p>
+          <div>
+            <h2 className="text-2xl font-bold text-white font-Helix text-center">Techkrate</h2>
           </div>
 
           {/* Column 2: Company Links */}
           <div>
             <h3 className="text-lg font-semibold text-white">Company</h3>
             <ul className="mt-2 space-y-2">
-              {['About Us', 'Customers', 'Newsroom', 'Events'].map((item) => (
+              {["About Us", "Blogs"].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
                     {item}
@@ -58,14 +55,13 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-white">Products</h3>
             <ul className="mt-2 space-y-2">
-              {['Damage Detection', 'Real-Time Reporting', 'AI-Driven Analysis', 'Custom Solutions'].map((item) => (
+              {["Moval", "Cars"].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
                     {item}
                   </a>
                 </li>
               ))}
-              <li onClick={() => navigate("/addBlog")} className="text-gray-400 hover:cursor-pointer">Add Blog</li>
             </ul>
           </div>
 
@@ -78,21 +74,20 @@ export default function Footer() {
                   Mobile: +91 9990547098
                 </a>
               </li>
-              <li>
-                <a href="tel:+911203187109" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
-                  Landline: +91 1203187109
+              <li className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
+                Mail:{" "}
+                <a href="mailto:support@techkrate.com" className="hover:text-white transition-colors duration-300 ease-in-out">
+                  support@techkrate.com
                 </a>
               </li>
-              <li className="text-sm text-gray-400">
-                416, Sector 1, Vasundhara, Ghaziabad - 201012 Delhi NCR
-              </li>
+
+              <li className="text-sm text-gray-400">416, Sector 1, Vasundhara, Ghaziabad - 201012 Delhi NCR</li>
             </ul>
             {/* Social Media Links */}
             <div className="flex mt-4 space-x-4">
               {[
-                { icon: Youtube, href: 'https://www.youtube.com/@techkrate4281', label: 'YouTube' },
-                { icon: Linkedin, href: 'https://www.linkedin.com/company/techkrate/', label: 'LinkedIn' },
-                { icon: Instagram, href: '#', label: 'Instagram' },
+                { icon: Youtube, href: "https://www.youtube.com/@techkrate4281", label: "YouTube" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/techkrate/", label: "LinkedIn" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -128,9 +123,12 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-8 pt-4 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
-          <p>© 2024 Moval, All rights reserved</p>
+          <p>© 2025 Techkrate, All rights reserved</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            {['Terms & Conditions', 'Privacy Policy'].map((item) => (
+            <button onClick={() => navigate("/addBlog")} className="text-gray-500 hover:text-white transition-colors duration-300 ease-in-out">
+              Add Blog
+            </button>
+            {["Terms & Conditions", "Privacy Policy"].map((item) => (
               <a key={item} href="#" className="hover:text-white transition-colors duration-300 ease-in-out">
                 {item}
               </a>
@@ -150,6 +148,5 @@ export default function Footer() {
         )}
       </div>
     </footer>
-  )
+  );
 }
-

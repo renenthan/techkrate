@@ -98,16 +98,15 @@ const Navbar = () => {
           <span>ABOUT US</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
-        <div
-          className="relative group text-white cursor-pointer"
-          ref={(el) => (linksRef.current[2] = el)}
-          onMouseEnter={() => setHoveredLink(2)}
-          onMouseLeave={() => setHoveredLink(null)}
-        >
-          <span>PRODUCTS</span>
-          <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
+        <div className="relative text-white cursor-pointer group" ref={(el) => (linksRef.current[2] = el)}>
+          {/* Products Link */}
+          <span className="relative">
+            PRODUCTS
+            <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
+          </span>
 
-          <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-black text-white p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {/* Dropdown Menu */}
+          <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-black text-white p-4 rounded-lg opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-opacity duration-300">
             <Link to="/product1" className="block py-2 px-4 hover:border-white hover:border-2">
               Moval
             </Link>
@@ -116,6 +115,7 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
+
         <Link
           to="/blogs"
           ref={(el) => (linksRef.current[3] = el)}

@@ -104,14 +104,14 @@ const Products = () => {
           logo={CARSLogo}
           background={CarsBG}
           to="/products/cars"
-          description="An advanced motor claims processing system designed to streamline and optimize the insurance claim workflow."
+          description="A Hybrid platform for chartered engineers enabling consignment assessment, report generation & admin tasks on the move."
         />
         <ProductCard 
           name="Moval" 
           logo={MovalLogo}
           background={MovalBG}
           to="/products/moval"
-          description="An innovative platform for motor surveyors, offering cutting-edge tools for efficient and accurate vehicle assessments."
+          description="An AI-powered cloud platform revolutionizing motor surveys through seamless automation & intelligent data analysis."
         />
       </div>
     </div>
