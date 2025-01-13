@@ -35,7 +35,7 @@ const HeroSection = () => {
     {
       title: "AI-Driven Assessment Intelligence",
       subHeading:
-        "Moval’s AI goes beyond damage detection, extracting complex data from assessment sheets and populating loss estimations instantly. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with cutting-edge technology for unparalleled efficiency.",
+        "Moval's AI goes beyond damage detection, extracting complex data from assessment sheets and populating loss estimations instantly. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with cutting-edge technology for unparalleled efficiency.",
       link: "/moval",
     },
     {
@@ -47,7 +47,7 @@ const HeroSection = () => {
     {
       title: "Integrated Management and Mobile Approvals",
       subHeading:
-        "Moval offers robust tools for multi-office management and automated estimate imports. Its mobile-enabled platform facilitates instant report approvals, empowering stakeholders to make real-time decisions while enhancing productivity and collaboration across diverse operational setups.",
+        "Moval offers robust tools for multi-office management and automated estimate imports. Its mobile-enabled platform facilitates instant report approvals, empowering stakeholders to make real-time decisions while enhancing productivity and collaboration across diverse operational setups.",
       link: "/moval",
     },
   ];
@@ -163,7 +163,7 @@ const HeroSection = () => {
           <source src={bgVid} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black bg-opacity-0 z-10 "></div>
+        <div className="absolute inset-0 bg-black bg-opacity-0 z-10"></div>
         <div className="relative z-20 h-full flex font-Helix">
           {slides.map((slide, index) => (
             <div
@@ -186,15 +186,13 @@ const HeroSection = () => {
                 >
                   {slide.subHeading}
                 </p>
-                <div
+                <Link
+                  to={slide.link}
                   ref={(el) => (buttonRef.current[index] = el)}
-                  className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-[150px] mt-5 place-items-center"
                   onClick={() => handleClick(index)}
+                  className="connect-btn inline-block bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-[170px] mt-5"
                 >
-                  <Link
-                    to={slide.link}
-                    className="flex items-center space-x-1.5 font-semibold text-sm"
-                  >
+                  <div className="flex items-center p-3 justify-center w-full">
                     <span className="group-hover:text-white transition-all duration-300 inline-block">
                       Discover More
                     </span>
@@ -202,8 +200,8 @@ const HeroSection = () => {
                       className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out"
                       aria-hidden="true"
                     />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </div>
             </div>
           ))}
