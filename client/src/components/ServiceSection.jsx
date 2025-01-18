@@ -3,7 +3,8 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Cpu, Layers, Zap, Cloud, BarChart3, Code } from 'lucide-react';
+import { Briefcase, Layers, Bot, Cloud, BarChart3, Terminal } from "lucide-react";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,35 +16,42 @@ const ServiceSection = () => {
   const services = [
     {
       title: "Strategy & Advisory",
-      description: "Custom product creation with design and customization options.",
-      icon: <Cpu className="h-8 w-8" />,
+      description:
+        "Offering tailored strategies and scalable solutions to optimize processes and align with enterprise goals.",
+      icon: <Briefcase className="h-8 w-8" />,
     },
     {
       title: "System Integration",
-      description: "Seamless integration and optimization of your existing systems.",
+      description:
+        "Ensuring seamless integration and modernization of systems for enhanced interoperability and efficiency.",
       icon: <Layers className="h-8 w-8" />,
     },
     {
-      title: "AI-powered Automation",
-      description: "Cutting-edge AI solutions to automate and enhance your processes.",
-      icon: <Zap className="h-8 w-8" />,
+      title: "AI-Driven Automation",
+      description:
+        "Implementing advanced AI technologies to automate workflows, reduce redundancies, and scale operations.",
+      icon: <Bot className="h-8 w-8" />,
     },
     {
       title: "Cloud Solutions",
-      description: "Robust cloud solutions and infrastructure management services.",
+      description:
+        "Providing secure, scalable cloud infrastructure with high availability for mission-critical applications.",
       icon: <Cloud className="h-8 w-8" />,
     },
     {
       title: "Data Analytics",
-      description: "Transform your data into actionable insights for informed decisions.",
+      description:
+        "Converting complex data into actionable insights, enabling data-driven decisions and measurable outcomes.",
       icon: <BarChart3 className="h-8 w-8" />,
     },
     {
-      title: "Custom Development",
-      description: "Tailored application development to meet your unique needs.",
-      icon: <Code className="h-8 w-8" />,
+      title: "Enterprise Software Development",
+      description:
+        "Delivering customized, scalable software solutions to drive innovation and digital transformation.",
+      icon: <Terminal className="h-8 w-8" />,
     },
   ];
+  
 
   useEffect(() => {
     const section = sectionRef.current;

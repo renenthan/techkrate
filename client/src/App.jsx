@@ -6,40 +6,54 @@ import About from "./pages/About";
 import Blogs from "./pages/Blogs";
 import Login from "./components/Login";
 import AddBlog from "./pages/Addblog";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogDetail from "./pages/BlogDetail";
 import Navbar from "./components/Navbar";
 import Product1 from "./pages/Product1";
 import Product2 from "./pages/Product2";
-
+import LoadingScreen from './pages/LoadingScreen';  // Import LoadingScreen
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate an API call or something else that takes time
+    const timer = setTimeout(() => {
+      setLoading(false);  // Hide loading screen after 2 seconds
+    }, 500);
+
+    return () => clearTimeout(timer);  // Cleanup the timer
+  }, []);
+
   return (
     <Router>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/moval" element={<Product1/>} />
-        <Route path="/cars" element={<Product2/>} />
-        <Route path="/blogs/:id" element={<BlogDetail />} />
+      {loading && <LoadingScreen />}  {/* Display LoadingScreen while loading */}
+      
+      {!loading && (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/moval" element={<Product1 />} />
+            <Route path="/cars" element={<Product2 />} />
+            <Route path="/blogs/:id" element={<BlogDetail />} />
 
-        <Route
-          path="/login"
-          element={<Login setIsAuthenticated={setIsAuthenticated} />}
-        />
-        {/* Protected AddBlog Route */}
-        <Route
-          path="/addblog"
-          element={
-            isAuthenticated ? <AddBlog /> : <Navigate to="/login" replace />
-          }
-        />
-      </Routes>
+            <Route
+              path="/login"
+              element={<Login setIsAuthenticated={setIsAuthenticated} />}
+            />
+            <Route
+              path="/addblog"
+              element={isAuthenticated ? <AddBlog /> : <Navigate to="/login" replace />}
+            />
+          </Routes>
+        </>
+      )}
     </Router>
   );
 }
