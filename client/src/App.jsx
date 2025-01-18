@@ -21,7 +21,7 @@ function App() {
     // Simulate an API call or something else that takes time
     const timer = setTimeout(() => {
       setLoading(false);  // Hide loading screen after 2 seconds
-    }, 500);
+    }, 200);
 
     return () => clearTimeout(timer);  // Cleanup the timer
   }, []);
