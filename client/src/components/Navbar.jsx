@@ -132,15 +132,16 @@ const Navbar = () => {
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
       </div>
-      <div
+      <Link
+        to="/contact"
         ref={buttonRef}
-        className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white border-2 hover:text-white"
+        className="connect-btn inline-block p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white border-2 hover:text-white"
       >
-        <Link to="/contact" className="flex items-center space-x-1.5 font-semibold text-sm">
+        <div className="flex items-center space-x-1.5 font-semibold text-sm">
           <span className="group-hover:text-white transition-all duration-300 inline-block">Connect with Us</span>
           <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out" aria-hidden="true" />
-        </Link>
-      </div>
+        </div>
+      </Link>
     </nav>
   );
 };

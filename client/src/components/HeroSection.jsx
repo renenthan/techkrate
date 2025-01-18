@@ -16,7 +16,6 @@ const HeroSection = () => {
   const textContainersRef = useRef([]);
   const heroTextRefs = useRef([]);
   const subHeadingRefs = useRef([]);
-  const nextSectionRef = useRef(null);
   const buttonRef = useRef([]);
   const dotsRef = useRef(null);
 
@@ -36,7 +35,7 @@ const HeroSection = () => {
     {
       title: "AI-Driven Assessment Intelligence",
       subHeading:
-        "Moval’s AI goes beyond damage detection, extracting complex data from assessment sheets and populating loss estimations instantly. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with cutting-edge technology for unparalleled efficiency.",
+        "Moval's AI goes beyond damage detection, extracting complex data from assessment sheets and populating loss estimations instantly. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with cutting-edge technology for unparalleled efficiency.",
       link: "/moval",
     },
     {
@@ -48,7 +47,7 @@ const HeroSection = () => {
     {
       title: "Integrated Management and Mobile Approvals",
       subHeading:
-        "Moval offers robust tools for multi-office management and automated estimate imports. Its mobile-enabled platform facilitates instant report approvals, empowering stakeholders to make real-time decisions while enhancing productivity and collaboration across diverse operational setups.",
+        "Moval offers robust tools for multi-office management and automated estimate imports. Its mobile-enabled platform facilitates instant report approvals, empowering stakeholders to make real-time decisions while enhancing productivity and collaboration across diverse operational setups.",
       link: "/moval",
     },
   ];
@@ -60,13 +59,6 @@ const HeroSection = () => {
     gsap.to(buttonRef.current[index], {
       scale: 0.95,
       duration: 0.1,
-      ease: "power2.out",
-      yoyo: true,
-      repeat: 1,
-    });
-    gsap.to(buttonRef.current[index], {
-      boxShadow: "0 0 0 2px rgba(255,255,255,0.5)",
-      duration: 0.3,
       ease: "power2.out",
       yoyo: true,
       repeat: 1,
@@ -98,7 +90,12 @@ const HeroSection = () => {
 
     heroTextRefs.current.forEach((heroTextRef, index) => {
       const words = heroTextRef.innerText.split(" ");
-      heroTextRef.innerHTML = words.map((word) => `<span class="inline-block"><span class="inline-block">${word}</span></span>`).join(" ");
+      heroTextRef.innerHTML = words
+        .map(
+          (word) =>
+            `<span class="inline-block"><span class="inline-block">${word}</span></span>`
+        )
+        .join(" ");
 
       const splitWords = heroTextRef.querySelectorAll("span > span");
 
@@ -138,83 +135,93 @@ const HeroSection = () => {
     };
   }, [totalSlides]);
 
-  useEffect(() => {
-    gsap.to(dotsRef.current.children, {
-      scale: (i) => (i === currentSlide ? 1.5 : 1),
-      opacity: (i) => (i === currentSlide ? 1 : 0.5),
-      duration: 0.3,
-      ease: "power2.out",
+  const scrollToSlide = (index) => {
+    gsap.to(window, {
+      duration: 1.5,
+      scrollTo: {
+        y: window.innerWidth * index,
+        offsetY: 0,
+      },
+      ease: "power3.inOut",
     });
-  }, [currentSlide]);
-
-  const scrollToNextSection = () => {
-    const nextSection = document.querySelector("#next-section");
-    if (nextSection) {
-      gsap.to(window, {
-        duration: 1.5,
-        scrollTo: {
-          y: nextSection,
-          offsetY: 0,
-        },
-        ease: "power3.inOut",
-      });
-    }
+    setCurrentSlide(index);
   };
 
   return (
     <>
-      <div ref={containerRef} className="overflow-hidden h-screen relative font-Helix">
-        <video className="absolute top-0 right-0 w-auto h-full object-cover z-0" autoPlay loop muted playsInline>
+      <div
+        ref={containerRef}
+        className="overflow-hidden h-screen relative font-Helix"
+      >
+        <video
+          className="absolute top-0 right-0 w-auto h-full object-cover z-0"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
           <source src={bgVid} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black bg-opacity-0 z-10 "></div>
+        <div className="absolute inset-0 bg-black bg-opacity-0 z-10"></div>
         <div className="relative z-20 h-full flex font-Helix">
           {slides.map((slide, index) => (
-            <div key={index} ref={(el) => (textContainersRef.current[index] = el)} className="min-w-full h-full flex flex-col justify-center">
+            <div
+              key={index}
+              ref={(el) => (textContainersRef.current[index] = el)}
+              className="min-w-full h-full flex flex-col justify-center"
+            >
               <div className="text-left w-full px-4 md:px-8 lg:px-16 pt-12">
                 <div className="overflow-hidden">
-                  <h2 ref={(el) => (heroTextRefs.current[index] = el)} className="text-7xl md:text-9xl font-bold leading-tight mb-6 text-white">
+                  <h2
+                    ref={(el) => (heroTextRefs.current[index] = el)}
+                    className="text-7xl md:text-9xl font-bold leading-tight mb-6 text-white"
+                  >
                     {slide.title}
                   </h2>
                 </div>
-                <p ref={(el) => (subHeadingRefs.current[index] = el)} className="pt-1 text-lg text-[#9C9C9C] max-w-3xl">
+                <p
+                  ref={(el) => (subHeadingRefs.current[index] = el)}
+                  className="pt-1 text-lg text-[#9C9C9C] max-w-3xl"
+                >
                   {slide.subHeading}
                 </p>
-                <div
+                <Link
+                  to={slide.link}
                   ref={(el) => (buttonRef.current[index] = el)}
-                  className="connect-btn p-3 bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-[150px] mt-5 place-items-center"
                   onClick={() => handleClick(index)}
+                  className="connect-btn inline-block bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-[170px] mt-5"
                 >
-                  <Link to={slide.link} className="flex items-center space-x-1.5 font-semibold text-sm">
-                    <span className="group-hover:text-white transition-all duration-300 inline-block">Discover More</span>
+                  <div className="flex items-center p-3 justify-center w-full">
+                    <span className="group-hover:text-white transition-all duration-300 inline-block">
+                      Discover More
+                    </span>
                     <ArrowRight
                       className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out"
                       aria-hidden="true"
                     />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </div>
             </div>
           ))}
         </div>
-        {/* Slide indicator dots */}
-        <div ref={dotsRef} className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
+        <div
+          ref={dotsRef}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30"
+        >
           {slides.map((_, index) => (
-            <div key={index} className="w-3 h-3 rounded-full bg-white transition-all duration-300"></div>
+            <div
+              key={index}
+              className={`w-2.5 h-2.5 rounded-full bg-white cursor-pointer transition-all duration-300 ${
+                index === currentSlide ? "opacity-100 scale-125" : "opacity-50"
+              }`}
+              onClick={() => scrollToSlide(index)}
+            ></div>
           ))}
         </div>
-        <button
-          onClick={scrollToNextSection}
-          className="group fixed bottom-8 right-8 w-10 h-10 bg-white rounded-full overflow-hidden transition-all duration-300 focus:outline-none outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 z-30 hover:bg-[#262626]"
-          aria-label="Scroll to next section"
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-2 h-2 border-r-2 border-b-2 border-black transform rotate-45 transition-colors duration-300 group-hover:border-white"></div>
-          </div>
-        </button>
       </div>
-      <div id="next-section" ref={nextSectionRef} className="h-screen bg-gray-900">
+      <div id="next-section" className="h-screen bg-gray-900">
         <ThirdSection />
       </div>
     </>
