@@ -111,7 +111,7 @@ const Navbar = () => {
           </span>
 
           {/* Dropdown Menu */}
-          <div className="absolute left-1/2 -translate-x-1/2 mt-2 bg-black text-white p-4 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-lg">
+          {/* <div className="absolute left-1/2 -translate-x-1/2 mt-2 bg-black text-white p-4 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-lg">
             <Link to="/product1" className="block py-2 px-4 rounded-md hover:bg-gray-700 transition-colors duration-300">
               Moval
             </Link>
@@ -119,7 +119,18 @@ const Navbar = () => {
               Cars
             </Link>
           </div>
+        </div> */}
+
+        <div className="absolute left-1/2 -translate-x-1/2 mt-2 bg-black text-white p-4 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-lg">
+            <button to="/product1" className="block py-2 px-4 rounded-md hover:bg-gray-700 transition-colors duration-300">
+              Moval
+            </button>
+            <button to="/product2" className="block py-2 px-4 rounded-md hover:bg-gray-700 transition-colors duration-300">
+              Cars
+            </button>
+          </div>
         </div>
+
 
         <Link
           to="/blogs"

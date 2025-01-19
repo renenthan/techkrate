@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Youtube, Linkedin, Instagram, ChevronUp } from "lucide-react";
 export default function Footer() {
   const navigate = useNavigate();
@@ -123,16 +123,17 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-8 pt-4 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
-          <p>© 2025 Techkrate, All rights reserved</p>
+          <p>© 2025 LURP Technologies Pvt. Ltd., All rights reserved</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <button onClick={() => navigate("/addBlog")} className="text-gray-500 hover:text-white transition-colors duration-300 ease-in-out">
               Add Blog
             </button>
-            {["Terms & Conditions", "Privacy Policy"].map((item) => (
-              <a key={item} href="#" className="hover:text-white transition-colors duration-300 ease-in-out">
-                {item}
-              </a>
-            ))}
+            <Link to="/TermsAndConditions" className="hover:text-white transition-colors duration-300 ease-in-out">
+              Terms & Conditions
+            </Link>
+            <Link to="/PrivacyPolicy" className="hover:text-white transition-colors duration-300 ease-in-out">
+              Privacy Policy
+            </Link>
           </div>
         </div>
 

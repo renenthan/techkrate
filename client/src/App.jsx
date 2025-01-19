@@ -11,6 +11,8 @@ import BlogDetail from "./pages/BlogDetail";
 import Navbar from "./components/Navbar";
 import Product1 from "./pages/Product1";
 import Product2 from "./pages/Product2";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndCondition";
 import LoadingScreen from './pages/LoadingScreen';  // Import LoadingScreen
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/moval" element={<Product1 />} />
             <Route path="/cars" element={<Product2 />} />
+            <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
+            <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
             <Route path="/blogs/:id" element={<BlogDetail />} />
 
             <Route
