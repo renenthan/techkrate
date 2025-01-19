@@ -7,7 +7,7 @@ import bgVid from "/bgVid.mp4";
 gsap.registerPlugin(ScrollTrigger);
 
 const MessageCard = ({ title, message }) => (
-  <div className="group relative z-10 max-w-2xl mx-auto p-8 bg-zinc-900/80 backdrop-blur-lg rounded-2xl shadow-xl transform-gpu transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+  <div className="group relative z-10 max-w-2xl mx-auto p-8 bg-zinc-900/80 backdrop-blur-lg rounded-2xl shadow-xl transform-gpu transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 mt-32 mb-32">
     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <h3 className="text-3xl text-center font-semibold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text ">{title}</h3>
     <p className="text-xl text-gray-300 relative z-10">{message}</p>
@@ -98,45 +98,18 @@ const AboutUs = () => {
         {/* Header Section */}
         <div ref={headerRef} className="text-center max-w-6xl mx-auto">
           <div className="relative">
-            <h2 className="text-8xl font-bold mb-6 mt-32 bg-gradient-to-r text-white bg-clip-text text-transparent">
+            <h2 className="text-7xl font-bold mb-6 mt-32  text-white ">
               About Us
             </h2>
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 blur-3xl opacity-20 -z-10" />
           </div>
-          <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mt-10 space-y-6">
+          <p className="text-xl md:text-2xl text-justify text-gray-300 leading-relaxed mt-10 space-y-6">
             Your gateway to simplifying the complex. We develop software and SaaS solutions that empower individuals and businesses to navigate and thrive in an increasingly digital world. Our approach transforms intricate problems into clear, actionable tools that work for everyone, regardless of expertise or experience.
             <br /><br />
             Imagine easily managing your business operations, scaling confidently, or solving daily challenges with absolute clarity. Whether you're a seasoned tech professional or a first-time user, Techkrate ensures that the experience is intuitive, powerful, and adaptable to your needs.
             <br /><br />
             We don't just build software; we create tools that bridge the gap between complexity and understanding. The future is complex—Techkrate makes it clear.
           </p>
-        </div>
-
-        {/* Team Members Section */}
-        <div ref={teamRef} className="text-center max-w-6xl mx-auto">
-          <h3 className="text-4xl font-semibold mb-16 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text ">
-            Leading Techkrate
-          </h3>
-          <div className="grid md:grid-cols-2 gap-16 justify-items-center">
-            {[
-              { name: "Lalit Singh Chauhan", role: "Chief Executive Officer" },
-              { name: "Utkarsh Chauhan", role: "Chief Operating Officer" },
-            ].map((member, index) => (
-              <TeamMember key={index} {...member} />
-            ))}
-          </div>
-        </div>
-
-        {/* CEO and COO Messages */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          <MessageCard
-            title="From the CEO"
-            message="At Techkrate, we envision a future where complexity is no longer a barrier to innovation. Our mission is to empower businesses with transformative tools that enable them to navigate the digital era with confidence and clarity. This is not just about building software—it's about redefining the way the world works, connects, and grows. Together, we're shaping a smarter, more intuitive tomorrow."
-          />
-          <MessageCard
-            title="From the COO"
-            message="Operational excellence is the backbone of innovation, and at Techkrate, we ensure every process, platform, and solution is engineered for scalability, precision, and impact. Our commitment lies in bridging the gap between cutting-edge technology and seamless execution, empowering businesses to achieve their highest potential. The future of SaaS is here, and it's driven by clarity and purpose."
-          />
         </div>
 
         {/* Our Charter Section */}
@@ -172,6 +145,35 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
+        {/* Team Members Section */}
+        <div ref={teamRef} className="text-center max-w-6xl mx-auto">
+          <h3 className="text-4xl mt-32 font-semibold mb-16 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text ">
+            Leading Techkrate
+          </h3>
+          <div className="grid md:grid-cols-2 gap-16 justify-items-center">
+            {[
+              { name: "Lalit Singh Chauhan", role: "Chief Executive Officer" },
+              { name: "Utkarsh Chauhan", role: "Chief Operating Officer" },
+            ].map((member, index) => (
+              <TeamMember key={index} {...member} />
+            ))}
+          </div>
+        </div>
+
+        {/* CEO and COO Messages */}
+        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          <MessageCard
+            title="From the CEO"
+            message="At Techkrate, we envision a future where complexity is no longer a barrier to innovation. Our mission is to empower businesses with transformative tools that enable them to navigate the digital era with confidence and clarity. This is not just about building software—it's about redefining the way the world works, connects, and grows. Together, we're shaping a smarter, more intuitive tomorrow."
+          />
+          <MessageCard
+            title="From the COO"
+            message="Operational excellence is the backbone of innovation, and at Techkrate, we ensure every process, platform, and solution is engineered for scalability, precision, and impact. Our commitment lies in bridging the gap between cutting-edge technology and seamless execution, empowering businesses to achieve their highest potential. The future of SaaS is here, and it's driven by clarity and purpose."
+          />
+        </div>
+
+        
 
       <Footer />
     </div>
