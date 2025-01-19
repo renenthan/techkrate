@@ -71,7 +71,7 @@ export default function Footer() {
             <ul className="mt-2 space-y-2">
               <li>
                 <a href="tel:+919990547098" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
-                  Mobile: +91 9990547098
+                  Contact: +91-1203107109
                 </a>
               </li>
               <li className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">

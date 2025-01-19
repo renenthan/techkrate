@@ -16,7 +16,7 @@ const Navbar = () => {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { duration: 0.3, ease: "power2.out" } });
 
-    tl.fromTo([logoRef.current, ...linksRef.current, buttonRef.current], { y: -20, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1 });
+    tl.fromTo([logoRef.current, ...linksRef.current, buttonRef.current], { y: -30, opacity: 0 }, { y: 0, delay: 0.3, opacity: 1, stagger: 0.07 });
 
     linksRef.current.forEach((link, index) => {
       const underline = link.querySelector(".underline");
@@ -98,17 +98,24 @@ const Navbar = () => {
           <span>ABOUT US</span>
           <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
         </Link>
-        <div className="relative text-white cursor-pointer group" ref={(el) => (linksRef.current[2] = el)}>
-          <span className="relative">
+        <div
+          className="relative text-white cursor-pointer group"
+          ref={(el) => (linksRef.current[2] = el)}
+          onMouseEnter={() => setHoveredLink(2)}
+          onMouseLeave={() => setHoveredLink(null)}
+        >
+          {/* Products Link */}
+          <span className="relative inline-block">
             PRODUCTS
-            <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current"></span>
+            <span className="underline absolute left-0 bottom-0 w-full h-[2px] bg-current transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
           </span>
 
-          <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-black text-white p-4 rounded-lg opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-opacity duration-300">
-            <Link to="/product1" className="block py-2 px-4 hover:border-white hover:border-2">
+          {/* Dropdown Menu */}
+          <div className="absolute left-1/2 -translate-x-1/2 mt-2 bg-black text-white p-4 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-lg">
+            <Link to="/product1" className="block py-2 px-4 rounded-md hover:bg-gray-700 transition-colors duration-300">
               Moval
             </Link>
-            <Link to="/product2" className="block py-2 px-4 hover:border-white hover:border-2">
+            <Link to="/product2" className="block py-2 px-4 rounded-md hover:bg-gray-700 transition-colors duration-300">
               Cars
             </Link>
           </div>

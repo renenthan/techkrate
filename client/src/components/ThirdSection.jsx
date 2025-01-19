@@ -42,7 +42,7 @@ export default function ThirdSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col justify-between bg-black text-white min-h-screen overflow-hidden py-12 px-4 sm:px-6 lg:px-8 font-Helix"
+      className="relative flex flex-col justify-between bg-black text-white h-screen overflow-hidden py-12 px-4 sm:px-6 lg:px-8 font-Helix"
     >
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-center bg-no-repeat bg-cover filter blur-sm"></div>
