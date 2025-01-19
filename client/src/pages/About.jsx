@@ -1,52 +1,29 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight } from "lucide-react";
 import Footer from "../components/Footer";
 import bgVid from "/bgVid.mp4";
-
+import LalitBG from "../assets/image/LalitBG.webp";
+import UtkarshBG from "../assets/image/UtkarshBG.webp";
 gsap.registerPlugin(ScrollTrigger);
-
-const MessageCard = ({ title, message }) => (
-  <div className="text-center relative z-10 max-w-2xl mt-32 mb-32 mx-auto p-8 bg-zinc-900 rounded-xl shadow-xl transform-gpu transition-transform duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-gray-600">
-    <h3 className="text-3xl font-semibold mb-6">{title}</h3>
-    <p className="text-xl text-gray-300">{message}</p>
-  </div>
-);
-
-const TeamMember = ({ name, role }) => (
-  <div className="group relative space-y-4 perspective-1000">
-    <div className="relative transform transition-all duration-700 preserve-3d group-hover:rotate-y-180">
-      <div className="overflow-hidden rounded-2xl mx-auto w-72 h-72 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-6xl font-semibold text-white shadow-xl">
-        {name.split(" ").map(word => word[0]).join("")}
-      </div>
-      <div className="absolute inset-0 rounded-2xl bg-zinc-900/90 backdrop-blur-lg rotate-y-180 backface-hidden p-6 flex flex-col items-center justify-center">
-        <p className="text-lg text-gray-300">
-          {role === "Chief Executive Officer" ? 
-            "Visionary leader driving innovation and strategic growth" :
-            "Operational mastermind ensuring excellence in execution"}
-        </p>
-      </div>
-    </div>
-    <h4 className="text-2xl font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">{name}</h4>
-    <p className="text-gray-400">{role}</p>
-  </div>
-);
 
 const CharterItem = ({ title, content }) => (
   <li className="group relative p-6 bg-zinc-900/50 backdrop-blur-lg rounded-xl transition-all duration-500 hover:bg-zinc-900/80">
     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-    <h4 className="text-xl font-semibold mb-2 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">{title}</h4>
+    <h4 className="text-xl font-Helix font-semibold mb-2 text-white">{title}</h4>
     <p className="text-zinc-400">{content}</p>
   </li>
 );
 
 const AboutUs = () => {
   const headerRef = useRef(null);
-  const teamRef = useRef(null);
   const charterRef = useRef(null);
 
   useEffect(() => {
-    const fadeInAnimation = (element, trigger) => {
+    const fadeInAnimation = (element) => {
       gsap.fromTo(
         element,
         { opacity: 0, y: 50 },
@@ -55,8 +32,8 @@ const AboutUs = () => {
           y: 0,
           duration: 1,
           scrollTrigger: {
-            trigger: trigger || element,
-            start: 'top 80%',
+            trigger: element,
+            start: "top 80%",
           },
         }
       );
@@ -64,58 +41,37 @@ const AboutUs = () => {
 
     fadeInAnimation(headerRef.current);
     fadeInAnimation(charterRef.current);
-
-    gsap.fromTo(
-      teamRef.current.children,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: teamRef.current,
-          start: 'top 80%',
-        },
-      }
-    );
   }, []);
 
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
-      <video
-        className="fixed top-0 left-0 w-screen h-screen object-cover opacity-40"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
+      <video className="fixed top-0 left-0 w-screen h-screen object-cover opacity-40" autoPlay loop muted playsInline>
         <source src={bgVid} type="video/mp4" />
       </video>
 
       <div className="relative z-10 px-6 md:px-16 py-20 space-y-32">
         {/* Header Section */}
-        <div ref={headerRef} className="text-center max-w-6xl mx-auto">
-          <div className="relative">
-            <h2 className="text-7xl font-bold mb-6 mt-32  text-white ">
-              About Us
-            </h2>
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 blur-3xl opacity-20 -z-10" />
-          </div>
-          <p className="text-xl md:text-2xl text-justify text-gray-300 leading-relaxed mt-10 space-y-6">
-            Your gateway to simplifying the complex. We develop software and SaaS solutions that empower individuals and businesses to navigate and thrive in an increasingly digital world. Our approach transforms intricate problems into clear, actionable tools that work for everyone, regardless of expertise or experience.
-            <br /><br />
-            Imagine easily managing your business operations, scaling confidently, or solving daily challenges with absolute clarity. Whether you're a seasoned tech professional or a first-time user, Techkrate ensures that the experience is intuitive, powerful, and adaptable to your needs.
-            <br /><br />
-            We don't just build software; we create tools that bridge the gap between complexity and understanding. The future is complex—Techkrate makes it clear.
+        <div ref={headerRef} className="max-w-6xl mx-auto">
+          <h1 className="font-Helix text-5xl font-bold mb-6 mt-32 text-white">About Us</h1>
+          <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mt-10 space-y-6">
+            Your gateway to simplifying the complex. We develop software and SaaS solutions that empower individuals and businesses to navigate and
+            thrive in an increasingly digital world. Our approach transforms intricate problems into clear, actionable tools that work for everyone,
+            regardless of expertise or experience.
+            <br />
+            <br />
+            Imagine easily managing your business operations, scaling confidently, or solving daily challenges with absolute clarity. Whether you're a
+            seasoned tech professional or a first-time user, Techkrate ensures that the experience is intuitive, powerful, and adaptable to your
+            needs.
+            <br />
+            <br />
+            We don't just build software; we create tools that bridge the gap between complexity and understanding. The future is complex—Techkrate
+            makes it clear.
           </p>
         </div>
 
         {/* Our Charter Section */}
         <div ref={charterRef} className="text-center max-w-6xl mx-auto">
-          <h3 className="text-5xl font-bold mb-12 bg-gradient-to-r  ">
-            Our Charter
-          </h3>
+          <h1 className="font-Helix text-5xl font-bold mb-12 text-white">Our Charter</h1>
           <div className="space-y-8">
             <p className="text-2xl text-gray-200 leading-relaxed">
               At Techkrate, we are not merely building software; we are architecting the next generation of SaaS solutions that empower businesses to thrive in a hyper-digital economy.
@@ -138,61 +94,53 @@ const AboutUs = () => {
                 content="As a catalyst for transformation, we lead with a visionary approach—fostering ecosystems of innovation that empower businesses to redefine industry benchmarks and deliver exponential value."
               />
             </ul>
-            <p className="text-xl text-gray-300 leading-relaxed mt-8">
-              This charter encapsulates our commitment to shaping the SaaS landscape through transformative, future-ready solutions that accelerate progress and drive meaningful impact.
-            </p>
           </div>
         </div>
-      </div>
 
         {/* Team Members Section */}
-        {/* Team Members Section */}
-<div ref={teamRef} className="text-center w-full  mx-auto">
-  <h3 className="text-4xl mt-32 font-semibold mb-16 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text ">
-    Leading Techkrate
-  </h3>
-  <div className="space-y-16 ">
-    {[
-      { name: "Lalit Singh Chauhan", role: "Chief Executive Officer" },
-      { name: "Utkarsh Chauhan", role: "Chief Operating Officer" },
-    ].map((member, index) => (
-      <div key={index} className="flex items-center justify-between space-y-6">
-        <div className="relative space-y-4 perspective-1000 w-full md:w-3/4">
-          <div className="relative transform transition-all duration-700 preserve-3d group-hover:rotate-y-180">
-            <div className="overflow-hidden rounded-2xl mx-auto w-64 h-64 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-6xl font-semibold text-white shadow-xl">
-              {member.name.split(" ").map(word => word[0]).join("")}
-            </div>
-            <div className="absolute inset-0 rounded-2xl bg-zinc-900/90 backdrop-blur-lg rotate-y-180 backface-hidden p-6 flex flex-col items-center justify-center">
-              <p className="text-lg text-gray-300">
-                {member.role === "Chief Executive Officer"
-                  ? "Visionary leader driving innovation and strategic growth"
-                  : "Operational mastermind ensuring excellence in execution"}
+        <div className="space-y-16">
+          <h1 className="font-Helix text-5xl font-bold mb-6 mt-32 text-white text-center">Leading Techkrate</h1>
+
+          {/* Lalit Singh Chauhan */}
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch bg-black rounded-2xl overflow-hidden">
+            <div className="p-12 lg:p-16 flex flex-col justify-center">
+              <h3 className="font-Helix text-5xl font-bold mb-4 text-white">Lalit Singh Chauhan</h3>
+              <p className="text-xl text-gray-400 mb-8">Chief Executive Officer</p>
+              <p className="text-xl text-gray-300 leading-relaxed mb-12">
+                At Techkrate, we envision a future where complexity is no longer a barrier to innovation. Our mission is to empower businesses with
+                transformative tools that enable them to navigate the digital era with confidence and clarity. This is not just about building
+                software—it's about redefining the way the world works, connects, and grows.
               </p>
+              <a href="https://www.linkedin.com/in/lalit-singh-chauhan-86b42425" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center text-white hover:text-gray-300 transition-colors">
+                Read more <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
+            </div>
+            <div className="max-h-[400px] flex items-center">
+              <img src={LalitBG} alt="Lalit Singh Chauhan's portrait" className="w-full object-cover" />
             </div>
           </div>
+
+          {/* Utkarsh Chauhan */}
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch bg-black rounded-2xl overflow-hidden lg:flex-row-reverse">
+          <div className="max-h-[400px] flex items-center">
+              <img src={UtkarshBG} alt="Utkarsh Chauhan's portrait" className="w-full object-cover" />
+            </div>
+            <div className="p-12 lg:p-16 flex flex-col justify-center">
+              <h3 className="font-Helix text-5xl font-bold mb-4 text-white">Utkarsh Chauhan</h3>
+              <p className="text-xl text-gray-400 mb-8">Chief Operating Officer</p>
+              <p className="text-xl text-gray-300 leading-relaxed mb-12">
+                Operational excellence is the backbone of innovation, and at Techkrate, we ensure every process, platform, and solution is engineered
+                for scalability, precision, and impact. Our commitment lies in bridging the gap between cutting-edge technology and seamless
+                execution, empowering businesses to achieve their highest potential.
+              </p>
+              <a href="https://www.linkedin.com/in/utkarsh-chauhan-techkrate" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center text-white hover:text-gray-300 transition-colors">
+                Read more <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
+            </div>
+            
+          </div>
         </div>
-        <h4 className="text-2xl font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-          {member.name}
-        </h4>
-        <p className="text-gray-400">{member.role}</p>
       </div>
-    ))}
-  </div>
-</div>
-
-        {/* CEO and COO Messages */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          <MessageCard
-            title="From the CEO"
-            message="At Techkrate, we envision a future where complexity is no longer a barrier to innovation. Our mission is to empower businesses with transformative tools that enable them to navigate the digital era with confidence and clarity. This is not just about building software—it's about redefining the way the world works, connects, and grows. Together, we're shaping a smarter, more intuitive tomorrow."
-          />
-          <MessageCard
-            title="From the COO"
-            message="Operational excellence is the backbone of innovation, and at Techkrate, we ensure every process, platform, and solution is engineered for scalability, precision, and impact. Our commitment lies in bridging the gap between cutting-edge technology and seamless execution, empowering businesses to achieve their highest potential. The future of SaaS is here, and it's driven by clarity and purpose."
-          />
-        </div>
-
-        
 
       <Footer />
     </div>
