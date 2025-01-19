@@ -17,6 +17,7 @@
     "@editorjs/link": "github:editor-js/link",
     "@editorjs/list": "^2.0.2",
     "@editorjs/quote": "^2.7.6",
+    "@emailjs/browser": "^4.4.1",
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
     "@fortawesome/free-brands-svg-icons": "^6.7.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",

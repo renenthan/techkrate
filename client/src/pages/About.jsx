@@ -7,10 +7,9 @@ import bgVid from "/bgVid.mp4";
 gsap.registerPlugin(ScrollTrigger);
 
 const MessageCard = ({ title, message }) => (
-  <div className="group relative z-10 max-w-2xl mx-auto p-8 bg-zinc-900/80 backdrop-blur-lg rounded-2xl shadow-xl transform-gpu transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 mt-32 mb-32">
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-    <h3 className="text-3xl text-center font-semibold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text ">{title}</h3>
-    <p className="text-xl text-gray-300 relative z-10">{message}</p>
+  <div className="text-center relative z-10 max-w-2xl mt-32 mb-32 mx-auto p-8 bg-zinc-900 rounded-xl shadow-xl transform-gpu transition-transform duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-gray-600">
+    <h3 className="text-3xl font-semibold mb-6">{title}</h3>
+    <p className="text-xl text-gray-300">{message}</p>
   </div>
 );
 
@@ -147,19 +146,39 @@ const AboutUs = () => {
       </div>
 
         {/* Team Members Section */}
-        <div ref={teamRef} className="text-center max-w-6xl mx-auto">
-          <h3 className="text-4xl mt-32 font-semibold mb-16 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text ">
-            Leading Techkrate
-          </h3>
-          <div className="grid md:grid-cols-2 gap-16 justify-items-center">
-            {[
-              { name: "Lalit Singh Chauhan", role: "Chief Executive Officer" },
-              { name: "Utkarsh Chauhan", role: "Chief Operating Officer" },
-            ].map((member, index) => (
-              <TeamMember key={index} {...member} />
-            ))}
+        {/* Team Members Section */}
+<div ref={teamRef} className="text-center w-full  mx-auto">
+  <h3 className="text-4xl mt-32 font-semibold mb-16 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text ">
+    Leading Techkrate
+  </h3>
+  <div className="space-y-16 ">
+    {[
+      { name: "Lalit Singh Chauhan", role: "Chief Executive Officer" },
+      { name: "Utkarsh Chauhan", role: "Chief Operating Officer" },
+    ].map((member, index) => (
+      <div key={index} className="flex items-center justify-between space-y-6">
+        <div className="relative space-y-4 perspective-1000 w-full md:w-3/4">
+          <div className="relative transform transition-all duration-700 preserve-3d group-hover:rotate-y-180">
+            <div className="overflow-hidden rounded-2xl mx-auto w-64 h-64 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-6xl font-semibold text-white shadow-xl">
+              {member.name.split(" ").map(word => word[0]).join("")}
+            </div>
+            <div className="absolute inset-0 rounded-2xl bg-zinc-900/90 backdrop-blur-lg rotate-y-180 backface-hidden p-6 flex flex-col items-center justify-center">
+              <p className="text-lg text-gray-300">
+                {member.role === "Chief Executive Officer"
+                  ? "Visionary leader driving innovation and strategic growth"
+                  : "Operational mastermind ensuring excellence in execution"}
+              </p>
+            </div>
           </div>
         </div>
+        <h4 className="text-2xl font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          {member.name}
+        </h4>
+        <p className="text-gray-400">{member.role}</p>
+      </div>
+    ))}
+  </div>
+</div>
 
         {/* CEO and COO Messages */}
         <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
