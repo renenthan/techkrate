@@ -90,10 +90,10 @@ const AboutUs = () => {
 
       {/* Header Section */}
       <div ref={headerRef} className="text-center relative z-10">
-        <h2 className="text-5xl font-bold mb-6 mt-16">About Us</h2>
-        <p className="text-lg md:text-xl text-center text-gray-300 max-w-5xl mx-auto leading-relaxed">
+        <h2 className="text-7xl  font-bold mb-6 mt-32">About Us</h2>
+        <p className="text-lg md:text-2xl text-center text-gray-300 max-w-4xl mx-auto leading-relaxed mt-10"> 
         Your gateway to simplifying the complex. We develop software and SaaS solutions that empower individuals and businesses to navigate and thrive in an increasingly digital world. Our approach transforms intricate problems into clear, actionable tools that work for everyone, regardless of expertise or experience.
-        <br /><br />
+        <br /><br />  
 
         Imagine easily managing your business operations, scaling confidently, or solving daily challenges with absolute clarity. Whether you&apos;re a seasoned tech professional or a first-time user, Techkrate ensures that the experience is intuitive, powerful, and adaptable to your needs.
         <br /><br />
@@ -102,36 +102,7 @@ const AboutUs = () => {
         </p>
       </div>
 
-      {/* Our Charter Section */}
-      <div ref={charterRef} className="text-center relative z-10">
-        <h3 className="text-3xl font-semibold mb-12">Our Charter</h3>
-        <div className="space-y-8 max-w-5xl mx-auto text-left">
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-            At Techkrate, we are not merely building software; we are architecting the next generation of SaaS solutions that empower businesses to thrive in a hyper-digital economy.
-          </p>
-          <ul className="space-y-4 text-lg text-gray-400 leading-relaxed">
-            <li><strong>Operational Simplification at Scale</strong><br />
-            We specialize in abstracting complexity from mission-critical workflows, delivering SaaS platforms that streamline operations and drive unparalleled efficiency across organizations of all sizes.
-            </li>
-
-            <li><strong>User-Centric Innovation Framework</strong><br /> 
-            Our development philosophy prioritizes intuitive UX design, robust API integrations, and modular functionality, ensuring our platforms align seamlessly with evolving business needs and user expectations.</li>
-
-            <li><strong>Enterprise-Grade Reliability and Excellence</strong><br /> 
-            We uphold the highest standards of security, performance, and compliance, delivering resilient SaaS infrastructures that enterprises can trust to handle their most sensitive operations.
-            </li>
-
-            <li><strong>Vision-Driven Ecosystem Leadership</strong><br /> 
-            As a catalyst for transformation, we lead with a visionary approach—fostering ecosystems of innovation that empower businesses to redefine industry benchmarks and deliver exponential value.
-            </li>
-
-            
-
-
-          </ul>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">This charter encapsulates our commitment to shaping the SaaS landscape through transformative, future-ready solutions that accelerate progress and drive meaningful impact.</p>
-        </div>
-      </div>
+      
 
       {/* Team Members Section */}
       <div ref={teamRef} className="text-center relative z-10">
@@ -165,6 +136,37 @@ const AboutUs = () => {
           title="From the COO"
           message="Operational excellence is the backbone of innovation, and at Techkrate, we ensure every process, platform, and solution is engineered for scalability, precision, and impact. Our commitment lies in bridging the gap between cutting-edge technology and seamless execution, empowering businesses to achieve their highest potential. The future of SaaS is here, and it's driven by clarity and purpose."
         />
+      </div>
+
+      {/* Our Charter Section */}
+      <div ref={charterRef} className="text-center relative z-10">
+        <h3 className="text-4xl font-bold mb-12">Our Charter</h3>
+        <div className="space-y-8 max-w-5xl mx-auto text-left">
+          <p className="text-2xl md:text-xl text-gray-200 leading-relaxed">
+            At Techkrate, we are not merely building software; we are architecting the next generation of SaaS solutions that empower businesses to thrive in a hyper-digital economy.
+          </p>
+          <ul className="space-y-4 text-xl text-zinc-400 leading-relaxed">
+            <li><strong>Operational Simplification at Scale</strong><br />
+            We specialize in abstracting complexity from mission-critical workflows, delivering SaaS platforms that streamline operations and drive unparalleled efficiency across organizations of all sizes.
+            </li>
+
+            <li><strong>User-Centric Innovation Framework</strong><br /> 
+            Our development philosophy prioritizes intuitive UX design, robust API integrations, and modular functionality, ensuring our platforms align seamlessly with evolving business needs and user expectations.</li>
+
+            <li><strong>Enterprise-Grade Reliability and Excellence</strong><br /> 
+            We uphold the highest standards of security, performance, and compliance, delivering resilient SaaS infrastructures that enterprises can trust to handle their most sensitive operations.
+            </li>
+
+            <li><strong>Vision-Driven Ecosystem Leadership</strong><br /> 
+            As a catalyst for transformation, we lead with a visionary approach—fostering ecosystems of innovation that empower businesses to redefine industry benchmarks and deliver exponential value.
+            </li>
+
+            
+
+
+          </ul>
+          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">This charter encapsulates our commitment to shaping the SaaS landscape through transformative, future-ready solutions that accelerate progress and drive meaningful impact.</p>
+        </div>
       </div>
 
       <Footer />
