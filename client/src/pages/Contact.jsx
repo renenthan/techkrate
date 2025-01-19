@@ -3,14 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
-import { Resend } from "resend";
-
-const resend = new Resend("re_BvqMTmdb_FGmUMTj2AvMuaXn4rZDDkEDv");
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   const titleRef = useRef(null);
   const formRef = useRef(null);
-  const inputRefs = useRef([]); // Store references for all inputs
 
   useEffect(() => {
     gsap.fromTo(
@@ -23,48 +20,51 @@ function Contact() {
       { opacity: 0, y: 50 },
       { opacity: 1, y: 0, duration: 1, delay: 0.6 }
     );
-    inputRefs.current.forEach((input, index) => {
-      gsap.fromTo(
-        input,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, delay: 0.8 + index * 0.1 }
-      );
-    });
   }, []);
 
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
 
-    // Collect form data
-    const data = {};
-    inputRefs.current.forEach((input, index) => {
-      if (input) {
-        data[input.name] = input.value;
-      } else {
-        console.error(`Input reference at index ${index} is undefined.`);
-      }
-    });
+    // Ensure formRef points to the <form> element
+    const formElement = formRef.current;
 
-    try {
-      // Sending email using Resend
-      const response = await resend.emails.send({
-        from: "chitvan22jain@gmail.com",
-        to: "chitvan22jain@gmail.com",
-        subject: "Contact Form Submission",
-        html: `
-          <h1>Contact Form Submission</h1>
-          <p>First Name: ${data.firstName || "N/A"}</p>
-          <p>Last Name: ${data.lastName || "N/A"}</p>
-          <p>Company: ${data.companyName || "N/A"}</p>
-          <p>Email: ${data.email || "N/A"}</p>
-          <p>Phone: ${data.phoneNumber || "N/A"}</p>
-          <p>Message: ${data.message || "N/A"}</p>
-        `,
-      });
-      console.log("Email sent successfully:", response);
-    } catch (error) {
-      console.error("Error sending email:", error);
+    // Check if formRef.current is an HTMLFormElement
+    if (!(formElement instanceof HTMLFormElement)) {
+      console.error("formRef.current is not an HTMLFormElement.");
+      return;
     }
+
+    // Create FormData and build emailData
+    const formData = new FormData(formElement);
+    const emailData = {
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      phoneNumber: formData.get("phoneNumber"),
+      companyName: formData.get("companyName"),
+      message: formData.get("message"),
+    };
+
+    emailjs
+      .send(
+        "service_pshv414", // Replace with your EmailJS Service ID
+        "template_nm0rxsx", // Replace with your EmailJS Template ID
+        emailData, // Data in the required format
+        "rMnX48H9rXiKXzuaU" // Replace with your EmailJS Public Key
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          alert("Your message has been sent successfully!");
+        },
+        (error) => {
+          console.error("Error sending email:", error);
+          alert("There was an error sending your message. Please try again.");
+        }
+      );
+
+    // Clear form fields after submission
+    formElement.reset();
   };
 
   return (
@@ -99,11 +99,8 @@ function Contact() {
         </div>
 
         {/* Form Section */}
-        <div
-          ref={formRef}
-          className="bg-gray-900 text-gray-100 p-6 rounded-lg w-full lg:w-2/5 max-w-md shadow-xl border border-gray-800"
-        >
-          <form className="space-y-4" onSubmit={handleSubmit}>
+        <div className="bg-gray-900 text-gray-100 p-6 rounded-lg w-full lg:w-2/5 max-w-md shadow-xl border border-gray-800">
+          <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block mb-1 text-xs font-medium text-gray-400">
@@ -111,7 +108,6 @@ function Contact() {
                 </label>
                 <input
                   type="text"
-                  ref={(el) => (inputRefs.current[0] = el)}
                   name="firstName"
                   className="w-full p-2 bg-transparent border-b border-gray-700 text-white text-sm focus:outline-none"
                   placeholder="First Name"
@@ -123,7 +119,6 @@ function Contact() {
                 </label>
                 <input
                   type="text"
-                  ref={(el) => (inputRefs.current[1] = el)}
                   name="lastName"
                   className="w-full p-2 bg-transparent border-b border-gray-700 text-white text-sm focus:outline-none"
                   placeholder="Last Name"
@@ -136,7 +131,6 @@ function Contact() {
               </label>
               <input
                 type="email"
-                ref={(el) => (inputRefs.current[2] = el)}
                 name="email"
                 className="w-full p-2 bg-transparent border-b border-gray-700 text-white text-sm focus:outline-none"
                 placeholder="Email"
@@ -148,7 +142,6 @@ function Contact() {
               </label>
               <input
                 type="tel"
-                ref={(el) => (inputRefs.current[3] = el)}
                 name="phoneNumber"
                 className="w-full p-2 bg-transparent border-b border-gray-700 text-white text-sm focus:outline-none"
                 placeholder="Phone Number"
@@ -160,7 +153,6 @@ function Contact() {
               </label>
               <input
                 type="text"
-                ref={(el) => (inputRefs.current[4] = el)}
                 name="companyName"
                 className="w-full p-2 bg-transparent border-b border-gray-700 text-white text-sm focus:outline-none"
                 placeholder="Company Name"
@@ -171,7 +163,6 @@ function Contact() {
                 Message
               </label>
               <textarea
-                ref={(el) => (inputRefs.current[5] = el)}
                 name="message"
                 className="w-full p-2 bg-transparent border border-gray-700 text-white text-sm focus:outline-none"
                 placeholder="Your Message"
