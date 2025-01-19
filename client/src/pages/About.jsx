@@ -91,7 +91,7 @@ const AboutUs = () => {
       {/* Header Section */}
       <div ref={headerRef} className="text-center relative z-10">
         <h2 className="text-5xl font-bold mb-6 mt-16">About Us</h2>
-        <p className="text-lg md:text-xl text-left text-gray-300 max-w-4xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-center text-gray-300 max-w-5xl mx-auto leading-relaxed">
         Your gateway to simplifying the complex. We develop software and SaaS solutions that empower individuals and businesses to navigate and thrive in an increasingly digital world. Our approach transforms intricate problems into clear, actionable tools that work for everyone, regardless of expertise or experience.
         <br /><br />
 
@@ -105,7 +105,7 @@ const AboutUs = () => {
       {/* Our Charter Section */}
       <div ref={charterRef} className="text-center relative z-10">
         <h3 className="text-3xl font-semibold mb-12">Our Charter</h3>
-        <div className="space-y-8 max-w-4xl mx-auto text-left">
+        <div className="space-y-8 max-w-5xl mx-auto text-left">
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             At Techkrate, we are not merely building software; we are architecting the next generation of SaaS solutions that empower businesses to thrive in a hyper-digital economy.
           </p>
