@@ -1,12 +1,13 @@
 "use client";
 
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import bgVid from "/bgVid.mp4";
-import { ArrowRight } from "lucide-react";
 import ThirdSection from "./ThirdSection";
+import { ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -18,43 +19,51 @@ const HeroSection = () => {
   const buttonRef = useRef([]);
   const dotsRef = useRef(null);
 
-  const nextSectionRef = useRef(null);
-
   const slides = [
     {
       title: "Turning Complexity Into Clarity",
       subHeading:
-        "We distil complex challenges into clear solutions, empowering organizations to advance with precision and purpose.",
+        "We distil complex challenges into clear solutions, empowering organizations to advance with precision and purpose. Together, we forge a future where technology illuminates the path to progress and catalyzes meaningful, transformative change.",
       link: "/about",
     },
     {
       title: "Redefining Motor Claims Processing",
       subHeading:
-        "Moval revolutionizes motor claims handling by integrating advanced technology with industry-specific workflows.",
+        "Moval revolutionizes motor claims handling by integrating advanced technology with industry-specific workflows. It simplifies vehicle assessments, expedites resolutions, and enhances operational accuracy, providing a streamlined, efficient, and dependable process tailored to insurers and surveyors alike.",
       link: "/moval",
     },
     {
       title: "AI-Driven Assessment Intelligence",
       subHeading:
-        "Moval's AI goes beyond damage detection, extracting complex data from assessment sheets and populating loss estimations instantly.",
+        "Moval's AI goes beyond damage detection, extracting complex data from assessment sheets and populating loss estimations instantly. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with cutting-edge technology for unparalleled efficiency.",
       link: "/moval",
     },
     {
       title: "Regulatory-Compliant Survey Reports",
       subHeading:
-        "Moval ensures survey reports strictly adhere to IRDA guidelines, maintaining compliance and professionalism.",
+        "Moval ensures survey reports strictly adhere to IRDA guidelines, maintaining compliance and professionalism. Its standardized processes guarantee transparent reporting, enabling insurers and surveyors to meet regulatory requirements while delivering consistent and trustworthy claim assessments.",
       link: "/moval",
     },
     {
       title: "Integrated Management and Mobile Approvals",
       subHeading:
-        "Moval offers robust tools for multi-office management and automated estimate imports.",
+        "Moval offers robust tools for multi-office management and automated estimate imports. Its mobile-enabled platform facilitates instant report approvals, empowering stakeholders to make real-time decisions while enhancing productivity and collaboration across diverse operational setups.",
       link: "/moval",
     },
   ];
 
   const [totalSlides] = useState(slides.length);
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleClick = (index) => {
+    gsap.to(buttonRef.current[index], {
+      scale: 0.95,
+      duration: 0.1,
+      ease: "power2.out",
+      yoyo: true,
+      repeat: 1,
+    });
+  };
 
   useEffect(() => {
     const textContainers = textContainersRef.current;
@@ -65,7 +74,7 @@ const HeroSection = () => {
         pin: true,
         scrub: 1,
         snap: 1 / (totalSlides - 1),
-        end: () => `+=${window.innerWidth * (totalSlides - 1)}`,
+        end: `+=${window.innerWidth * (totalSlides - 1)}`,
         anticipatePin: 1,
         onUpdate: (self) => {
           const newSlide = Math.round(self.progress * (totalSlides - 1));
@@ -129,17 +138,13 @@ const HeroSection = () => {
   const scrollToSlide = (index) => {
     gsap.to(window, {
       duration: 1.5,
-      scrollTo: { x: containerRef.current.offsetWidth * index, y: 0 },
+      scrollTo: {
+        y: window.innerWidth * index,
+        offsetY: 0,
+      },
       ease: "power3.inOut",
     });
-  };
-
-  const scrollToNextSection = () => {
-    gsap.to(window, {
-      duration: 1.5,
-      scrollTo: { y: nextSectionRef.current, offsetY: 0 },
-      ease: "power3.inOut",
-    });
+    setCurrentSlide(index);
   };
 
   return (
@@ -181,20 +186,22 @@ const HeroSection = () => {
                 >
                   {slide.subHeading}
                 </p>
-                <a
-                  href={slide.link}
-                  className="connect-btn inline-block bg-white rounded-full text-black transition-all duration-50 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-[170px] mt-5"
+                <Link
+                  to={slide.link}
+                  ref={(el) => (buttonRef.current[index] = el)}
+                  onClick={() => handleClick(index)}
+                  className="connect-btn inline-block bg-white rounded-full text-black transition-all duration-150 hover:bg-black group overflow-hidden hover:border-white hover:text-white border-2 w-[170px] mt-5"
                 >
                   <div className="flex items-center p-3 justify-center w-full">
-                    <span className="transition-all duration-300 inline-block">
+                    <span className="group-hover:text-white transition-all duration-300 inline-block">
                       Discover More
                     </span>
                     <ArrowRight
-                      className="ml-2 h-5 w-5 transition-transform duration-300 ease-in-out"
+                      className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-300 ease-in-out"
                       aria-hidden="true"
                     />
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -214,19 +221,7 @@ const HeroSection = () => {
           ))}
         </div>
       </div>
-
-      {/* Button to scroll to next section */}
-      {/* <div className="fixed bottom-14 right-14 flex items-center justify-center z-30">
-        <button
-          onClick={scrollToNextSection}
-          className="group w-12 h-12 bg-white rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#262626]"
-          aria-label="Scroll to next section"
-        >
-          <div className="arrow w-5 h-5 border-r-2 border-b-2 border-black transform rotate-45 transition-colors duration-300 group-hover:border-white"></div>
-        </button>
-      </div> */}
-
-      <div id="next-section" ref={nextSectionRef} className="h-screen bg-gray-900">
+      <div id="next-section" className="h-screen bg-gray-900">
         <ThirdSection />
       </div>
     </>

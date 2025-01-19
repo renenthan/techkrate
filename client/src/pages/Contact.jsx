@@ -5,7 +5,7 @@ import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-
 import { gsap } from "gsap";
 import { Resend } from "resend";
 
-const resend = new Resend("YOUR_API_KEY");
+const resend = new Resend("re_BvqMTmdb_FGmUMTj2AvMuaXn4rZDDkEDv");
 
 function Contact() {
   const titleRef = useRef(null);
