@@ -48,8 +48,8 @@ function Contact() {
     try {
       // Sending email using Resend
       const response = await resend.emails.send({
-        from: "support@yourdomain.com",
-        to: data.email || "default@domain.com",
+        from: "chitvan22jain@gmail.com",
+        to: "chitvan22jain@gmail.com",
         subject: "Contact Form Submission",
         html: `
           <h1>Contact Form Submission</h1>
