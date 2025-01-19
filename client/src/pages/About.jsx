@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from "../components/Footer";
 import AboutBg from "../assets/image/AboutBG.png";
+import bgVid from "/bgVid.mp4"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,16 +78,21 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="bg-black text-white px-6 md:px-16 py-20 space-y-20 relative overflow-hidden">
+
+    <div className="bg-black text-white px-6 md:px-16 py-20 space-y-20 relative  overflow-hidden">
+      <video
+          className="absolute top-0 right-0 w-auto h-screen object-cover z-0"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={bgVid} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
       {/* Background Image */}
-      <div className="absolute top-0 right-0 w-auto h-full opacity-100 z-0">
-        <img
-          ref={bgImageRef}
-          src={AboutBg}
-          alt="About Us Background"
-          className="w-full h-auto max-w-7xl mx-auto object-cover"
-        />
-      </div>
+      
 
       {/* Header Section */}
       <div ref={headerRef} className="text-center relative z-10">
