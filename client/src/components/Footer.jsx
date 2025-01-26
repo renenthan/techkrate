@@ -108,7 +108,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-white mb-2">Our Location</h3>
             <div className="w-full h-48 rounded-lg overflow-hidden border border-gray-800 hover:border-white transition-colors duration-300 ease-in-out">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.8923728197974!2d77.3890273!3d28.662941099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf072b2211a6f%3A0x96e696e17da5e1ee!2s1%2F416%2C%20Sector%201%2C%20Vasundhara%2C%20Ghaziabad%2C%20Uttar%20Pradesh%20201012!5e0!3m2!1sen!2sin!4v1731923497500!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.002060346923!2d77.36605417511863!3d28.659656975649895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfaa2966d969d%3A0x4ccc339bfb64f56a!2sSG%20Estates%20-%20SG%20Alpha%20Tower%2C%20Vasundhara!5e0!3m2!1sen!2sin!4v1737911576814!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
