@@ -45,7 +45,7 @@ const HeroSection = () => {
       link: "/moval",
     },
     {
-      title: "Integrated Management and Mobile Approvals",
+      title: "Centralized Control & Mobile Approvals",
       subHeading:
         "Moval offers robust tools for multi-office management and automated estimate imports. Its mobile-enabled platform facilitates instant report approvals, empowering stakeholders to make real-time decisions while enhancing productivity and collaboration across diverse operational setups.",
       link: "/moval",

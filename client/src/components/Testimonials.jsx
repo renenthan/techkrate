@@ -3,36 +3,32 @@ import PropTypes from 'prop-types'
 
 const testimonials = [
   {
-    quote: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendus ipsum dignissimos? Officiis ipsam dolorum magnam assumenda.",
-    author: "Johnathan Rodriguez",
-    role: "UX Research, Atlassian"
+    quote: "With IRDA-compliant reporting, mobile app-based surveys, real-time damage marking, and seamless data reusability, Moval sets a new standard in efficiency and precision for data-driven claim management.",
+    author: "N. Vishwanath",
+    company: "IIISLA Fellow Member"
   },
   {
-    quote: "Expedita sequi cupiditate harum repellendus ipsum dignissimos. Officiis ipsam dolorum magnam assumenda, consectetur adipisicing elit.",
-    author: "Sarah Chen",
-    role: "Product Designer, Figma"
+    quote: "Moval’s intuitive cloud platform and mobile app empower surveyors with state-of-the-art tools to execute precise inspections and deliver comprehensive reports effortlessly.",
+    author: "Sandeep Saxena",
+    company: "Surveyor & Loss Assessor"
   },
   {
-    quote: "Consectetur adipisicing elit, expedita sequi cupiditate harum repellendus ipsum dignissimos. Officiis ipsam dolorum magnam assumenda.",
-    author: "Michael Park",
-    role: "Engineering Lead, Vercel"
+    quote: "As a chartered engineer, CARS offers an intuitive, hybrid platform that simplifies report management, enhances staff coordination, and streamlines administrative tasks with its powerful mobile app integration.",
+    author: "Naveen Arora",
+    company: "ACE Consulting Pvt. Ltd."
   },
   {
-    quote: "Innovative solutions that truly revolutionized our workflow. The impact on our productivity has been immeasurable.",
-    author: "Emily Watson",
-    role: "CTO, TechNova"
+    quote: "Techkrate exemplifies technological innovation, delivering transformative solutions that drive efficiency, scalability, and digital evolution for modern enterprises.",
+    author: "RNS Kushwaha",
+    company: "IIISLA Fellow Member"
   },
   {
-    quote: "Exceptional customer service coupled with cutting-edge technology. It's rare to find a company that excels in both.",
-    author: "David Lee",
-    role: "Operations Manager, GlobalCorp"
-  },
-  {
-    quote: "The intuitive interface made adoption across our team seamless. It's been a game-changer for our project management.",
-    author: "Sophia Rodriguez",
-    role: "Team Lead, InnovateTech"
+    quote: "Moval’s AI-driven modules seamlessly integrate precision and speed, revolutionizing motor survey processes with unparalleled claim analysis and automation.",
+    author: "Manoj Sharma",
+    company: "RMS Associates"
   }
-]
+];
+
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -81,7 +77,7 @@ export default function Testimonials() {
             What our customers think
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 text-white">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus commodi sint, similique cupiditate possimus suscipit delectus illum eos iure magnam!
+          Delve into the experiences of our users who have leveraged our platform to optimize workflows and enhance precision. The following testimonials provide an overview of the substantial benefits our solutions have delivered.
           </p>
           <div className="flex gap-2">
             {testimonials.map((_, index) => (
@@ -110,7 +106,7 @@ export default function Testimonials() {
                   {testimonials[currentIndex].author}
                 </p>
                 <p className="text-gray-900 text-xs sm:text-sm md:text-base">
-                  {testimonials[currentIndex].role}
+                  {testimonials[currentIndex].company}
                 </p>
               </div>
             </div>
