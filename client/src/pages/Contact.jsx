@@ -33,7 +33,7 @@ function Contact() {
       message: formData.get("message"),
     };
 
-    emailjs.send("service_pshv414", "template_nm0rxsx", emailData, "rMnX48H9rXiKXzuaU").then(
+    emailjs.send("service_xpwqmr5", "template_su4nquv", emailData, "bCd9QoG8ARzLhZhrP").then(
       (result) => {
         console.log("Email sent successfully:", result.text);
         alert("Your message has been sent successfully!");
