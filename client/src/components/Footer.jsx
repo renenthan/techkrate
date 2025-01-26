@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Youtube, Linkedin, Instagram, ChevronUp } from "lucide-react";
+import { Youtube, Instagram, ChevronUp } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+
 export default function Footer() {
   const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -80,14 +83,17 @@ export default function Footer() {
                   support@techkrate.com
                 </a>
               </li>
-
-              <li className="text-sm text-gray-400">416, Sector 1, Vasundhara, Ghaziabad - 201012 Delhi NCR</li>
             </ul>
+
             {/* Social Media Links */}
             <div className="flex mt-4 space-x-4">
               {[
                 { icon: Youtube, href: "https://www.youtube.com/@techkrate4281", label: "YouTube" },
-                { icon: Linkedin, href: "https://www.linkedin.com/company/techkrate/", label: "LinkedIn" },
+                {
+                  icon: () => <FontAwesomeIcon icon={faLinkedinIn} />,
+                  href: "https://www.linkedin.com/company/techkrate/",
+                  label: "LinkedIn",
+                },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -97,7 +103,7 @@ export default function Footer() {
                   className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out"
                   aria-label={label}
                 >
-                  <Icon size={24} />
+                  <Icon />
                 </a>
               ))}
             </div>
