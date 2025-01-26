@@ -10,16 +10,8 @@ function Contact() {
   const formRef = useRef(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, delay: 0.3 }
-    );
-    gsap.fromTo(
-      formRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, delay: 0.6 }
-    );
+    gsap.fromTo(titleRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, delay: 0.3 });
+    gsap.fromTo(formRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, delay: 0.6 });
   }, []);
 
   const sendEmail = (e) => {
@@ -41,23 +33,16 @@ function Contact() {
       message: formData.get("message"),
     };
 
-    emailjs
-      .send(
-        "service_pshv414",
-        "template_nm0rxsx",
-        emailData,
-        "rMnX48H9rXiKXzuaU"
-      )
-      .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          alert("Your message has been sent successfully!");
-        },
-        (error) => {
-          console.error("Error sending email:", error);
-          alert("There was an error sending your message. Please try again.");
-        }
-      );
+    emailjs.send("service_pshv414", "template_nm0rxsx", emailData, "rMnX48H9rXiKXzuaU").then(
+      (result) => {
+        console.log("Email sent successfully:", result.text);
+        alert("Your message has been sent successfully!");
+      },
+      (error) => {
+        console.error("Error sending email:", error);
+        alert("There was an error sending your message. Please try again.");
+      }
+    );
 
     formElement.reset();
   };
@@ -73,15 +58,15 @@ function Contact() {
           <div className="space-y-6 text-sm sm:text-base">
             <div className="flex items-center space-x-4">
               <FontAwesomeIcon icon={faPhone} className="text-blue-300" />
-              <p>+1 234 567 890</p>
+              <p>+91-1203107109</p>
             </div>
             <div className="flex items-center space-x-4">
               <FontAwesomeIcon icon={faEnvelope} className="text-blue-300" />
-              <p>info@yourdomain.com</p>
+              <p>support@techkrate.com</p>
             </div>
             <div className="flex items-center space-x-4">
               <FontAwesomeIcon icon={faLocationDot} className="text-blue-300" />
-              <p>1234 Street Name, City, Country</p>
+              <p>416, Sector 1, Vasundhara, Ghaziabad - 201012 Delhi NCR</p>
             </div>
             <div className="flex space-x-4">
               <a href="#" className="text-blue-300 hover:text-blue-400">
@@ -99,9 +84,7 @@ function Contact() {
           <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">
-                  First Name
-                </label>
+                <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">First Name</label>
                 <input
                   type="text"
                   name="firstName"
@@ -110,9 +93,7 @@ function Contact() {
                 />
               </div>
               <div>
-                <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">
-                  Last Name
-                </label>
+                <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">Last Name</label>
                 <input
                   type="text"
                   name="lastName"
@@ -122,9 +103,7 @@ function Contact() {
               </div>
             </div>
             <div>
-              <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">
-                Email
-              </label>
+              <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">Email</label>
               <input
                 type="email"
                 name="email"
@@ -133,9 +112,7 @@ function Contact() {
               />
             </div>
             <div>
-              <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">
-                Phone Number
-              </label>
+              <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">Phone Number</label>
               <input
                 type="tel"
                 name="phoneNumber"
@@ -144,9 +121,7 @@ function Contact() {
               />
             </div>
             <div>
-              <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">
-                Company Name
-              </label>
+              <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">Company Name</label>
               <input
                 type="text"
                 name="companyName"
@@ -155,9 +130,7 @@ function Contact() {
               />
             </div>
             <div>
-              <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">
-                Message
-              </label>
+              <label className="block mb-1 text-xs sm:text-sm font-medium text-gray-400">Message</label>
               <textarea
                 name="message"
                 className="w-full p-2 bg-transparent border border-gray-700 text-white text-sm focus:outline-none"
@@ -165,10 +138,7 @@ function Contact() {
                 rows="4"
               ></textarea>
             </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 text-sm sm:text-base"
-            >
+            <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">
               Send Message
             </button>
           </form>
