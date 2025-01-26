@@ -69,10 +69,10 @@ function Contact() {
               <p>416, Sector 1, Vasundhara, Ghaziabad - 201012 Delhi NCR</p>
             </div>
             <div className="flex space-x-4">
-              <a href="#" className="text-blue-300 hover:text-blue-400">
+              <a href="https://www.linkedin.com/company/techkrate/" className="text-blue-300 hover:text-blue-400">
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
-              <a href="#" className="text-blue-300 hover:text-blue-400">
+              <a href="https://www.youtube.com/@techkrate4281" className="text-blue-300 hover:text-blue-400">
                 <FontAwesomeIcon icon={faYoutube} />
               </a>
             </div>
