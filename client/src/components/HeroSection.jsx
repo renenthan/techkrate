@@ -28,7 +28,7 @@ const HeroSection = () => {
     },
     {
       title: "Redefining Motor Claims Processing",
-      subHeading
+      subHeading:
         "Moval revolutionizes motor claims handling by integrating advanced technology with industry-specific workflows. It simplifies vehicle assessments, expedites resolutions, and enhances operational accuracy, providing a streamlined, efficient, and dependable process tailored to insurers and surveyors.",
       link: "/moval",
     },
