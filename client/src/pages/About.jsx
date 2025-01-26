@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from 'lucide-react';
+import { Linkedin } from "lucide-react";
 import Footer from "../components/Footer";
 import bgVid from "/bgVid.mp4";
 import LalitBG from "../assets/image/LalitBG.webp";
@@ -103,27 +103,27 @@ const AboutUs = () => {
           <h1 className="font-Helix text-3xl sm:text-4xl md:text-5xl font-bold mb-6 mt-16 sm:mt-32 text-white text-center">Leading Techkrate</h1>
 
           {/* Lalit Singh Chauhan */}
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 items-stretch bg-black rounded-2xl overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 bg-black rounded-2xl overflow-hidden">
             <div className="p-6 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-center">
               <h3 className="font-Helix text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4 text-white">Lalit Singh Chauhan</h3>
               <p className="text-lg sm:text-xl text-gray-400 mb-4 sm:mb-8">Chief Executive Officer</p>
               <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-6 sm:mb-12">
                 At Techkrate, we envision a future where complexity is no longer a barrier to innovation. Our mission is to empower businesses with
                 transformative tools that enable them to navigate the digital era with confidence and clarity. This is not just about building
-                software—it's about redefining the way the world works, connects, and grows.
+                software—it&apos;s about redefining the way the world works, connects, and grows.
               </p>
-              <a href="https://www.linkedin.com/in/lalit-singh-chauhan-86b42425" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center text-white hover:text-gray-300 transition-colors">
-                Read more <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <a href="https://www.linkedin.com/in/lalit-singh-chauhan-86b42425" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center text-white hover:text-gray-300 transition-colors border-2 border-white p-2 rounded-full w-fit">
+                <Linkedin className="h-6 w-6" />
               </a>
             </div>
-            <div className="max-h-[300px] sm:max-h-[400px] flex items-center">
+            <div className="max-h-[500px] items-center">
               <img src={LalitBG || "/placeholder.svg"} alt="Lalit Singh Chauhan's portrait" className="w-full h-full object-cover" />
             </div>
           </div>
 
           {/* Utkarsh Chauhan */}
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 items-stretch bg-black rounded-2xl overflow-hidden">
-            <div className="order-2 lg:order-1 max-h-[300px] sm:max-h-[400px] flex items-center">
+            <div className="order-2 lg:order-1 max-h-[500px] flex items-center">
               <img src={UtkarshBG || "/placeholder.svg"} alt="Utkarsh Chauhan's portrait" className="w-full h-full object-cover" />
             </div>
             <div className="order-1 lg:order-2 p-6 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-center">
@@ -134,8 +134,8 @@ const AboutUs = () => {
                 for scalability, precision, and impact. Our commitment lies in bridging the gap between cutting-edge technology and seamless
                 execution, empowering businesses to achieve their highest potential.
               </p>
-              <a href="https://www.linkedin.com/in/utkarsh-chauhan-techkrate" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center text-white hover:text-gray-300 transition-colors">
-                Read more <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <a href="https://www.linkedin.com/in/utkarsh-chauhan-techkrate" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center text-white hover:text-gray-300 transition-colors border-2 border-white p-2 rounded-full w-fit">
+                <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -146,6 +146,4 @@ const AboutUs = () => {
     </div>
   );
 };
-
 export default AboutUs;
-
