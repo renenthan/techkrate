@@ -3,8 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Briefcase, Layers, Bot, Cloud, BarChart3, Terminal } from "lucide-react";
-
+import { Briefcase, Layers, Bot, Cloud, BarChart3, Terminal } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,40 +17,39 @@ const ServiceSection = () => {
       title: "Strategy & Advisory",
       description:
         "Offering tailored strategies and scalable solutions to optimize processes and align with enterprise goals.",
-      icon: <Briefcase className="h-8 w-8" />,
+      icon: <Briefcase className="h-6 w-6 sm:h-8 sm:w-8" />,
     },
     {
       title: "System Integration",
       description:
         "Ensuring seamless integration and modernization of systems for enhanced interoperability and efficiency.",
-      icon: <Layers className="h-8 w-8" />,
+      icon: <Layers className="h-6 w-6 sm:h-8 sm:w-8" />,
     },
     {
       title: "AI-Driven Automation",
       description:
         "Implementing advanced AI technologies to automate workflows, reduce redundancies, and scale operations.",
-      icon: <Bot className="h-8 w-8" />,
+      icon: <Bot className="h-6 w-6 sm:h-8 sm:w-8" />,
     },
     {
       title: "Cloud Solutions",
       description:
         "Providing secure, scalable cloud infrastructure with high availability for mission-critical applications.",
-      icon: <Cloud className="h-8 w-8" />,
+      icon: <Cloud className="h-6 w-6 sm:h-8 sm:w-8" />,
     },
     {
       title: "Data Analytics",
       description:
         "Converting complex data into actionable insights, enabling data-driven decisions and measurable outcomes.",
-      icon: <BarChart3 className="h-8 w-8" />,
+      icon: <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8" />,
     },
     {
       title: "Enterprise Software Development",
       description:
         "Delivering customized, scalable software solutions to drive innovation and digital transformation.",
-      icon: <Terminal className="h-8 w-8" />,
+      icon: <Terminal className="h-6 w-6 sm:h-8 sm:w-8" />,
     },
   ];
-  
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -119,29 +117,29 @@ const ServiceSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="h-screen bg-black text-white flex items-center overflow-hidden">
+    <section ref={sectionRef} className="bg-black text-white py-16 sm:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <h2 ref={titleRef} className="text-4xl md:text-5xl font-bold mb-16 text-center">
+        <h2 ref={titleRef} className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-16 text-center">
           Elevate Your Operations
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="relative bg-white bg-opacity-5 rounded-lg p-6 overflow-hidden group transition-transform duration-300 ease-in-out"
+              className="relative bg-white bg-opacity-5 rounded-lg p-4 sm:p-6 overflow-hidden group transition-transform duration-300 ease-in-out"
             >
               <div className="card-bg absolute inset-0 bg-white opacity-0 transition-opacity duration-300 pointer-events-none"></div>
               <div className="relative z-10 flex flex-col items-center space-y-4">
-                <div className="p-3 rounded-full border-2 border-white group-hover:border-black transition-colors duration-300">
+                <div className="p-2 sm:p-3 rounded-full border-2 border-white group-hover:border-black transition-colors duration-300">
                   {React.cloneElement(service.icon, {
                     className: "text-white group-hover:text-black transition-colors duration-300",
                   })}
                 </div>
-                <h3 className="text-lg font-semibold text-center text-white group-hover:text-black transition-colors duration-300">
+                <h3 className="text-base sm:text-lg font-semibold text-center text-white group-hover:text-black transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-400 text-center group-hover:text-gray-800 transition-colors duration-300">
+                <p className="text-xs sm:text-sm text-gray-400 text-center group-hover:text-gray-800 transition-colors duration-300">
                   {service.description}
                 </p>
               </div>
@@ -154,3 +152,4 @@ const ServiceSection = () => {
 };
 
 export default ServiceSection;
+

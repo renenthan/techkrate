@@ -74,13 +74,13 @@ export default function Testimonials() {
   }, [currentIndex])
 
   return (
-    <div className="w-full px-44 py-32 bg-black">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <div className="w-full px-6 sm:px-12 md:px-20 lg:px-44 py-16 sm:py-24 md:py-32 bg-black">
+      <div className="grid gap-8 sm:gap-12 lg:grid-cols-2 items-center">
         <div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white">
             What our customers think
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 text-white">
+          <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 text-white">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus commodi sint, similique cupiditate possimus suscipit delectus illum eos iure magnam!
           </p>
           <div className="flex gap-2">
@@ -95,21 +95,21 @@ export default function Testimonials() {
             ))}
           </div>
         </div>
-        <div className="relative h-[300px] bg-white text-black overflow-hidden">
+        <div className="relative h-[200px] sm:h-[250px] md:h-[300px] bg-white text-black overflow-hidden">
           <div
-            className={`absolute inset-0 p-8 transition-transform duration-500 ease-out ${
+            className={`absolute inset-0 p-4 sm:p-6 md:p-8 transition-transform duration-500 ease-out ${
               isAnimating ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'
             }`}
           >
             <div className="h-full flex flex-col justify-between">
-              <p className="text-xl italic leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl italic leading-relaxed">
                 &quot;{testimonials[currentIndex].quote}&quot;
               </p>
               <div>
-                <p className="font-semibold text-lg">
+                <p className="font-semibold text-sm sm:text-base md:text-lg">
                   {testimonials[currentIndex].author}
                 </p>
-                <p className="text-gray-900">
+                <p className="text-gray-900 text-xs sm:text-sm md:text-base">
                   {testimonials[currentIndex].role}
                 </p>
               </div>
