@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Youtube, Instagram, ChevronUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedinIn, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -88,7 +88,7 @@ export default function Footer() {
             {/* Social Media Links */}
             <div className="flex mt-4 space-x-4">
               {[
-                { icon: Youtube, href: "https://www.youtube.com/@techkrate4281", label: "YouTube" },
+                { icon: () => <FontAwesomeIcon icon={faYoutube} />, href: "https://www.youtube.com/@techkrate4281", label: "YouTube" },
                 {
                   icon: () => <FontAwesomeIcon icon={faLinkedinIn} />,
                   href: "https://www.linkedin.com/company/techkrate/",
