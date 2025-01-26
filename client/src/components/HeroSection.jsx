@@ -23,19 +23,19 @@ const HeroSection = () => {
     {
       title: "Turning Complexity Into Clarity",
       subHeading:
-        "We distil complex challenges into clear solutions, empowering organizations to advance with precision and purpose. Together, we forge a future where technology illuminates the path to progress and catalyzes meaningful, transformative change.",
+        "We distil complex challenges into clear solutions, empowering organizations to advance precisely and purposefully. Together, we forge a future where technology illuminates the path to progress and catalyzes meaningful, transformative change.",
       link: "/about",
     },
     {
       title: "Redefining Motor Claims Processing",
-      subHeading:
-        "Moval revolutionizes motor claims handling by integrating advanced technology with industry-specific workflows. It simplifies vehicle assessments, expedites resolutions, and enhances operational accuracy, providing a streamlined, efficient, and dependable process tailored to insurers and surveyors alike.",
+      subHeading
+        "Moval revolutionizes motor claims handling by integrating advanced technology with industry-specific workflows. It simplifies vehicle assessments, expedites resolutions, and enhances operational accuracy, providing a streamlined, efficient, and dependable process tailored to insurers and surveyors.",
       link: "/moval",
     },
     {
       title: "AI-Driven Assessment Intelligence",
       subHeading:
-        "Moval's AI goes beyond damage detection, extracting complex data from assessment sheets and populating loss estimations instantly. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with cutting-edge technology for unparalleled efficiency.",
+        "Moval's AI goes beyond damage detection, instantly extracting complex data from assessment sheets and instantly populating loss estimations. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with technology for unparalleled efficiency.",
       link: "/moval",
     },
     {
