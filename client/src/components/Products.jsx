@@ -91,7 +91,7 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-black flex flex-col items-center py-16 px-4">
+    <div className="min-h-screen w-full bg-black flex flex-col items-center pb-16 px-4">
       <h1 className="text-5xl md:text-7xl text-white font-Helix text-center mb-16">
         Products
       </h1>
