@@ -1,6 +1,12 @@
-import React from 'react';
+import { useEffect } from "react";
 
 const PrivacyPolicy = () => {
+
+  useEffect(() => {
+    // Ensure the page always starts from the top
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="my-20 text-white bg-black min-h-screen px-6 md:px-16 py-20 space-y-8">
       <h1 className="text-4xl font-bold mb-6">Privacy Policy</h1>
@@ -35,8 +41,11 @@ const PrivacyPolicy = () => {
       </p>
       <h2 className="text-2xl font-semibold mt-8 mb-4">Your Rights</h2>
       <p className="text-lg">
-        You have the right to access, update, and delete your personal information. If you wish to exercise these rights, please contact us at 
-        [Insert Contact Email].
+        You have the right to access, update, and delete your personal information. If you wish to exercise these rights, please contact us at &nbsp;
+        <a href="mailto:[support@techkrate.com]" style={{ color: "white", textDecoration: "underline" }}>
+          support@techkrate.com
+        </a>
+        
       </p>
       <h2 className="text-2xl font-semibold mt-8 mb-4">Changes to This Policy</h2>
       <p className="text-lg">

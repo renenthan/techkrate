@@ -4,7 +4,7 @@ import { ChevronUp } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
-export default function Footer() {
+const Footer = () => {
   const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -44,13 +44,17 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-white">Company</h3>
             <ul className="mt-2 space-y-2">
-              {["About Us", "Blogs"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
-                    {item}
+                <li >
+                  <a href="/about" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
+                    About Us
                   </a>
                 </li>
-              ))}
+                <li >
+                  <a href="/blogs" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
+                    Blogs
+                  </a>
+                </li>
+              
             </ul>
           </div>
 
@@ -75,6 +79,11 @@ export default function Footer() {
               <li>
                 <a href="tel:+919990547098" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
                   Contact: +91-1203107109
+                </a>
+              </li>
+              <li>
+                <a href="tel:+919990547098" className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out ml-16">
+                  +91-9990547098
                 </a>
               </li>
               <li className="text-gray-400 hover:text-white transition-colors duration-300 ease-in-out">
@@ -157,3 +166,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer

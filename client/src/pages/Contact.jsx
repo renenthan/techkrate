@@ -20,6 +20,7 @@ function Contact() {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     gsap.fromTo(titleRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, delay: 0.3 });
     gsap.fromTo(formRef.current.children, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, delay: 0.6 });
   }, []);
