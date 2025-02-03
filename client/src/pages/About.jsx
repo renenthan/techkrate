@@ -26,6 +26,8 @@ const AboutUs = () => {
   const charterRef = useRef(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fadeInAnimation = (element) => {
       gsap.fromTo(
         element,

@@ -1,6 +1,14 @@
-import React from "react";
+import  { useEffect } from "react";
 
 const TermsAndCondition = () => {
+
+  useEffect(() => {
+    // Ensure the page always starts from the top
+    window.scrollTo(0, 0);
+  }, []);
+
+
+
   return (
     <div className="my-20 text-white bg-black min-h-screen px-6 md:px-16 py-20 space-y-8">
       <h1 className="text-4xl font-bold mb-6">Terms and Conditions</h1>
@@ -37,7 +45,7 @@ const TermsAndCondition = () => {
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">7. Governing Law</h2>
       <p className="text-lg">
-        These terms are governed by the laws of [Insert Jurisdiction]. Any disputes will be resolved in the courts of [Insert Jurisdiction].
+      These terms are governed by the laws of India. Any disputes will be resolved in the courts of Delhi, National Capital Territory (NCT) of Delhi.
       </p>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">8. Changes to Terms</h2>
@@ -47,7 +55,7 @@ const TermsAndCondition = () => {
       <p className="text-lg">
         If you have any questions, contact us at{" "}
         <a href="mailto:[support@techkrate.com]" style={{ color: "white", textDecoration: "underline" }}>
-          [support@techkrate.com]
+          support@techkrate.com
         </a>
         .
       </p>

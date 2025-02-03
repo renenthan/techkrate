@@ -24,11 +24,13 @@ const Blogs = () => {
   };
 
   useEffect(() => {
+    
     fetchBlogs();
   }, []);
 
   useEffect(() => {
     // Apply smooth scroll for the page load
+    window.scrollTo(0, 0);
     gsap.to(window, { duration: 1, scrollTo: 0, ease: "power2.inOut" });
   }, []); // This effect runs once when the component is mounted
 

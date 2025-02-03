@@ -30,25 +30,25 @@ const HeroSection = () => {
       title: "Redefining Motor Claims Processing",
       subHeading:
         "Moval revolutionizes motor claims handling by integrating advanced technology with industry-specific workflows. It simplifies vehicle assessments, expedites resolutions, and enhances operational accuracy, providing a streamlined, efficient, and dependable process tailored to insurers and surveyors.",
-      link: "/moval",
+      link: "/about",
     },
     {
       title: "AI-Driven Assessment Intelligence",
       subHeading:
         "Moval's AI goes beyond damage detection, instantly extracting complex data from assessment sheets and instantly populating loss estimations. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with technology for unparalleled efficiency.",
-      link: "/moval",
+      link: "/about",
     },
     {
       title: "Regulatory-Compliant Survey Reports",
       subHeading:
         "Moval ensures survey reports strictly adhere to IRDA guidelines, maintaining compliance and professionalism. Its standardized processes guarantee transparent reporting, enabling insurers and surveyors to meet regulatory requirements while delivering consistent and trustworthy claim assessments.",
-      link: "/moval",
+      link: "/about",
     },
     {
       title: "Centralized Control & Mobile Approvals",
       subHeading:
         "Moval offers robust tools for multi-office management and automated estimate imports. Its mobile-enabled platform facilitates instant report approvals, empowering stakeholders to make real-time decisions while enhancing productivity and collaboration across diverse operational setups.",
-      link: "/moval",
+      link: "/about",
     },
   ];
 

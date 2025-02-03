@@ -146,7 +146,7 @@ const Navbar = () => {
                 Moval
               </button>
               <button className="block py-2 px-4 rounded-md hover:bg-gray-700 transition-colors duration-300">
-                Cars
+                CARS
               </button>
             </div>
           </div>
@@ -211,7 +211,7 @@ const Navbar = () => {
                 Moval
               </Link>
               <Link to="/product2" className="block text-white text-2xl" onClick={toggleMobileMenu}>
-                Cars
+                CARS
               </Link>
             </div>
           </div>
