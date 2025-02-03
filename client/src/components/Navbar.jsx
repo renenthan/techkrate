@@ -198,27 +198,27 @@ const Navbar = () => {
         }}
       >
         <div className="flex flex-col space-y-8 font-medium">
-          <Link to="/" className="text-white text-4xl" onClick={toggleMobileMenu}>
+          <Link to="/" className="text-white text-3xl" onClick={toggleMobileMenu}>
             Home
           </Link>
-          <Link to="/about" className="text-white text-4xl" onClick={toggleMobileMenu}>
+          <Link to="/about" className="text-white text-3xl" onClick={toggleMobileMenu}>
             About Us
           </Link>
           <div className="relative group">
-            <span className="text-white text-3xl cursor-pointer">PRODUCTS</span>
+            <span className="text-white text-3xl cursor-pointer">Products</span>
             <div className="mt-4 space-y-4">
-              <Link to="/product1" className="block text-white text-2xl" onClick={toggleMobileMenu}>
+              <Link to="/product1" className="block text-white text-1xl" onClick={toggleMobileMenu}>
                 Moval
               </Link>
-              <Link to="/product2" className="block text-white text-2xl" onClick={toggleMobileMenu}>
+              <Link to="/product2" className="block text-white text-1xl" onClick={toggleMobileMenu}>
                 CARS
               </Link>
             </div>
           </div>
-          <Link to="/blogs" className="text-white text-4xl" onClick={toggleMobileMenu}>
+          <Link to="/blogs" className="text-white text-3xl" onClick={toggleMobileMenu}>
             Blogs
           </Link>
-          <Link to="/contact" className="text-white text-4xl" onClick={toggleMobileMenu}>
+          <Link to="/contact" className="text-white text-3xl" onClick={toggleMobileMenu}>
             Connect With Us
           </Link>
         </div>
