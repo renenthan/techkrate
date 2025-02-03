@@ -23,31 +23,31 @@ const HeroSection = () => {
     {
       title: "Turning Complexity Into Clarity",
       subHeading:
-        "We distil complex challenges into clear solutions, empowering organizations to advance precisely and purposefully. Together, we forge a future where technology illuminates the path to progress and catalyzes meaningful, transformative change.",
+        "We distil complex challenges into clear solutions, empowering organizations to advance precisely and purposefully.",
       link: "/about",
     },
     {
       title: "Redefining Motor Claims Processing",
       subHeading:
-        "Moval revolutionizes motor claims handling by integrating advanced technology with industry-specific workflows. It simplifies vehicle assessments, expedites resolutions, and enhances operational accuracy, providing a streamlined, efficient, and dependable process tailored to insurers and surveyors.",
+        "Moval revolutionizes motor claims handling by integrating advanced technology with industry-specific workflows.",
       link: "/about",
     },
     {
       title: "AI-Driven Assessment Intelligence",
       subHeading:
-        "Moval's AI goes beyond damage detection, instantly extracting complex data from assessment sheets and instantly populating loss estimations. Automating manual inputs accelerates workflows, enhances precision, and empowers surveyors with technology for unparalleled efficiency.",
+        "Moval's AI goes beyond damage detection, instantly extracting complex data from assessment sheets.",
       link: "/about",
     },
     {
       title: "Regulatory-Compliant Survey Reports",
       subHeading:
-        "Moval ensures survey reports strictly adhere to IRDA guidelines, maintaining compliance and professionalism. Its standardized processes guarantee transparent reporting, enabling insurers and surveyors to meet regulatory requirements while delivering consistent and trustworthy claim assessments.",
+        "Moval ensures survey reports strictly adhere to IRDA guidelines, maintaining compliance and professionalism.",
       link: "/about",
     },
     {
       title: "Centralized Control & Mobile Approvals",
       subHeading:
-        "Moval offers robust tools for multi-office management and automated estimate imports. Its mobile-enabled platform facilitates instant report approvals, empowering stakeholders to make real-time decisions while enhancing productivity and collaboration across diverse operational setups.",
+        "Moval offers robust tools for multi-office management and automated estimate imports.",
       link: "/about",
     },
   ];
@@ -175,14 +175,14 @@ const HeroSection = () => {
                 <div className="overflow-hidden">
                   <h2
                     ref={(el) => (heroTextRefs.current[index] = el)}
-                    className="text-7xl md:text-9xl font-bold leading-tight mb-6 text-white"
+                    className="text-6xl sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-tight mb-6 text-white"
                   >
                     {slide.title}
                   </h2>
                 </div>
                 <p
                   ref={(el) => (subHeadingRefs.current[index] = el)}
-                  className="pt-1 text-lg text-[#9C9C9C] max-w-3xl"
+                  className="text-base sm:text-lg md:text-xl text-[#9C9C9C] max-w-3xl"
                 >
                   {slide.subHeading}
                 </p>
